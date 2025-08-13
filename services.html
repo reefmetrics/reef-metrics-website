@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReefMetrics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ✅ Add Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #2C3E50;
+      --color-reef: #3AB7BF;
+      --color-accent: #FF7E67;
+      --color-accent-2: #FF8F3E;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .bg-primary {
+      background-color: var(--color-bg);
+    }
+  </style>
+</head>
+</html>
+
+<!-- Nav Bar -->
+<body class="bg-primary text-white">
+  <nav class="w-full shadow-sm bg-[var(--color-bg)]">
+    <div class="w-full px-6 py-2 flex justify-between items-center">
+      
+      <!-- Left Side: Logo (✅ now points to website2.html) -->
+      <a href="website2.html" class="flex items-center">
+        <img src="https://i.imgur.com/77COo8U.png" alt="ReefMetrics logo" class="h-16 w-auto" />
+      </a>
+
+      <!-- Right Side: Nav Links -->
+      <div class="flex items-center space-x-6 text-lg font-light">
+        <a href="wavie.html" class="text-[var(--color-reef)] font-medium">Wavie</a>
+        <!-- ✅ Services Dropdown FIXED -->
+        <div class="relative group">
+          <div class="inline-flex items-center cursor-pointer hover:text-[var(--color-reef)] transition">
+            Services
+            <svg class="ml-1 h-4 w-4 fill-current text-white group-hover:text-[var(--color-reef)] transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5.25 7.75L10 12.25L14.75 7.75" />
+            </svg>
+          </div>
+          <!-- This block stays open when hovered -->
+          <div class="absolute top-full left-0 mt-1 pointer-events-none group-hover:pointer-events-auto group-hover:block hidden bg-white text-black rounded shadow-lg py-2 w-40 z-50">
+            <a href="#installations" class="block px-4 py-2 hover:bg-gray-100 transition whitespace-nowrap">Installations</a>
+            <a href="#maintenance" class="block px-4 py-2 hover:bg-gray-100 transition whitespace-nowrap">Maintenance</a>
+          </div>
+        </div>
+
+        <a href="#about" class="hover:text-[var(--color-reef)] transition">About</a>
+        <a href="#contact" class="hover:text-[var(--color-reef)] transition">Contact Us</a>
+        <span class="text-gray-400 pointer-events-none">Gallery (soon)</span>
+        <a href="#contact" class="bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </nav>
+</body>
+
+<!-- Hero Section -->
+<section class="relative text-white text-center py-32 px-4 overflow-hidden">
+  <!-- Background image with slight blur and dark overlay -->
+  <div class="absolute inset-0 overflow-hidden -z-10">
+    <div class="fixed inset-0 bg-[url('https://i.imgur.com/Oy4UzNA.png')] bg-cover bg-center blur-sm scale-105"></div>
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </div>
+  
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-3xl mx-auto">
+    <h1 class="text-4xl sm:text-5xl font-semibold mb-6">
+      Saltwater Aquariums for Professional spaces
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-200 mb-10">
+      We’re a local Utah team bringing calm, beautiful reef tanks to dentists, clinics, and businesses — with professional care and zero hassle.
+    </p>
+    <div class="flex justify-center">
+      <a href="#services" class="border border-white px-6 py-3 rounded-md text-base font-medium hover:bg-white hover:text-[var(--color-bg)] transition">
+        See Services
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="bg-primary text-white py-24 px-0 text-center">
+  <h2 class="text-3xl sm:text-4xl font-semibold mb-12">Install. Maintain. Enjoy.</h2>
+
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    <!-- Installation Card -->
+    <div class="bg-[#2f4858] rounded-xl overflow-hidden shadow-lg p-6 flex flex-col items-center text-left">
+      <!-- Image Placeholder -->
+      <div class="w-full h-48 bg-gray-700 rounded-md mb-4"></div>
+      <h3 class="text-2xl font-semibold mb-2 text-white">Custom Installations</h3>
+      <p class="text-gray-300 mb-4">
+        We design and install beautiful saltwater aquariums that bring your space to life — no mess, no stress.
+      </p>
+      <a href="#installations" class="mt-auto bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
+        Learn More
+      </a>
+    </div>
+
+    <!-- Maintenance Card -->
+    <div class="bg-[#2f4858] rounded-xl overflow-hidden shadow-lg p-6 flex flex-col items-center text-left">
+      <div class="w-full h-48 bg-gray-700 rounded-md mb-4"></div>
+      <h3 class="text-2xl font-semibold mb-2 text-white">Worry-Free Maintenance</h3>
+      <p class="text-gray-300 mb-4">
+        Keep your tank crystal clear with professional cleanings, water checks, and expert care — so you can relax.
+      </p>
+      <a href="#maintenance" class="mt-auto bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
+        Learn More
+      </a>
+    </div>
+
+    <!-- Pricing Card -->
+    <div class="bg-[#2f4858] rounded-xl overflow-hidden shadow-lg p-6 flex flex-col items-center text-left">
+      <div class="w-full h-48 bg-gray-700 rounded-md mb-4"></div>
+      <h3 class="text-2xl font-semibold mb-2 text-white">Affordable Pricing</h3>
+      <p class="text-gray-300 mb-4">
+        We offer lower prices than national chains so you can enjoy the beauty of a reef without the premium cost.
+      </p>
+      <a href="#contact" class="mt-auto bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
+        Compare Pricing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Custom Styled Testimonial Card -->
+<section class="bg-[var(--color-bg)] text-white py-20 px-4">
+  <div class="max-w-5xl mx-auto bg-[#2f3f51] rounded-2xl shadow-lg p-8 sm:p-12 flex flex-col sm:flex-row items-center gap-8">
+
+    <!-- Image -->
+    <div class="flex-shrink-0">
+      <img src="https://i.imgur.com/W1k84Yf.png" alt="Client photo" class="w-32 h-32 rounded-full border-4 border-white shadow-md" />
+    </div>
+
+    <!-- Testimonial Content -->
+    <div class="flex-1">
+      <div class="flex items-center justify-between mb-4">
+        <div class="text-lg font-semibold text-[var(--color-reef)]">Michelle T. <span class="text-gray-300 font-normal">– Office Manager</span></div>
+        <div class="text-yellow-400 text-xl">★★★★★</div>
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Amazing Service & Support</h3>
+
+      <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
+        “We’re thrilled. They set everything up fast and now maintain it without us needing to lift a finger. 
+        It’s peaceful, professional, and totally hassle-free.”
+      </p>
+
+      <!-- Quote Icons -->
+      <div class="text-[var(--color-reef)] text-2xl">“”</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
