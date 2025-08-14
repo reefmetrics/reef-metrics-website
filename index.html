@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReefMetrics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ✅ Add Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #2C3E50;
+      --color-reef: #3AB7BF;
+      --color-accent: #FF7E67;
+      --color-accent-2: #FF8F3E;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .bg-primary {
+      background-color: var(--color-bg);
+    }
+    /* Optional scroll-trigger play effect */
+    .wavie-gif {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .wavie-gif.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-primary text-white">
+  <!-- Nav Bar -->
+  <nav class="w-full shadow-sm bg-[var(--color-bg)]">
+    <div class="w-full px-6 py-2 flex justify-between items-center">
+      <!-- Left Side: Logo -->
+      <a href="website2.html" class="flex items-center">
+        <img src="https://i.imgur.com/77COo8U.png" alt="ReefMetrics logo" class="h-16 w-auto" />
+      </a>
+      <!-- Right Side: Nav Links -->
+      <div class="flex items-center space-x-6 text-lg font-light">
+        <a href="wavie.html" class="text-[var(--color-white)] font-medium hover:text-[var(--color-reef)]">
+            Wavie
+            </a>
+        <div class="relative group">
+          <a href="services.html" class="inline-flex items-center cursor-pointer hover:text-[var(--color-reef)] transition">
+            Services
+            <svg class="ml-1 h-4 w-4 fill-current text-white group-hover:text-[var(--color-reef)] transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5.25 7.75L10 12.25L14.75 7.75" />
+            </svg>
+        </a>
+          <div class="absolute top-full left-0 mt-1 pointer-events-none group-hover:pointer-events-auto group-hover:block hidden bg-white text-black rounded shadow-lg py-2 w-40 z-50">
+            <a href="#installations" class="block px-4 py-2 hover:bg-gray-100 transition whitespace-nowrap">Installations</a>
+            <a href="#maintenance" class="block px-4 py-2 hover:bg-gray-100 transition whitespace-nowrap">Maintenance</a>
+          </div>
+        </div>
+        <a href="#about" class="hover:text-[var(--color-reef)] transition">About</a>
+        <a href="#contact" class="hover:text-[var(--color-reef)] transition">Contact Us</a>
+        <span class="text-gray-400 pointer-events-none">Gallery (soon)</span>
+        <a href="#contact" class="bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Wavie Intro Section -->
+  <section class="bg-primary text-white py-20 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <!-- GIF (50%) -->
+      <div class="md:w-1/2 flex justify-center">
+        <img
+        src="https://gifdb.com/images/high/xbox-game-set-moving-animation-lc2t3k2xl892supz.gif"
+        alt="Wavie Device Animation"
+        class="wavie-gif w-full rounded-lg shadow-lg"
+        style="width: 1400px; height: auto;"
+        loading="lazy" />
+      </div>
+      <!-- Text (50%) -->
+      <div class="md:w-1/2">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Introducing Wavie</h1>
+        <p class="text-lg text-gray-300 mb-8">
+          A brand new way to keep track of your fish tank.
+        </p>
+        <a href="#preorder" class="bg-[var(--color-accent)] text-white px-6 py-3 rounded-md text-lg hover:bg-[var(--color-accent-2)] transition">
+          Preorder Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll animation script -->
+  <script>
+    function checkGifInView() {
+      document.querySelectorAll('.wavie-gif').forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          img.classList.add('in-view');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkGifInView);
+    window.addEventListener('resize', checkGifInView);
+    checkGifInView();
+  </script>
+</body>
+</html>
+
+<section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-6 space-y-16">
+    
+    <!-- Row 1 -->
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="flex-shrink-0 mt-1 w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold mb-4">1</span>
+        <h3 class="text-xl font-semibold text-gray-800">Fully Customizable Testing</h3>
+        <p class="text-gray-600">
+          Tailor test schedules and parameters to your aquarium’s specific needs, so you're not running unnecessary checks.
+        </p>
+      </div>
+      <div>
+        <img src="https://media.gettyimages.com/id/1201292836/vector/business-infographic-colorful-designs.jpg?s=612x612&w=gi&k=20&c=59ucZnm3jHEBO4z4yo4kcTj_3z-bxUhN8AbZX1-tDYg="
+             alt="Illustration: charts and abstract background"
+             class="rounded-lg shadow-md w-full object-cover">
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="flex-shrink-0 mt-1 w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold mb-4">2</span>
+        <h3 class="text-xl font-semibold text-gray-800">High-Precision Sensors</h3>
+        <p class="text-gray-600">
+          Lab-grade sensors calibrated for marine environments deliver accurate and reliable readings every time.
+        </p>
+      </div>
+      <div>
+        <img src="https://physicsopenlab.org/wp-content/uploads/2021/07/Fig_CoverReflection.png"
+             alt="Physics reflection cover figure"
+             class="rounded-lg shadow-md w-full object-cover">
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="flex-shrink-0 mt-1 w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold mb-4">3</span>
+        <h3 class="text-xl font-semibold text-gray-800">Compact, Space-Saving Design</h3>
+        <p class="text-gray-600">
+          Sleek form factor fits neatly into any aquarium setup—no clutter, all performance.
+        </p>
+      </div>
+      <div>
+        <img src="https://cms-assets.xboxservices.com/assets/bc/40/bc40fdf3-85a6-4c36-af92-dca2d36fc7e5.png?n=642227_Hero-Gallery-0_A1_857x676.png"
+             alt="Compact device illustration"
+             class="rounded-lg shadow-md w-full object-cover">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
