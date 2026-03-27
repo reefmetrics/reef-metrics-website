@@ -3,301 +3,553 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ReefMetrics</title>
+  <title>Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- ✅ Add Poppins font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" type="image/png" />
-  <link rel="apple-touch-icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" />
-
   <style>
     :root {
-      --color-bg: #2C3E50;
-      --color-reef: #3AB7BF;
-      --color-accent: #FF7E67;
-      --color-accent-2: #FF8F3E;
+      --bg:      #0A1628;
+      --navy:    #1A2F45;
+      --teal:    #3AB7BF;
+      --orange:  #FF7E67;
+      --orange2: #FF8F3E;
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: #fff;
     }
-    .bg-primary {
-      background-color: var(--color-bg);
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
     }
-    /* Optional scroll-trigger play effect */
-    .wavie-gif {
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      padding: 0.8rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--teal); color: #fff; transform: translateY(-1px); }
+
+    /* ── Nav ── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Section label ── */
+    .label {
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    /* ── Teal accent bar ── */
+    .teal-bar {
+      width: 2.5rem;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Hero ── */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 65% 40%, rgba(58,183,191,0.13) 0%, transparent 65%),
+        radial-gradient(ellipse at 10% 80%, rgba(255,126,103,0.07) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* ── Stat numbers ── */
+    .stat-num {
+      font-size: 2.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--teal), #7de8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      border-color: rgba(58,183,191,0.45);
+      transform: translateY(-4px);
+    }
+    .card.featured {
+      border-color: rgba(58,183,191,0.35);
+    }
+
+    /* ── Badges ── */
+    .badge-beta {
+      background: rgba(255,126,103,0.15);
+      color: var(--orange);
+      border: 1px solid rgba(255,126,103,0.3);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.8rem;
+      border-radius: 999px;
+      display: inline-block;
+    }
+    .badge-soon {
+      background: rgba(58,183,191,0.12);
+      color: var(--teal);
+      border: 1px solid rgba(58,183,191,0.25);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.8rem;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    /* ── Beta box ── */
+    .beta-box {
+      background: linear-gradient(135deg, rgba(58,183,191,0.09) 0%, rgba(255,126,103,0.06) 100%);
+      border: 1px solid rgba(58,183,191,0.22);
+      border-radius: 1.25rem;
+    }
+
+    /* ── Update card ── */
+    .update-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 0.875rem;
+      transition: border-color 0.2s;
+    }
+    .update-card:hover { border-color: rgba(58,183,191,0.4); }
+
+    /* ── Placeholder render box ── */
+    .render-placeholder {
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(58,183,191,0.2);
+      border-radius: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+    }
+
+    /* ── Fade in animation ── */
+    .fade {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .wavie-gif.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade.in { opacity: 1; transform: none; }
   </style>
 </head>
+<body>
 
-<body class="bg-primary text-white">
-  <!-- Nav Bar -->
-  <nav class="w-full shadow-sm bg-[var(--color-bg)]">
-    <div class="w-full px-6 py-2 flex justify-between items-center">
-      <!-- Left Side: Logo -->
-      <a href="index.html" class="flex items-center">
-        <img src="https://i.imgur.com/77COo8U.png" alt="ReefMetrics logo" class="h-16 w-auto" />
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
+  <nav class="sticky-nav">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html">
+        <img src="https://i.imgur.com/77COo8U.png" alt="ReefMetrics" class="h-14 w-auto" />
       </a>
-
-      <!-- Right Side: Nav Links -->
-      <div class="flex items-center space-x-6 text-lg font-light">
-    
-        <a href="contact.html" class="bg-[var(--color-accent)] text-white px-4 py-2 rounded-md text-sm hover:bg-[var(--color-accent-2)] transition">
-          Contact Us
-        </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#products" class="text-gray-400 hover:text-white transition">Products</a>
+        <a href="#updates"  class="text-gray-400 hover:text-white transition">Dev Updates</a>
+        <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+        <a href="#beta" class="btn-primary text-sm py-2 px-5">Join Beta — $500</a>
       </div>
+      <!-- Mobile CTA -->
+      <a href="#beta" class="md:hidden btn-primary text-sm py-2 px-4">Join Beta</a>
     </div>
   </nav>
 
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="hero-bg min-h-screen flex items-center px-6 py-28">
+    <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
 
-  <!-- Wavie Intro Section -->
-  <section class="bg-primary text-white py-20 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-      <!-- GIF (50%) -->
-      <div class="md:w-1/2 flex justify-center">
-        <img
-        src="https://i.imgur.com/EjLILZy.png"
-        alt="Wavie Device Animation"
-        class="wavie-gif w-full rounded-lg shadow-lg"
-        style="width: 1400px; height: auto;"
-        loading="lazy" />
-      </div>
-      <!-- Text (50%) -->
-      <div class="md:w-1/2">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Introducing Wavie</h1>
-        <p class="text-lg text-gray-300 mb-8">
-          An open-source project to make advanced reef management accessible to everyone. We build the tools so you can bring your reef to life.
+      <div class="fade">
+        <span class="label mb-5">Reef Automation · Reimagined</span>
+        <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-6" style="line-height:1.1">
+          The Most Compact<br />Reef Testing<br />
+          <span style="color:var(--teal)">System Ever Built.</span>
+        </h1>
+        <p class="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
+          Wavie automates your saltwater chemistry with 6 reagent slots — smaller,
+          smarter, and more open than anything else on the market.
         </p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSflS_SrNtf65QqmH45FHchz96_cb21sLoRWeP8dRm5B6u4Img/viewform?usp=header" target="_blank" 
-        class="bg-[var(--color-accent)] text-white px-6 py-3 rounded-md text-lg hover:bg-[var(--color-accent-2)] transition">
-           Get Notified
-        </a>
+        <div class="flex flex-wrap gap-4">
+          <a href="#beta" class="btn-primary">Reserve Your Spot — $500</a>
+          <a href="#products" class="btn-outline">Explore the System</a>
+        </div>
+      </div>
+
+      <div class="fade flex justify-center" style="transition-delay:0.15s">
+        <img src="https://i.postimg.cc/7GqXHZSh/Screenshot-from-2026-03-26-22-23-46.png"
+             alt="Wavie device render"
+             class="w-full max-w-lg rounded-2xl shadow-2xl" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ STATS STRIP ═══════════════════════ -->
+  <div style="border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05)" class="py-14">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="fade">
+        <div class="stat-num">6</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Reagent Slots</div>
+      </div>
+      <div class="fade" style="transition-delay:.08s">
+        <div class="stat-num">#1</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Most Compact</div>
+      </div>
+      <div class="fade" style="transition-delay:.16s">
+        <div class="stat-num">24/7</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Auto Testing</div>
+      </div>
+      <div class="fade" style="transition-delay:.24s">
+        <div class="stat-num">Open</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Source Hardware</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PRODUCT LINE ═══════════════════════ -->
+  <section id="products" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 fade">
+        <span class="label mb-3">The Wavie Ecosystem</span>
+        <h2 class="text-4xl font-bold mt-3">Built for the Complete Reef Setup</h2>
+        <p class="text-gray-500 mt-4 max-w-lg mx-auto">One cohesive system — chemistry, power, and dosing — working together automatically.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- Wavie -->
+        <div class="card featured p-8 flex flex-col fade">
+          <div class="mb-5"><span class="badge-beta">Beta Now Open</span></div>
+          <img src="https://i.postimg.cc/fJ1K3KYr/Screenshot-from-2026-03-26-22-24-06.png"
+               alt="Wavie" class="rounded-xl mb-6 w-full object-cover" style="height:13rem" />
+          <h3 class="text-2xl font-bold mb-2">Wavie</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+            The automated reef water tester. 6 reagent slots, fully automated scheduling,
+            ultra-compact form factor. Fits where no other system can.
+          </p>
+          <a href="#beta" class="btn-primary text-center text-sm">Join Beta — $500</a>
+        </div>
+
+        <!-- Wavie Power -->
+        <div class="card p-8 flex flex-col fade" style="transition-delay:.1s">
+          <div class="mb-5"><span class="badge-soon">Coming Soon</span></div>
+          <div class="render-placeholder mb-6 w-full" style="height:13rem">
+            <div style="font-size:2.5rem; opacity:0.3">&#9889;</div>
+            <span>Render Coming Soon</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Wavie Power</h3>
+          <p class="text-gray-400 text-sm leading-relaxed flex-grow">
+            Intelligent power management and equipment control for your entire reef system.
+            Automate pumps, lights, and accessories alongside your water chemistry.
+          </p>
+        </div>
+
+        <!-- Wavie Dose -->
+        <div class="card p-8 flex flex-col fade" style="transition-delay:.2s">
+          <div class="mb-5"><span class="badge-soon">Coming Soon</span></div>
+          <div class="render-placeholder mb-6 w-full" style="height:13rem">
+            <div style="font-size:2.5rem; opacity:0.3">&#128138;</div>
+            <span>Render Coming Soon</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Wavie Dose</h3>
+          <p class="text-gray-400 text-sm leading-relaxed flex-grow">
+            Precision auto-dosing triggered by your real test results. Wavie tests,
+            Wavie Dose corrects. Close the loop — no manual intervention needed.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Scroll animation script -->
+  <!-- ═══════════════════════ FEATURES ═══════════════════════ -->
+  <section style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto space-y-28">
+
+      <!-- Row 1 -->
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <div class="fade">
+          <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
+               alt="6 Reagent Slots"
+               class="rounded-2xl shadow-2xl w-full" />
+        </div>
+        <div class="fade" style="transition-delay:.12s">
+          <div class="teal-bar"></div>
+          <h3 class="text-3xl font-bold mb-5">6 Reagent Slots. One Box.</h3>
+          <p class="text-gray-400 text-base leading-relaxed">
+            Most systems require an equipment cabinet and spaghetti tubing.
+            Wavie fits six complete reagent bays into a footprint no competitor
+            can touch. Test alkalinity, calcium, magnesium, nitrate, phosphate,
+            and more — automatically, on a schedule you control.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <div class="fade order-2 md:order-1" style="transition-delay:.12s">
+          <div class="teal-bar"></div>
+          <h3 class="text-3xl font-bold mb-5">Precision Engineering. Every Detail.</h3>
+          <p class="text-gray-400 text-base leading-relaxed">
+            Built by reef hobbyists who know what matters. Proprietary valve and pump
+            architecture engineered for long-term reliability — not an off-the-shelf lab instrument
+            dressed up for aquariums. Every component chosen with your sump in mind.
+          </p>
+        </div>
+        <div class="fade order-1 md:order-2">
+          <img src="https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png"
+               alt="Precision engineering"
+               class="rounded-2xl shadow-2xl w-full" />
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <div class="fade">
+          <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
+               alt="Compact design"
+               class="rounded-2xl shadow-2xl w-full" />
+        </div>
+        <div class="fade" style="transition-delay:.12s">
+          <div class="teal-bar"></div>
+          <h3 class="text-3xl font-bold mb-5">Smaller Than Anything Else.</h3>
+          <p class="text-gray-400 text-base leading-relaxed">
+            Neptune's systems are bulky. Wavie was designed compact-first —
+            it tucks into a sump cabinet, sits on a shelf, or mounts to a wall.
+            No compromises on capability. Just less space consumed, less clutter,
+            and a cleaner setup.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ RENDER GALLERY ═══════════════════════ -->
+  <section class="py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="https://i.postimg.cc/mPG9f6Q8/Screenshot-from-2026-03-26-22-32-52.png"
+             class="rounded-xl w-full object-cover fade" style="height:12rem" alt="Wavie render" />
+        <img src="https://i.postimg.cc/vxV4CWDY/Screenshot-from-2025-11-12-02-03-53.png"
+             class="rounded-xl w-full object-cover fade" style="height:12rem; transition-delay:.08s" alt="Wavie render" />
+        <img src="https://i.postimg.cc/bStZ4QdN/Screenshot-from-2025-11-12-02-11-31.png"
+             class="rounded-xl w-full object-cover fade" style="height:12rem; transition-delay:.16s" alt="Wavie render" />
+        <img src="https://i.postimg.cc/m1wvLnPJ/Screenshot-from-2025-11-12-02-15-57.png"
+             class="rounded-xl w-full object-cover fade" style="height:12rem; transition-delay:.24s" alt="Wavie render" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ BETA PROGRAM ═══════════════════════ -->
+  <section id="beta" class="py-28 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="beta-box p-10 md:p-14 text-center fade">
+        <span class="label mb-4">Limited Spots Available</span>
+        <h2 class="text-4xl font-bold mb-4 mt-3">Join the Wavie Beta Program</h2>
+        <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+          Your $500 deposit is credited in full toward the purchase price of your unit
+          when the first batch ships. You get first dibs, direct input on the product,
+          and a place in the community that builds it.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-5 mb-12 text-left">
+          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
+            <div class="text-2xl mb-3">&#128176;</div>
+            <h4 class="font-semibold mb-1 text-sm">$500 Off Your Unit</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Your deposit applies in full to the final price when your unit ships.
+            </p>
+          </div>
+          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
+            <div class="text-2xl mb-3">&#129351;</div>
+            <h4 class="font-semibold mb-1 text-sm">First in Line</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Beta members ship before anyone else. No waitlist surprises.
+            </p>
+          </div>
+          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
+            <div class="text-2xl mb-3">&#128300;</div>
+            <h4 class="font-semibold mb-1 text-sm">Shape the Product</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Direct access to the team. Your feedback drives the final design.
+            </p>
+          </div>
+        </div>
+
+        <!-- ▸ Replace href below with your Stripe payment link -->
+        <a href="#" class="btn-primary text-base px-10 py-4">
+          Reserve Your Spot — $500
+        </a>
+        <p class="text-gray-600 text-xs mt-5">Secure checkout via Stripe &middot; Refundable if we don't ship</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ DEV UPDATES ═══════════════════════ -->
+  <section id="updates" style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 fade">
+        <div>
+          <span class="label mb-3">From the Workshop</span>
+          <h2 class="text-4xl font-bold mt-3">Weekly Engineering Updates</h2>
+        </div>
+        <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
+          We ship updates like we ship hardware — on schedule. Follow what we're building,
+          what's broken, and what's coming next.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="update-card p-6 fade">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-xs font-bold px-3 py-1 rounded-full"
+                  style="background:rgba(58,183,191,0.15); color:var(--teal)">Week 1</span>
+            <span class="text-gray-600 text-xs">March 2026</span>
+          </div>
+          <h4 class="font-semibold text-base mb-2">Kickoff: Where We're Starting</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Overview of the current hardware state, what's validated, what needs rework
+            before beta units ship, and the full roadmap.
+          </p>
+          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
+            <span class="text-gray-700 text-xs">Update coming soon</span>
+          </div>
+        </div>
+
+        <div class="update-card p-6 fade" style="transition-delay:.1s">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-xs font-bold px-3 py-1 rounded-full"
+                  style="background:rgba(58,183,191,0.15); color:var(--teal)">Week 2</span>
+            <span class="text-gray-600 text-xs">Coming Soon</span>
+          </div>
+          <h4 class="font-semibold text-base mb-2">Valve Design: Why We Built Our Own</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            A deep dive into the pinch valve mechanism — tradeoffs made, performance
+            vs off-the-shelf alternatives, and iteration timeline.
+          </p>
+          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
+            <span class="text-gray-700 text-xs">Update coming soon</span>
+          </div>
+        </div>
+
+        <div class="update-card p-6 fade" style="transition-delay:.2s">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-xs font-bold px-3 py-1 rounded-full"
+                  style="background:rgba(58,183,191,0.15); color:var(--teal)">Week 3</span>
+            <span class="text-gray-600 text-xs">Coming Soon</span>
+          </div>
+          <h4 class="font-semibold text-base mb-2">Spectrometer Calibration &amp; Accuracy</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            How Wavie's optical sensor achieves colorimetric accuracy for reef-critical
+            parameters. Calibration method and early accuracy data.
+          </p>
+          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
+            <span class="text-gray-700 text-xs">Update coming soon</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FINAL CTA ═══════════════════════ -->
+  <section class="relative py-36 px-6 overflow-hidden"
+           style="background-image: url('https://i.postimg.cc/XZbt539T/Screenshot-from-2026-03-26-22-42-21.png');
+                  background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="absolute inset-0" style="background:rgba(10,22,40,0.78)"></div>
+    <div class="relative max-w-3xl mx-auto text-center space-y-6 fade">
+      <span class="label">Limited Beta Spots</span>
+      <h2 class="text-4xl font-bold mt-2">Be Part of What We're Building</h2>
+      <p class="text-gray-300 text-lg max-w-xl mx-auto leading-relaxed">
+        The reef community has waited long enough for a testing system that actually fits
+        the hobby. Wavie is it — and beta testers are the ones who shape it.
+      </p>
+      <a href="#beta" class="btn-primary text-base px-10 py-4">Reserve Your Spot — $500</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="py-14 px-6" style="background:var(--bg); border-top:1px solid rgba(255,255,255,0.05)">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+
+      <div class="md:col-span-2">
+        <img src="https://i.imgur.com/77COo8U.png" alt="ReefMetrics" class="h-12 mb-4" />
+        <p class="text-gray-600 text-sm max-w-xs leading-relaxed">
+          ReefMetrics is building the next generation of open-source reef aquarium
+          automation tools — starting with Wavie.
+        </p>
+        <p class="text-gray-700 text-xs mt-6">&copy; 2026 ReefMetrics. All rights reserved.</p>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">PRODUCTS</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#products" class="text-gray-400 hover:text-white transition">Wavie</a></li>
+          <li><span class="text-gray-700">Wavie Power <span class="text-xs">(Soon)</span></span></li>
+          <li><span class="text-gray-700">Wavie Dose <span class="text-xs">(Soon)</span></span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">COMPANY</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#updates"     class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
+          <li><a href="#beta"        class="text-gray-400 hover:text-white transition">Beta Program</a></li>
+          <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
   <script>
-    function checkGifInView() {
-      document.querySelectorAll('.wavie-gif').forEach((img) => {
-        const rect = img.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          img.classList.add('in-view');
-        }
-      });
-    }
-    window.addEventListener('scroll', checkGifInView);
-    window.addEventListener('resize', checkGifInView);
-    checkGifInView();
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
-
-<section class="bg-white py-16">
-  <div class="max-w-6xl mx-auto px-6 space-y-16">
-    
-    <!-- Row 1 -->
-<div class="grid md:grid-cols-2 gap-12 items-center">
-  <div class="order-1 md:order-1">
-    <img src="https://i.imgur.com/knXlWhE.jpeg"
-        alt="Illustration: charts and abstract background"
-        class="rounded-lg shadow-md w-full object-cover">
-  </div>
-  <div class="order-2 md:order-2">
-    <h3 class="text-xl font-semibold text-gray-800">Fully Customizable Testing</h3>
-    <p class="text-gray-600">
-      Customize test schedules and parameters for your aquarium’s unique needs, open source means you’re in control.
-    </p>
-  </div>
-</div>
-
-<!-- Row 2 -->
-<div class="grid md:grid-cols-2 gap-12 items-center">
-  <div class="order-2 md:order-1">
-    <h3 class="text-xl font-semibold text-gray-800">High-Precision Sensors</h3>
-    <p class="text-gray-600">
-      An open-source spectrometer design enabling both colorimetric and titration based analysis for precise reef monitoring.
-    </p>
-  </div>
-  <div class="order-1 md:order-2">
-    <img src="https://i.postimg.cc/sXT9f1sk/pump.png"
-         alt="Physics reflection cover figure"
-         class="rounded-lg shadow-md w-full object-cover">
-  </div>
-</div>
-
-<!-- Row 3 -->
-<div class="grid md:grid-cols-2 gap-12 items-center">
-  <div class="order-1 md:order-1">
-    <img src="https://i.imgur.com/pCiGKEx.png"
-        alt="Compact device illustration"
-        class="rounded-lg shadow-md w-full object-cover">
-  </div>
-  <div class="order-2 md:order-2">
-    <h3 class="text-xl font-semibold text-gray-800">Compact, Space-Saving Design</h3>
-    <p class="text-gray-600">
-      Sleek form factor fits neatly into any aquarium setup, no clutter.
-    </p>
-  </div>
-</div>
-
-
-
-  </div>
-</section>
-
-<!-- Features Flip Card Section -->
-<section class="py-20 px-6 bg-white/5">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-white text-center mb-12">Core System Features</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-
-      <!-- Card 1: Dynamic Pinch Valve -->
-      <div class="perspective cursor-pointer" onclick="this.querySelector('.inner').classList.toggle('flipped')">
-        <div class="inner relative w-full h-80 transition-transform duration-500 transform-style-preserve-3d">
-          <!-- Front -->
-          <div class="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg relative">
-            <img src="https://i.postimg.cc/WpwJKnyF/something-something-46.png" alt="Dynamic Pinch Valve" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded">
-              Flip to see more
-            </div>
-          </div>
-          <!-- Back -->
-          <div class="absolute inset-0 backface-hidden transform rotate-y-180 bg-gray-800 bg-opacity-80 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
-            <h3 class="text-xl font-semibold mb-2">Dynamic Pinch Valve</h3>
-            <p>
-              Our proprietary dynamic pinch valve allows precise and reliable control of water and reagent flow. Specifically engineered for Wavie, it ensures consistent dosing and optimal tank performance.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Silent Motor Pump -->
-      <div class="perspective cursor-pointer" onclick="this.querySelector('.inner').classList.toggle('flipped')">
-        <div class="inner relative w-full h-80 transition-transform duration-500 transform-style-preserve-3d">
-          <!-- Front -->
-          <div class="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg relative">
-            <img src="https://i.postimg.cc/XNLpxvZ9/ipod-shuffle.png" alt="Silent Motor Pump" class="w-full h-full object-cover transform translate-x-[10px]">
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded">
-              Flip to see more
-            </div>
-          </div>
-          <!-- Back -->
-          <div class="absolute inset-0 backface-hidden transform rotate-y-180 bg-gray-800 bg-opacity-80 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
-            <h3 class="text-xl font-semibold mb-2">Silent Motor Pump</h3>
-            <p>
-              A single, high-efficiency motor drives the dosing system. Modular design allows multiple pumps to be added as needed, offering flexibility and near-silent operation for any setup.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Brain Box -->
-      <div class="perspective cursor-pointer" onclick="this.querySelector('.inner').classList.toggle('flipped')">
-        <div class="inner relative w-full h-80 transition-transform duration-500 transform-style-preserve-3d">
-          <!-- Front -->
-          <div class="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg relative">
-            <img src="https://i.postimg.cc/5yS7QCp7/bainbox-thing.png" alt="Brain Box" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded">
-              Flip to see more
-            </div>
-          </div>
-          <!-- Back -->
-          <div class="absolute inset-0 backface-hidden transform rotate-y-180 bg-gray-800 bg-opacity-80 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
-            <h3 class="text-xl font-semibold mb-2">Brain Box</h3>
-            <p>
-              The central controller of the system connecting all modules, the Brain Box manages all sensors, pumps, and valves. It orchestrates seamless operation, schedules tests and maintains safe dosing.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Programmable Plugs -->
-      <div class="perspective cursor-pointer" onclick="this.querySelector('.inner').classList.toggle('flipped')">
-        <div class="inner relative w-full h-80 transition-transform duration-500 transform-style-preserve-3d">
-          <!-- Front -->
-          <div class="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg relative">
-            <img src="https://i.postimg.cc/9XK1Dx6z/wavie-plugs.png" alt="Programmable Plugs" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded">
-              Flip to see more
-            </div>
-          </div>
-          <!-- Back -->
-          <div class="absolute inset-0 backface-hidden transform rotate-y-180 bg-gray-800 bg-opacity-80 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
-            <h3 class="text-xl font-semibold mb-2">Programmable Plugs</h3>
-            <p>
-              Each plug can be programmed individually, giving you full control over connected devices. Schedule, automate, and integrate them seamlessly with Wavie for complete tank management.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-.perspective { perspective: 1000px; }
-.inner { transform-style: preserve-3d; transition: transform 0.5s; }
-.flipped { transform: rotateY(180deg); }
-.backface-hidden { backface-visibility: hidden; }
-.rotate-y-180 { transform: rotateY(180deg); }
-</style>
-
-
-
-
-
-<!-- Kickstarter / Get Notified Section -->
-<section class="relative text-white py-80 px-6 bg-fixed bg-center bg-cover"
-         style="background-image: url('https://i.imgur.com/5PveIZ8.png');">
-  <div class="bg-black/60 absolute inset-0"></div>
-
-  <div class="relative max-w-4xl mx-auto text-center space-y-6">
-    <h2 class="text-3xl sm:text-4xl font-bold">Follow Wavie’s Journey 🚀</h2>
-    <p class="text-lg text-white/90 max-w-2xl mx-auto">
-      Be one of the first to follow Wavie’s journey. Sign up to get notified about updates—and be the first to know when we launch a Kickstarter or other major milestones.
-    </p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSflS_SrNtf65QqmH45FHchz96_cb21sLoRWeP8dRm5B6u4Img/viewform?usp=header" target="_blank"
-    class="inline-block bg-[var(--color-bg)] hover:bg-[#223148] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
-  Get Notified
-</a>
-  </div>
-</section>
-
-
-
-<!-- Footer -->
-<footer class="bg-[var(--color-bg)] text-gray-200 py-8">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-3 gap-8 items-center">
-    <!-- Logo / About -->
-    <div>
-      <h3 class="text-xl font-semibold">ReefMetrics</h3>
-      <p class="mt-3 text-gray-400">Keeping reefs healthy</p>
-    </div>
-
-    <!-- Buttons -->
-    <div class="flex flex-col md:flex-row justify-center gap-4">
-      <a href="contact.html" 
-         class="inline-block bg-[var(--color-accent)] hover:bg-[var(--color-accent-2)] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
-  Get Notified
-      </a>
-    </div>
-
-    <!-- Empty / copyright -->
-    <div class="flex flex-col justify-end text-center md:text-right">
-      <p class="text-sm text-gray-500 mt-6 md:mt-0">© 2025 ReefMetrics. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-
-
-
