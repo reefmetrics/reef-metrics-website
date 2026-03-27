@@ -42,10 +42,11 @@
       letter-spacing: 0.15em; text-transform: uppercase; display: block;
     }
 
-    /* Light frame for renders */
-    .render-frame {
-      background: #ecf0f4; border-radius: 0.875rem;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    /* Natural image display */
+    .feature-img {
+      width: 100%; height: auto; display: block;
+      border-radius: 0.875rem;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
     }
 
     .tag {
@@ -152,12 +153,9 @@
         <h2 class="text-2xl font-bold mb-2">Kickoff: The State of the Hardware</h2>
         <p class="text-gray-500 text-xs mb-5">March 26, 2026 &nbsp;&bull;&nbsp; 5 min read</p>
 
-        <!-- Full-width render, natural aspect ratio -->
-        <div class="render-frame mb-6 w-full" style="padding:2rem; aspect-ratio:16/9;">
-          <img src="https://i.postimg.cc/7GqXHZSh/Screenshot-from-2026-03-26-22-23-46.png"
-               alt="Wavie hardware state"
-               style="width:100%; height:100%; object-fit:contain;" />
-        </div>
+        <!-- Full-width render -->
+        <img src="https://i.postimg.cc/7GqXHZSh/Screenshot-from-2026-03-26-22-23-46.png"
+             alt="Wavie hardware state" class="feature-img mb-6" />
 
         <div class="text-gray-400 text-sm leading-relaxed space-y-4">
           <p>
@@ -178,16 +176,12 @@
           </p>
         </div>
 
-        <!-- Inline image grid — two renders side by side inside the post -->
+        <!-- Two renders side by side -->
         <div class="grid grid-cols-2 gap-4 mt-6">
-          <div class="render-frame" style="padding:1rem; aspect-ratio:4/3;">
-            <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
-                 alt="Front view" style="width:100%; height:100%; object-fit:contain;" />
-          </div>
-          <div class="render-frame" style="padding:1rem; aspect-ratio:4/3;">
-            <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
-                 alt="Side view" style="width:100%; height:100%; object-fit:contain;" />
-          </div>
+          <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
+               alt="Front view" class="feature-img" />
+          <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
+               alt="Side view" class="feature-img" />
         </div>
 
       </div>
@@ -202,10 +196,8 @@
         </div>
         <h3 class="text-xl font-bold mb-3">Valve Design: Why We Built Our Own</h3>
 
-        <div class="render-frame mb-5 w-full" style="padding:1.5rem; aspect-ratio:16/9;">
-          <img src="https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png"
-               alt="Valve assembly" style="width:100%; height:100%; object-fit:contain;" />
-        </div>
+        <img src="https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png"
+             alt="Valve assembly" class="feature-img mb-5" />
 
         <p class="text-gray-500 text-sm leading-relaxed flex-grow">
           A deep dive into the pinch valve mechanism — the tradeoffs we made choosing it over
@@ -299,19 +291,13 @@
       <div class="sidebar-card p-6 fade" style="transition-delay:.08s">
         <h4 class="font-semibold text-sm mb-4">Current Hardware Renders</h4>
         <div class="space-y-3">
-          <div class="render-frame w-full" style="padding:1rem; aspect-ratio:16/9;">
-            <img src="https://i.postimg.cc/mPG9f6Q8/Screenshot-from-2026-03-26-22-32-52.png"
-                 style="width:100%; height:100%; object-fit:contain;" alt="Wavie render" />
-          </div>
+          <img src="https://i.postimg.cc/mPG9f6Q8/Screenshot-from-2026-03-26-22-32-52.png"
+               style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
           <div class="grid grid-cols-2 gap-3">
-            <div class="render-frame" style="padding:0.75rem; aspect-ratio:1;">
-              <img src="https://i.postimg.cc/fJ1K3KYr/Screenshot-from-2026-03-26-22-24-06.png"
-                   style="width:100%; height:100%; object-fit:contain;" alt="Wavie render" />
-            </div>
-            <div class="render-frame" style="padding:0.75rem; aspect-ratio:1;">
-              <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
-                   style="width:100%; height:100%; object-fit:contain;" alt="Wavie render" />
-            </div>
+            <img src="https://i.postimg.cc/fJ1K3KYr/Screenshot-from-2026-03-26-22-24-06.png"
+                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
+            <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
+                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
           </div>
         </div>
       </div>
