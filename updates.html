@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Engineering Updates — Wavie by ReefMetrics</title>
+  <meta name="description" content="Follow Wavie's build in public — CAD freeze, the spectrophotometer optical bench, validated fluidics, and the road to the first beta units." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" type="image/png" />
@@ -42,11 +43,11 @@
       letter-spacing: 0.15em; text-transform: uppercase; display: block;
     }
 
-    /* Natural image display */
-    .feature-img {
+    /* Showcase renders — edges melt into the page */
+    .showcase {
       width: 100%; height: auto; display: block;
-      border-radius: 0.875rem;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+      -webkit-mask-image: radial-gradient(ellipse 80% 84% at 50% 50%, #000 55%, transparent 93%);
+              mask-image: radial-gradient(ellipse 80% 84% at 50% 50%, #000 55%, transparent 93%);
     }
 
     .tag {
@@ -59,7 +60,7 @@
     .tag-mechanical{ background: rgba(80,200,120,0.15);   color: #6ecf8f;      border: 1px solid rgba(80,200,120,0.25); }
     .tag-design    { background: rgba(255,200,80,0.15);   color: #ffd060;      border: 1px solid rgba(255,200,80,0.25); }
 
-    .week-badge {
+    .month-badge {
       background: rgba(58,183,191,0.15); color: var(--teal);
       font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 999px;
@@ -113,6 +114,7 @@
       </a>
       <div class="hidden md:flex items-center gap-7 text-sm font-medium">
         <a href="index.html#products" class="text-gray-400 hover:text-white transition">Products</a>
+        <a href="index.html#measures" class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="updates.html" style="color:var(--teal)">Dev Updates</a>
         <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
         <a href="index.html#beta" class="btn-primary text-sm py-2 px-5">Join Beta — $500</a>
@@ -128,8 +130,8 @@
       <span class="label mb-4">From the Workshop</span>
       <h1 class="text-5xl font-extrabold mt-3 mb-4">Engineering Updates</h1>
       <p class="text-gray-400 text-lg max-w-2xl leading-relaxed">
-        We build in public. Every week we share what's progressing, what's breaking,
-        and what decisions we're making as we push Wavie toward its first beta units.
+        We build in public. Here's what's progressing, what's breaking, and the decisions
+        we're making as we push Wavie toward its first beta units.
       </p>
     </div>
   </section>
@@ -140,73 +142,87 @@
     <!-- Feed -->
     <div class="lg:col-span-2 space-y-8">
 
-      <!-- FEATURED: Week 1 -->
+      <!-- FEATURED: Latest -->
       <div class="featured-update p-8 fade">
         <div class="flex flex-wrap items-center gap-3 mb-5">
-          <span class="week-badge">Week 1</span>
+          <span class="month-badge">July 2026</span>
           <span class="tag tag-hardware">Hardware</span>
           <span class="tag tag-mechanical">Mechanical</span>
           <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded ml-auto"
                 style="background:rgba(255,126,103,0.15); color:var(--orange)">Latest</span>
         </div>
 
-        <h2 class="text-2xl font-bold mb-2">Kickoff: The State of the Hardware</h2>
-        <p class="text-gray-500 text-xs mb-5">March 26, 2026 &nbsp;&bull;&nbsp; 5 min read</p>
+        <h2 class="text-2xl font-bold mb-2">Full CAD Freeze: The Whole System Comes Together</h2>
+        <p class="text-gray-500 text-xs mb-5">July 29, 2026 &nbsp;&bull;&nbsp; 5 min read</p>
 
-        <!-- Full-width render -->
-        <img src="https://i.postimg.cc/7GqXHZSh/Screenshot-from-2026-03-26-22-23-46.png"
-             alt="Wavie hardware state" class="feature-img mb-6" />
+        <img src="assets/wavie-exploded.png" alt="Wavie full exploded assembly" class="showcase mb-6" />
 
         <div class="text-gray-400 text-sm leading-relaxed space-y-4">
           <p>
-            This is where we're starting. The core mechanical assembly is complete — the chassis,
-            reagent bay layout, and valve mounting are locked in. This week we're documenting
-            the current state before we begin the iteration push toward beta.
+            This is the milestone we've been driving toward: the complete Wavie assembly is modeled
+            and fit-checked end to end. Three tiers — optics up top, fluidics in the middle,
+            electronics at the base — all packed into a single sealed tower barely taller than a banana.
           </p>
           <p>
-            The six-slot reagent design has been validated for fit and flow. Each slot accepts
-            a standard reagent vessel and routes through the proprietary pinch valve mechanism
-            we designed in-house. The footprint is significantly smaller than comparable systems —
-            this was a non-negotiable design constraint from day one.
+            The six-slot reagent path routes through a purpose-built rotary selector valve into the
+            optical measurement cell, where a single bidirectional peristaltic pump meters every fluid.
+            Above it sits the multi-wavelength optical bench. Every subsystem was designed in-house and
+            laid out to occupy the smallest footprint we could physically achieve.
           </p>
           <p>
-            What still needs work: the pump mounting needs a revision to reduce vibration transfer
-            to the chassis, and we're finalizing the optical path geometry for the spectrometer
-            module. Both are on the schedule for the next two weeks.
+            With geometry frozen, we're moving from CAD into the first full physical build — validating
+            each subsystem on the bench before committing to the beta batch.
           </p>
         </div>
 
-        <!-- Two renders side by side -->
         <div class="grid grid-cols-2 gap-4 mt-6">
-          <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
-               alt="Front view" class="feature-img" />
-          <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
-               alt="Side view" class="feature-img" />
+          <img src="assets/wavie-internals.png" alt="Internal cutaway" class="showcase" />
+          <img src="assets/wavie-scale.png" alt="Size reference" class="showcase" />
         </div>
 
       </div>
 
-      <!-- Week 2 preview -->
+      <!-- Optics -->
       <div class="update-card p-7 fade" style="transition-delay:.08s">
         <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class="week-badge">Week 2</span>
-          <span class="tag tag-mechanical">Mechanical</span>
-          <span class="tag tag-hardware">Hardware</span>
-          <span class="text-gray-600 text-xs ml-auto">Coming Soon</span>
+          <span class="month-badge">July 2026</span>
+          <span class="tag tag-optics">Optics</span>
+          <span class="tag tag-firmware">Firmware</span>
         </div>
-        <h3 class="text-xl font-bold mb-3">Valve Design: Why We Built Our Own</h3>
+        <h3 class="text-xl font-bold mb-3">The Spectrophotometer Bench Comes Together</h3>
 
-        <img src="https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png"
-             alt="Valve assembly" class="feature-img mb-5" />
+        <img src="assets/spectral-sensor.png" alt="Spectral sensor board" class="showcase mb-5" />
 
         <p class="text-gray-500 text-sm leading-relaxed flex-grow">
-          A deep dive into the pinch valve mechanism — the tradeoffs we made choosing it over
-          solenoid alternatives, how we engineered it for Wavie's size constraints, and where
-          we are in the reliability testing cycle.
+          At the heart of every colorimetric test is a multi-wavelength optical bench: calibrated
+          LEDs illuminate the sample cell and a precision light sensor reads absorbance directly.
+          The sensor board and illumination are mounted to the cell, and firmware is now driving
+          each wavelength independently for dark-count and reference reads.
         </p>
         <div class="mt-5 pt-4 flex items-center gap-3" style="border-top:1px solid rgba(255,255,255,0.05)">
-          <span class="text-xs text-gray-700 font-medium">Publishing next week</span>
+          <span class="text-xs text-gray-700 font-medium">Calibration data coming next</span>
         </div>
+      </div>
+
+      <!-- Fluidics -->
+      <div class="update-card p-7 fade" style="transition-delay:.12s">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="month-badge">June 2026</span>
+          <span class="tag tag-mechanical">Fluidics</span>
+          <span class="tag tag-hardware">Hardware</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Pump &amp; Rotary Valve Validated</h3>
+
+        <div class="grid grid-cols-2 gap-4 mb-5">
+          <img src="assets/pump.png" alt="Peristaltic pump" class="showcase" />
+          <img src="assets/valve.png" alt="Rotary selector valve" class="showcase" />
+        </div>
+
+        <p class="text-gray-500 text-sm leading-relaxed flex-grow">
+          The fluid path is proven. We ran a gravimetric calibration on the peristaltic pump to meter
+          to hundredths of a milliliter, and homed the eight-position rotary valve — six reagents,
+          sample, and waste — off a single limit switch. One pump, one valve, every path.
+        </p>
       </div>
 
       <!-- Coming Up -->
@@ -216,52 +232,48 @@
 
           <div class="upcoming-card p-5 fade" style="transition-delay:.12s">
             <div class="flex flex-wrap items-center gap-3 mb-2">
-              <span class="week-badge">Week 3</span>
               <span class="tag tag-optics">Optics</span>
               <span class="tag tag-firmware">Firmware</span>
             </div>
-            <h4 class="font-semibold text-base mb-1">Spectrometer Calibration &amp; Accuracy Testing</h4>
+            <h4 class="font-semibold text-base mb-1">Colorimetric Calibration &amp; Accuracy Testing</h4>
             <p class="text-gray-600 text-sm">
-              How Wavie's optical sensor achieves colorimetric accuracy for alkalinity,
-              calcium, and magnesium. Calibration method and early accuracy data vs manual kits.
+              Per-wavelength references and dark counts with DI water, then early accuracy data for
+              alkalinity, calcium, and magnesium against manual test kits.
             </p>
           </div>
 
           <div class="upcoming-card p-5 fade" style="transition-delay:.16s">
             <div class="flex flex-wrap items-center gap-3 mb-2">
-              <span class="week-badge">Week 4</span>
               <span class="tag tag-firmware">Firmware</span>
             </div>
-            <h4 class="font-semibold text-base mb-1">Scheduling System &amp; Test Automation Logic</h4>
+            <h4 class="font-semibold text-base mb-1">Scheduling Engine &amp; Test Automation</h4>
             <p class="text-gray-600 text-sm">
-              How the scheduling engine works — user-configurable test intervals, queue management,
-              and failure handling mid-cycle.
+              User-configurable test intervals, queue management, and how the system recovers if a
+              run is interrupted mid-cycle.
             </p>
           </div>
 
           <div class="upcoming-card p-5 fade" style="transition-delay:.20s">
             <div class="flex flex-wrap items-center gap-3 mb-2">
-              <span class="week-badge">Week 5</span>
               <span class="tag tag-hardware">Hardware</span>
               <span class="tag tag-design">Design</span>
             </div>
-            <h4 class="font-semibold text-base mb-1">Enclosure Design &amp; Thermal Management</h4>
+            <h4 class="font-semibold text-base mb-1">Enclosure Sealing &amp; Thermal Management</h4>
             <p class="text-gray-600 text-sm">
-              Final enclosure geometry, material choices, and how we're managing heat
-              in a sealed reef-environment housing.
+              Final enclosure geometry, material choices, and managing heat in a sealed
+              reef-environment housing.
             </p>
           </div>
 
           <div class="upcoming-card p-5 fade" style="transition-delay:.24s">
             <div class="flex flex-wrap items-center gap-3 mb-2">
-              <span class="week-badge">Week 6</span>
               <span class="tag tag-firmware">Firmware</span>
               <span class="tag tag-hardware">Hardware</span>
             </div>
-            <h4 class="font-semibold text-base mb-1">Beta Unit Assembly: First Full Build</h4>
+            <h4 class="font-semibold text-base mb-1">First Full Beta Build</h4>
             <p class="text-gray-600 text-sm">
-              Walking through the first full beta unit assembly — what worked, what needed rework,
-              and what we're changing before the batch run.
+              Walking through the first complete beta unit assembly — what worked, what needed rework,
+              and what changes before the batch run.
             </p>
           </div>
 
@@ -280,7 +292,6 @@
           Follow these updates as a beta member. Your $500 deposit locks in your unit
           and your place in the community.
         </p>
-        <!-- ▸ Replace href with your Stripe payment link -->
         <a href="contact.html" class="btn-primary text-sm w-full text-center block py-3">
           Reserve Your Spot — $500
         </a>
@@ -289,15 +300,15 @@
 
       <!-- Render gallery sidebar -->
       <div class="sidebar-card p-6 fade" style="transition-delay:.08s">
-        <h4 class="font-semibold text-sm mb-4">Current Hardware Renders</h4>
+        <h4 class="font-semibold text-sm mb-4">Latest Hardware Renders</h4>
         <div class="space-y-3">
-          <img src="https://i.postimg.cc/mPG9f6Q8/Screenshot-from-2026-03-26-22-32-52.png"
-               style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
+          <img src="assets/mainboard.png"
+               style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie mainboard" />
           <div class="grid grid-cols-2 gap-3">
-            <img src="https://i.postimg.cc/fJ1K3KYr/Screenshot-from-2026-03-26-22-24-06.png"
-                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
-            <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
-                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Wavie render" />
+            <img src="assets/led-board.png"
+                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="LED board" />
+            <img src="assets/wavie-exploded-optics.png"
+                 style="width:100%; height:auto; display:block; border-radius:0.5rem;" alt="Optics module" />
           </div>
         </div>
       </div>
@@ -337,6 +348,7 @@
       <div>
         <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">COMPANY</h4>
         <ul class="space-y-3 text-sm">
+          <li><a href="index.html#measures" class="text-gray-400 hover:text-white transition">What It Tests</a></li>
           <li><a href="updates.html"    class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
           <li><a href="index.html#beta" class="text-gray-400 hover:text-white transition">Beta Program</a></li>
           <li><a href="contact.html"    class="text-gray-400 hover:text-white transition">Contact</a></li>

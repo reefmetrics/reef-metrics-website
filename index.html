@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built</title>
+  <meta name="description" content="Wavie is an ultra-compact automated reef testing system: 6 reagent slots for colorimetric chemistry plus a 5-probe suite — alkalinity, calcium, magnesium, nitrate, phosphate, pH, ORP, dissolved oxygen, salinity, and temperature, tested automatically." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" type="image/png" />
@@ -60,7 +61,7 @@
     .card:hover { border-color: rgba(58,183,191,0.45); transform: translateY(-4px); }
     .card.featured { border-color: rgba(58,183,191,0.4); }
 
-    /* ── Product card image: CSS bg avoids all sizing fights ── */
+    /* ── Product card image ── */
     .product-img {
       background-size: contain; background-repeat: no-repeat; background-position: center;
       background-color: #0e1e30; border-radius: 0.75rem; height: 210px;
@@ -100,12 +101,28 @@
       color: rgba(255,255,255,0.2); font-size: 0.8rem;
     }
 
-    /* ── Feature images: natural size, no forced height ── */
+    /* ── Showcase renders: edges melt into the page (frames are #1e1e1e / #000) ── */
+    .showcase {
+      width: 100%; height: auto; display: block;
+      -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, transparent 92%);
+              mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, transparent 92%);
+    }
+
+    /* ── Inline feature images sitting on a card ── */
     .feature-img {
       width: 100%; height: auto; display: block;
       border-radius: 0.875rem;
       box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     }
+
+    /* ── Parameter chips ── */
+    .param {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 0.6rem; padding: 0.7rem 0.9rem; transition: border-color 0.2s, background 0.2s;
+    }
+    .param:hover { border-color: rgba(58,183,191,0.4); background: rgba(58,183,191,0.06); }
+    .param .dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; flex: none; }
 
     /* ── Fade in ── */
     .fade { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -128,6 +145,7 @@
       </a>
       <div class="hidden md:flex items-center gap-7 text-sm font-medium">
         <a href="#products"    class="text-gray-400 hover:text-white transition">Products</a>
+        <a href="#measures"    class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="updates.html" class="text-gray-400 hover:text-white transition">Dev Updates</a>
         <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
         <a href="#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem">Join Beta — $500</a>
@@ -136,29 +154,31 @@
     </div>
   </nav>
 
-  <!-- ══════════ HERO — render IS the background ══════════ -->
-  <section class="relative min-h-screen flex items-center px-6 py-24"
-           style="background-image:
-             linear-gradient(105deg, rgba(10,22,40,0.97) 40%, rgba(10,22,40,0.65) 70%, rgba(10,22,40,0.25) 100%),
-             url('https://i.postimg.cc/7GqXHZSh/Screenshot-from-2026-03-26-22-23-46.png');
-             background-size: cover;
-             background-position: center right;">
-
-    <div class="max-w-7xl mx-auto w-full">
+  <!-- ══════════ HERO — two column, floating render ══════════ -->
+  <section class="relative overflow-hidden px-6 pt-20 pb-24 md:pt-24 md:pb-28"
+           style="background:
+             radial-gradient(ellipse 60% 55% at 78% 42%, rgba(58,183,191,0.16), transparent 70%),
+             radial-gradient(ellipse 50% 50% at 20% 90%, rgba(255,126,103,0.08), transparent 70%),
+             var(--bg);">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
       <div class="max-w-xl fade">
         <span class="label mb-5">Reef Automation · Reimagined</span>
         <h1 class="font-extrabold mb-6" style="font-size:clamp(2.5rem,5.5vw,4rem); line-height:1.07">
           The Most Compact<br />Reef Testing<br />
           <span style="color:var(--teal)">System Ever Built.</span>
         </h1>
-        <p class="text-gray-300 text-lg mb-10 max-w-md leading-relaxed" style="font-weight:300">
-          Wavie automates your saltwater chemistry with 6 reagent slots —
-          smaller, smarter, and more capable than anything else on the market.
+        <p class="text-gray-300 text-lg mb-9 max-w-md leading-relaxed" style="font-weight:300">
+          Wavie automates your saltwater chemistry — six reagent slots and a five-probe suite
+          in a footprint no other tester can match. Ten parameters, tested on your schedule,
+          hands-free.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="#beta" class="btn-primary">Reserve Your Spot — $500</a>
-          <a href="#products" class="btn-outline">Explore the System</a>
+          <a href="#measures" class="btn-outline">See What It Tests</a>
         </div>
+      </div>
+      <div class="fade" style="transition-delay:.12s">
+        <img src="assets/wavie-hero.png" alt="Wavie automated reef tester" class="showcase" />
       </div>
     </div>
   </section>
@@ -167,44 +187,100 @@
   <div style="border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05)" class="py-14">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div class="fade">
+        <div class="stat-num">10</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Parameters Tracked</div>
+      </div>
+      <div class="fade" style="transition-delay:.08s">
         <div class="stat-num">6</div>
         <div class="text-gray-500 text-sm mt-1 font-medium">Reagent Slots</div>
       </div>
-      <div class="fade" style="transition-delay:.08s">
-        <div class="stat-num">#1</div>
-        <div class="text-gray-500 text-sm mt-1 font-medium">Most Compact</div>
-      </div>
       <div class="fade" style="transition-delay:.16s">
-        <div class="stat-num">24/7</div>
-        <div class="text-gray-500 text-sm mt-1 font-medium">Auto Testing</div>
+        <div class="stat-num">5</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Live Probes</div>
       </div>
       <div class="fade" style="transition-delay:.24s">
-        <div class="stat-num">Zero</div>
-        <div class="text-gray-500 text-sm mt-1 font-medium">Manual Testing</div>
+        <div class="stat-num">24/7</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Automated Testing</div>
       </div>
     </div>
   </div>
 
+  <!-- ══════════ WHAT IT MEASURES ══════════ -->
+  <section id="measures" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade">
+        <span class="label mb-3">One Box, Ten Parameters</span>
+        <h2 class="text-4xl font-bold mt-3">Everything Your Reef Needs, Measured</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">
+          Wavie pairs an onboard colorimetric spectrophotometer with a suite of live probes —
+          the wet chemistry that needs reagents, and the electrode readings that don't, in a single unit.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Colorimetric chemistry -->
+        <div class="card p-8 fade">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="badge-beta">Colorimetric Chemistry</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Reagent-Based Tests</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Six reagent slots feed an internal optical cell. Wavie meters sample and reagent,
+            mixes, and reads absorbance across three wavelengths — no test kits, no color-matching by eye.
+          </p>
+          <div class="grid grid-cols-1 gap-3">
+            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Alkalinity</span><span class="text-gray-500 text-sm ml-auto">6–12 dKH</span></div>
+            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Calcium</span><span class="text-gray-500 text-sm ml-auto">350–500 ppm</span></div>
+            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Magnesium</span><span class="text-gray-500 text-sm ml-auto">1150–1500 ppm</span></div>
+            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Nitrate</span><span class="text-gray-500 text-sm ml-auto">0–30 ppm</span></div>
+            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Phosphate</span><span class="text-gray-500 text-sm ml-auto">0–0.5 ppm</span></div>
+          </div>
+        </div>
+
+        <!-- Live probes -->
+        <div class="card p-8 fade" style="transition-delay:.1s">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="badge-soon">Live Probes</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Continuous Electrode Readings</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Five isolated probe channels track the parameters an electrode reads directly —
+            continuously, alongside every scheduled chemistry run.
+          </p>
+          <div class="grid grid-cols-1 gap-3">
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">pH</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">ORP</span><span class="text-gray-500 text-sm ml-auto">Redox potential</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Salinity</span><span class="text-gray-500 text-sm ml-auto">Conductivity</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Temperature</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════ PRODUCT LINE ══════════ -->
-  <section id="products" class="py-28 px-6">
+  <section id="products" style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 fade">
         <span class="label mb-3">The Wavie Ecosystem</span>
         <h2 class="text-4xl font-bold mt-3">Built for the Complete Reef Setup</h2>
-        <p class="text-gray-500 mt-4 max-w-lg mx-auto">One cohesive system — chemistry, power, and dosing — working together automatically.</p>
+        <p class="text-gray-500 mt-4 max-w-lg mx-auto">One cohesive system — chemistry, power, and dosing — designed to work together automatically.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
 
-        <!-- Wavie — image as CSS background to avoid sizing issues -->
+        <!-- Wavie -->
         <div class="card featured p-8 flex flex-col fade">
           <div class="mb-5"><span class="badge-beta">Beta Now Open</span></div>
           <div class="product-img mb-6"
-               style="background-image:url('https://i.postimg.cc/fJ1K3KYr/Screenshot-from-2026-03-26-22-24-06.png')"></div>
+               style="background-image:url('assets/wavie-hero.png')"></div>
           <h3 class="text-2xl font-bold mb-2">Wavie</h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-            The automated reef water tester. 6 reagent slots, fully automated scheduling,
-            ultra-compact form factor. Fits where no other system can.
+            The automated reef water tester. Six reagent slots, five live probes, and fully
+            automated scheduling in an ultra-compact form factor. Fits where no other system can.
           </p>
           <a href="#beta" class="btn-primary text-center text-sm" style="padding:0.7rem 1.5rem">Join Beta — $500</a>
         </div>
@@ -238,61 +314,61 @@
         </div>
 
       </div>
+      <p class="text-center text-gray-600 text-xs mt-8 fade">Power and Dose connect over Wavie's onboard expansion bus — one ecosystem, one app.</p>
     </div>
   </section>
 
-  <!-- ══════════ FEATURES — natural image sizing ══════════ -->
-  <section style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
+  <!-- ══════════ FEATURES ══════════ -->
+  <section class="py-28 px-6">
     <div class="max-w-7xl mx-auto space-y-28">
 
-      <!-- Row 1 -->
+      <!-- Row 1 — spectrophotometer -->
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div class="fade">
-          <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
-               alt="6 Reagent Slots" class="feature-img" />
+          <img src="assets/spectral-sensor.png" alt="Wavie spectral sensor board" class="showcase" />
         </div>
         <div class="fade" style="transition-delay:.12s">
           <div class="teal-bar"></div>
-          <h3 class="text-3xl font-bold mb-5">6 Reagent Slots. One Box.</h3>
+          <h3 class="text-3xl font-bold mb-5">A Spectrophotometer, Not a Guess.</h3>
           <p class="text-gray-400 text-base leading-relaxed">
-            Most systems need an equipment cabinet and a tangle of tubing.
-            Wavie packs six complete reagent bays into a footprint no competitor
-            can match. Test alkalinity, calcium, magnesium, nitrate, phosphate,
-            and more — automatically, on a schedule you control.
+            At Wavie's core is a multi-wavelength optical bench. Calibrated LEDs illuminate the
+            sample cell and a precision light sensor reads absorbance directly — the same
+            colorimetric method a lab uses, automated down to a footprint that fits your cabinet.
+            No color cards, no eyeballing, no drift between one test and the next.
           </p>
         </div>
       </div>
 
-      <!-- Row 2 -->
+      <!-- Row 2 — precision engineering -->
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div class="fade order-2 md:order-1" style="transition-delay:.12s">
           <div class="teal-bar"></div>
           <h3 class="text-3xl font-bold mb-5">Precision Engineering. Every Detail.</h3>
           <p class="text-gray-400 text-base leading-relaxed">
-            Built by reef hobbyists who know what matters. Proprietary valve and pump
-            architecture engineered for long-term reliability — not an off-the-shelf lab
-            instrument dressed up for aquariums. Every component chosen with your sump in mind.
+            Built by reef hobbyists who know what matters. A single bidirectional pump meters
+            every fluid to hundredths of a milliliter, and a purpose-built rotary valve routes
+            eight fluid paths from one compact head — not an off-the-shelf lab instrument dressed
+            up for aquariums. Every component was chosen with your sump in mind.
           </p>
         </div>
         <div class="fade order-1 md:order-2">
-          <img src="https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png"
-               alt="Precision engineering" class="feature-img" />
+          <img src="assets/wavie-exploded.png" alt="Wavie exploded assembly" class="showcase" />
         </div>
       </div>
 
-      <!-- Row 3 -->
+      <!-- Row 3 — compact -->
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div class="fade">
-          <img src="https://i.postimg.cc/LJMPK0zV/Screenshot-from-2026-03-26-22-32-27.png"
-               alt="Compact design" class="feature-img" />
+          <img src="assets/wavie-scale.png" alt="Wavie size compared to a banana" class="showcase" />
         </div>
         <div class="fade" style="transition-delay:.12s">
           <div class="teal-bar"></div>
           <h3 class="text-3xl font-bold mb-5">Smaller Than Anything Else.</h3>
           <p class="text-gray-400 text-base leading-relaxed">
-            Neptune's systems are bulky by design. Wavie was built compact-first —
-            it tucks into a sump cabinet, sits on a shelf, or mounts to a wall.
-            No compromises on capability. Just less space and a cleaner setup.
+            Competing systems are bulky by design. Wavie was built compact-first — it tucks into
+            a sump cabinet, sits on a shelf, or mounts to a wall. Everything above lives inside a
+            single sealed tower barely taller than a banana. No compromises on capability. Just
+            less space and a cleaner setup.
           </p>
         </div>
       </div>
@@ -300,24 +376,38 @@
     </div>
   </section>
 
-  <!-- ══════════ GALLERY — natural proportions, curated selection ══════════ -->
-  <section class="py-20 px-6">
-    <div class="max-w-7xl mx-auto space-y-4">
-
-      <!-- Full-width top image -->
-      <div class="fade">
-        <img src="https://i.postimg.cc/mPG9f6Q8/Screenshot-from-2026-03-26-22-32-52.png"
-             alt="Wavie render" class="feature-img" />
+  <!-- ══════════ INSIDE / GALLERY ══════════ -->
+  <section style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade">
+        <span class="label mb-3">Under the Hood</span>
+        <h2 class="text-4xl font-bold mt-3">Engineered in Three Tiers</h2>
+        <p class="text-gray-500 mt-4 max-w-lg mx-auto">Optics up top, fluidics in the middle, electronics at the base — every subsystem purpose-built and packed tight.</p>
       </div>
 
-      <!-- Two side by side below -->
-      <div class="grid grid-cols-2 gap-4 fade" style="transition-delay:.1s">
-        <img src="https://i.postimg.cc/XZbt539T/Screenshot-from-2026-03-26-22-42-21.png"
-             alt="Wavie render" class="feature-img" />
-        <img src="https://i.postimg.cc/tsPzFxzv/Screenshot-from-2026-03-26-22-24-32.png"
-             alt="Wavie render" class="feature-img" />
+      <!-- Big internal cutaway -->
+      <div class="fade max-w-4xl mx-auto mb-6">
+        <img src="assets/wavie-internals.png" alt="Wavie internal cutaway" class="showcase" />
       </div>
 
+      <!-- Detail grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6 text-center fade">
+          <img src="assets/mainboard.png" alt="Wavie main controller board" class="showcase mb-4" />
+          <h4 class="font-semibold text-lg mb-1">Custom Mainboard</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">An ESP32-S3 controller with isolated probe front-ends, dual motor drivers, and Wi-Fi — designed and laid out in-house.</p>
+        </div>
+        <div class="card p-6 text-center fade" style="transition-delay:.08s">
+          <img src="assets/fluidics-manifold.png" alt="Wavie rotary fluidics manifold" class="showcase mb-4" />
+          <h4 class="font-semibold text-lg mb-1">Rotary Fluidics</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">One selector valve routes eight paths — six reagents, sample, and waste — so a single pump handles the entire test.</p>
+        </div>
+        <div class="card p-6 text-center fade" style="transition-delay:.16s">
+          <img src="assets/led-board.png" alt="Wavie addressable LED board" class="showcase mb-4" />
+          <h4 class="font-semibold text-lg mb-1">Status at a Glance</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">An addressable LED ring shows exactly what Wavie is doing — priming, testing, or reporting — from across the room.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -351,7 +441,6 @@
           </div>
         </div>
 
-        <!-- ▸ Replace href with your Stripe payment link -->
         <a href="contact.html" class="btn-primary text-base" style="padding:1rem 3rem">Reserve Your Spot — $500</a>
         <p class="text-gray-600 text-xs mt-5">Secure checkout via Stripe &middot; Refundable if we don't ship</p>
       </div>
@@ -364,12 +453,12 @@
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 fade">
         <div>
           <span class="label mb-3">From the Workshop</span>
-          <h2 class="text-4xl font-bold mt-3">Weekly Engineering Updates</h2>
+          <h2 class="text-4xl font-bold mt-3">We Build in Public</h2>
         </div>
         <div class="flex flex-col items-start md:items-end gap-3">
           <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
-            We ship updates on schedule. Follow what we're building,
-            what's breaking, and what's coming next.
+            Follow what we're building, what's breaking, and what's coming next
+            on the road to the first beta units.
           </p>
           <a href="updates.html" class="btn-outline text-sm" style="padding:0.6rem 1.4rem">View All Updates &rarr;</a>
         </div>
@@ -378,33 +467,33 @@
       <div class="grid md:grid-cols-3 gap-6">
         <div class="update-card p-6 fade">
           <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Week 1</span>
-            <span class="text-gray-600 text-xs">March 2026</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(255,126,103,0.15);color:var(--orange)">Latest</span>
+            <span class="text-gray-600 text-xs">July 2026</span>
           </div>
-          <h4 class="font-semibold text-base mb-2">Kickoff: Where We're Starting</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Overview of the hardware state, what's validated, what needs rework before beta units ship, and the full roadmap.</p>
+          <h4 class="font-semibold text-base mb-2">Full CAD Freeze &amp; Assembly Fit</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">The complete three-tier assembly is modeled and fit-checked end to end — optics, fluidics, and the custom mainboard all in the final chassis.</p>
           <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
             <a href="updates.html" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
           </div>
         </div>
         <div class="update-card p-6 fade" style="transition-delay:.1s">
           <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Week 2</span>
-            <span class="text-gray-600 text-xs">Coming Soon</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Optics</span>
+            <span class="text-gray-600 text-xs">July 2026</span>
           </div>
-          <h4 class="font-semibold text-base mb-2">Valve Design: Why We Built Our Own</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">A deep dive into the pinch valve mechanism — tradeoffs, performance vs off-the-shelf alternatives, and iteration timeline.</p>
+          <h4 class="font-semibold text-base mb-2">Spectrophotometer Bench Comes Together</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Three-wavelength illumination and the detector are mounted to the optical cell — the heart of every colorimetric test.</p>
           <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
             <a href="updates.html" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
           </div>
         </div>
         <div class="update-card p-6 fade" style="transition-delay:.2s">
           <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Week 3</span>
-            <span class="text-gray-600 text-xs">Coming Soon</span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Fluidics</span>
+            <span class="text-gray-600 text-xs">June 2026</span>
           </div>
-          <h4 class="font-semibold text-base mb-2">Spectrometer Calibration &amp; Accuracy</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">How Wavie's optical sensor achieves colorimetric accuracy for reef-critical parameters and early data vs manual kits.</p>
+          <h4 class="font-semibold text-base mb-2">Pump &amp; Rotary Valve Validated</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Gravimetric calibration of the peristaltic pump and homing of the eight-position selector valve — the fluid path is proven.</p>
           <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
             <a href="updates.html" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
           </div>
@@ -413,12 +502,11 @@
     </div>
   </section>
 
-  <!-- ══════════ FINAL CTA — another render as background ══════════ -->
+  <!-- ══════════ FINAL CTA ══════════ -->
   <section class="relative py-36 px-6 overflow-hidden"
-           style="background-image:
-             linear-gradient(rgba(10,22,40,0.82), rgba(10,22,40,0.82)),
-             url('https://i.postimg.cc/0bKGqwhN/Screenshot-from-2026-03-26-22-31-34.png');
-             background-size:cover; background-position:center; background-attachment:fixed;">
+           style="background:
+             radial-gradient(ellipse 55% 60% at 50% 50%, rgba(58,183,191,0.12), transparent 70%),
+             var(--bg);">
     <div class="relative max-w-3xl mx-auto text-center space-y-6 fade">
       <span class="label">Limited Beta Spots</span>
       <h2 class="text-4xl font-bold mt-2">Be Part of What We're Building</h2>
@@ -455,6 +543,7 @@
       <div>
         <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">COMPANY</h4>
         <ul class="space-y-3 text-sm">
+          <li><a href="#measures"       class="text-gray-400 hover:text-white transition">What It Tests</a></li>
           <li><a href="updates.html"    class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
           <li><a href="#beta"           class="text-gray-400 hover:text-white transition">Beta Program</a></li>
           <li><a href="contact.html"    class="text-gray-400 hover:text-white transition">Contact</a></li>
