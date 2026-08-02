@@ -90,7 +90,7 @@
     <!-- Feed -->
     <div class="lg:col-span-2 space-y-14">
 
-      <!-- NOW -->
+      <!-- NOW — Phase 12 -->
       <div id="now" class="finale p-8 fade">
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="month-badge">Now · 2026</span>
@@ -101,8 +101,8 @@
         <div class="text-gray-400 text-sm leading-relaxed space-y-4">
           <p>
             The geometry is frozen. The complete Wavie assembly is modeled and fit-checked end to end —
-            three tiers, optics up top, fluidics in the middle, electronics at the base, all in a single
-            sealed tower barely taller than a banana. Everything in the chapters below led here.
+            optics up top, fluidics in the middle, electronics at the base, all in a single sealed tower
+            barely taller than a banana. Every chapter below led here.
           </p>
           <p>
             We're almost ready to show the first full prototype, so the beta waitlist is open. A
@@ -120,28 +120,28 @@
       <!-- CHAPTERS -->
       <div class="space-y-16">
 
-        <!-- Real hardware -->
+        <!-- Real hardware — Phase 11 -->
         <div class="chapter fade">
           <span class="chapter-period">Spring 2026</span>
           <h2>Real Hardware on the Bench</h2>
           <p>
             The device left the screen. The first full chassis came off the resin printer, the custom
             mainboards came back from the fab and powered up on the first try, and the first real optical
-            and probe tests began. One honest snag: the addressable light strip wouldn't run cleanly off the
-            ESP32's 3.3&nbsp;V data line — it needed a logic level shifter, which is exactly why the lighting
-            became its own dedicated board.
+            and probe tests began. One honest snag turned into a design change: the addressable light strip
+            wouldn't run cleanly off the ESP32's 3.3&nbsp;V data line — it needed a logic level shifter,
+            which is exactly why the lighting became its own dedicated board.
           </p>
           <div class="grid sm:grid-cols-3 gap-4 mt-6">
-            <figure><img src="assets/updates/2026-03-first-build.jpg" alt="First printed chassis" class="photo" /><figcaption class="cap">First full printed chassis.</figcaption></figure>
-            <figure><img src="assets/updates/2026-03-board-poweron.jpg" alt="Mainboard powered on" class="photo" /><figcaption class="cap">Mainboard powers on, first try.</figcaption></figure>
-            <figure><img src="assets/updates/2026-03-rgb-strip.jpg" alt="RGB strip test" class="photo" /><figcaption class="cap">Strip lights up — but needs a level shifter.</figcaption></figure>
-            <figure><img src="assets/led-board.png" alt="Dedicated lighting board" class="photo" style="background:#0e1e30" /><figcaption class="cap">So lighting got its own board.</figcaption></figure>
+            <figure><img src="assets/updates/2026-03-first-build.jpg" alt="First printed chassis" class="photo" /><figcaption class="cap">The first full printed chassis.</figcaption></figure>
+            <figure><img src="assets/updates/2026-03-board-poweron.jpg" alt="Mainboard powered on" class="photo" /><figcaption class="cap">Boards back from the fab — power-on, first try.</figcaption></figure>
+            <figure><img src="assets/updates/2026-03-rgb-strip.jpg" alt="RGB strip test" class="photo" /><figcaption class="cap">The strip lights up — but needs a level shifter.</figcaption></figure>
+            <figure><img src="assets/led-board.png" alt="Dedicated lighting board" class="photo" style="background:#0e1e30" /><figcaption class="cap">So the lighting got its own board.</figcaption></figure>
             <figure><img src="assets/updates/2026-04-optics-test.jpg" alt="Optical bench test" class="photo" /><figcaption class="cap">First light through a real cuvette.</figcaption></figure>
-            <figure><img src="assets/updates/2026-04-valve-print.jpg" alt="First manifold in chemically-inert resin" class="photo" /><figcaption class="cap">First manifold printed in chemically-inert resin.</figcaption></figure>
+            <figure><img src="assets/updates/2026-04-valve-print.jpg" alt="First manifold in inert resin" class="photo" /><figcaption class="cap">The first manifold, in chemically-inert resin.</figcaption></figure>
           </div>
         </div>
 
-        <!-- Software + assembly -->
+        <!-- Software + assembly — Phases 9 + 10 -->
         <div class="chapter fade">
           <span class="chapter-period">Early 2026</span>
           <h2>Software Meets Hardware</h2>
@@ -158,27 +158,27 @@
           </div>
         </div>
 
-        <!-- Electronics + optics -->
+        <!-- Electronics + optics — Phases 8 + 5 -->
         <div class="chapter fade">
           <span class="chapter-period">Late 2025</span>
           <h2>The Custom Electronics &amp; Optics</h2>
           <p>
-            Wavie became a computer. We designed our own ESP32-S3 mainboard — the V0 "AutoTester,"
-            pufferfish "Le Fish" and all — reading pH and ORP. Then we redesigned it from the ground up:
-            every analog channel got fully isolated, and the probe suite grew from two channels to five,
-            adding dissolved oxygen, salinity, and temperature. A sibling <strong>Wavie Power</strong> board
-            of switched outlets rides the same CAN bus. Meanwhile the optical bench matured — three
-            wavelengths of light read straight through the sample cell, no test strips anywhere.
+            Wavie became a computer. We designed our own ESP32-S3 mainboard — the V0 "AutoTester," pufferfish
+            "Le Fish" and all — reading pH and ORP. Then we redesigned it from the ground up: every analog
+            channel got fully isolated, and the probe suite grew from two channels to five, adding dissolved
+            oxygen, salinity, and temperature. A sibling <strong>Wavie Power</strong> board of switched
+            outlets rides the same CAN bus. And the heart of the chemistry read — a spectrophotometer that
+            measures light at three wavelengths through the sample — took shape alongside it.
           </p>
           <div class="grid sm:grid-cols-2 gap-4 mt-6">
-            <figure><img src="assets/updates/2025-11-board-layout.png" alt="V0 mainboard layout with pufferfish" class="photo" /><figcaption class="cap">The V0 mainboard — "Le Fish," pH and ORP only.</figcaption></figure>
+            <figure><img src="assets/updates/2025-11-board-layout.png" alt="V0 mainboard layout" class="photo" /><figcaption class="cap">The V0 mainboard — "Le Fish," pH and ORP only.</figcaption></figure>
             <figure><img src="assets/mainboard.png" alt="Redesigned mainboard" class="showcase" /><figcaption class="cap">The redesign: isolated analog, plus DO, salinity &amp; temperature.</figcaption></figure>
-            <figure><img src="assets/spectral-sensor.png" alt="Spectral sensor board" class="showcase" /><figcaption class="cap">The spectrophotometer sensor — reads 880 / 540 / 615 nm.</figcaption></figure>
+            <figure><img src="assets/spectral-sensor.png" alt="Spectral sensor board" class="showcase" /><figcaption class="cap">The spectrophotometer sensor — 880 / 540 / 615 nm.</figcaption></figure>
             <figure><img src="assets/updates/2026-03-power-board.png" alt="Wavie Power board" class="showcase" /><figcaption class="cap">The Wavie Power sibling board.</figcaption></figure>
           </div>
         </div>
 
-        <!-- Rotary valve -->
+        <!-- Fluidics: valve + pump — Phases 3 + 4 -->
         <div class="chapter fade">
           <span class="chapter-period">2025 · the big pivot</span>
           <h2>One Valve to Replace Eight</h2>
@@ -194,21 +194,21 @@
             <figure><img src="assets/updates/2025-08-rotary-valve-cad.jpg" alt="Rotary valve body in CAD" class="photo" /><figcaption class="cap">The rotary valve body, in CAD.</figcaption></figure>
             <figure><img src="assets/updates/2025-10-blue-frame.jpg" alt="Blue-frame rotary valve prototype" class="photo" /><figcaption class="cap">The blue-frame prototype that seeded the redesign.</figcaption></figure>
             <figure><img src="assets/updates/2025-10-rotary-parts.jpg" alt="Printed manifold and rotor" class="photo" /><figcaption class="cap">Printed manifold and rotor, with check balls.</figcaption></figure>
-            <figure><img src="assets/updates/2025-11-optics-module.png" alt="Peristaltic pump, exploded" class="showcase" /><figcaption class="cap">The custom peristaltic pump, exploded.</figcaption></figure>
+            <figure><img src="assets/pump.png" alt="Peristaltic pump, exploded" class="showcase" /><figcaption class="cap">The custom peristaltic pump that meters every fluid.</figcaption></figure>
           </div>
         </div>
 
-        <!-- Tower + enclosure + booth -->
+        <!-- Tower + enclosure + booth — Phases 6 + 7 -->
         <div class="chapter fade">
           <span class="chapter-period">2025</span>
           <h2>A Compact Tower — and a First Booth</h2>
           <p>
             The form factor came together: a tall, compact tower where every part has to earn its
             footprint, wrapped in an enclosure carrying the crescent-ripple mark you now see on the pump and
-            the boards. We were confident enough in the concept to take an early prototype — Wavie and Wavie
-            Power — to a trade-show booth. It was very early days: the booth pulled barely a glance, and
-            honestly the project has changed almost beyond recognition since. But standing there with a real
-            box on the table lit a fire under the whole build.
+            the boards. We were confident enough to take an early prototype — Wavie and Wavie Power — to a
+            trade-show booth. It was very early days: the booth pulled barely a glance, and honestly the
+            project has changed almost beyond recognition since. But standing there with a real box on the
+            table lit a fire under the whole build.
           </p>
           <div class="grid sm:grid-cols-3 gap-4 mt-6">
             <figure><img src="assets/updates/2025-08-enclosure.png" alt="Enclosure" class="showcase" /><figcaption class="cap">The compact tower enclosure.</figcaption></figure>
@@ -217,13 +217,13 @@
           </div>
         </div>
 
-        <!-- First CAD -->
+        <!-- First CAD — Phase 2 (+ first pinch valve from Phase 1) -->
         <div class="chapter fade">
           <span class="chapter-period">Early 2025</span>
           <h2>First Lines in CAD</h2>
           <p>
             With the concept proven, the design work — and the learning curve — began. The earliest parts
-            were built to hold the pinch valves, and the architecture kept reshaping itself: a disc to ring
+            were built to hold the pinch valves, and the architecture kept reshaping itself: a body to ring
             the valves around a central manifold, then a reagent carousel meant to let one mechanism reach
             every fluid. The carousel didn't survive, but that idea — one mechanism, every fluid — became
             the rotary valve.
@@ -236,7 +236,7 @@
           </div>
         </div>
 
-        <!-- Proof of concept -->
+        <!-- Proof of concept — Phase 1 -->
         <div class="chapter fade">
           <span class="chapter-period">Where it began</span>
           <h2>The Proof of Concept</h2>
@@ -246,7 +246,8 @@
             cheap parts? So we built exactly that — <strong>eight hobby servos, each squeezing a silicone
             tube</strong>, feeding a passive spider manifold, driven by an Arduino, with real ABC Alkalinity
             and Ca/Mg reagents in the loop. It was ugly, and it worked. Everything since has been about
-            making it small, tight, and reliable.
+            making it small, tight, and reliable — starting with one hard truth: eight pinch valves is a lot
+            of things that can fail.
           </p>
           <div class="grid sm:grid-cols-2 gap-4 mt-6">
             <figure><img src="assets/updates/poc-bench.jpg" alt="Plywood proof-of-concept" class="photo" /><figcaption class="cap">Eight pinch valves and a spider manifold.</figcaption></figure>
