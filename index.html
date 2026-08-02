@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built</title>
-  <meta name="description" content="Wavie is an ultra-compact automated reef testing system: 6 reagent slots for colorimetric chemistry plus a 5-probe suite — alkalinity, calcium, magnesium, nitrate, phosphate, pH, ORP, dissolved oxygen, salinity, and temperature, tested automatically." />
+  <meta name="description" content="Wavie is an ultra-compact automated reef testing system: 6 reagents for colorimetric chemistry plus a 5-probe suite — alkalinity, calcium, magnesium, nitrate, phosphate, pH, ORP, dissolved oxygen, salinity, and temperature, tested automatically." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" type="image/png" />
@@ -166,7 +166,7 @@
           <span style="color:var(--teal)">System Ever Built.</span>
         </h1>
         <p class="text-gray-300 text-lg mb-9 max-w-md leading-relaxed" style="font-weight:300">
-          Wavie automates your saltwater chemistry — six reagent slots and a five-probe suite
+          Wavie automates your saltwater chemistry — six reagents and a five-probe suite
           in a footprint no other tester can match. Ten parameters, tested on your schedule,
           hands-free.
         </p>
@@ -190,7 +190,7 @@
       </div>
       <div class="fade" style="transition-delay:.08s">
         <div class="stat-num">6</div>
-        <div class="text-gray-500 text-sm mt-1 font-medium">Reagent Slots</div>
+        <div class="text-gray-500 text-sm mt-1 font-medium">Reagents</div>
       </div>
       <div class="fade" style="transition-delay:.16s">
         <div class="stat-num">5</div>
@@ -224,7 +224,7 @@
           </div>
           <h3 class="text-2xl font-bold mb-2">Reagent-Based Tests</h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-6">
-            Six reagent slots feed an internal optical cell. Wavie meters sample and reagent,
+            Six reagents feed an internal optical cell. Wavie meters sample and reagent,
             mixes, and reads absorbance across three wavelengths — no test kits, no color-matching by eye.
           </p>
           <div class="grid grid-cols-1 gap-3">
@@ -249,7 +249,7 @@
           <div class="grid grid-cols-1 gap-3">
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">pH</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">ORP</span><span class="text-gray-500 text-sm ml-auto">Redox potential</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span><span class="text-gray-500 text-sm ml-auto">Galvanic</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Salinity</span><span class="text-gray-500 text-sm ml-auto">Conductivity</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Temperature</span></div>
           </div>
@@ -277,7 +277,7 @@
                style="background-image:url('assets/wavie-hero.png')"></div>
           <h3 class="text-2xl font-bold mb-2">Wavie</h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-            The automated reef water tester. Six reagent slots, five live probes, and fully
+            The automated reef water tester. Six reagents, five live probes, and fully
             automated scheduling in an ultra-compact form factor. Fits where no other system can.
           </p>
           <a href="#beta" class="btn-primary text-center text-sm" style="padding:0.7rem 1.5rem">Join the Waitlist</a>
@@ -396,7 +396,7 @@
           <p class="text-gray-500 text-sm leading-relaxed">An ESP32-S3 controller with isolated probe front-ends, dual motor drivers, and Wi-Fi — designed and laid out in-house.</p>
         </div>
         <div class="card p-6 text-center fade" style="transition-delay:.08s">
-          <img src="assets/valve.png" alt="Wavie custom pump and rotary valve" class="showcase mb-4" />
+          <img src="assets/valve-zoom.png" alt="Wavie custom pump and rotary valve" class="showcase mb-4" />
           <h4 class="font-semibold text-lg mb-1">Rotary Fluidics</h4>
           <p class="text-gray-500 text-sm leading-relaxed">A single peristaltic pump and a custom rotary valve move every fluid — six reagents, sample, and waste — through one shared path.</p>
         </div>
@@ -440,7 +440,7 @@
         </div>
 
         <!-- ▸ Replace href with your Stripe $500 deposit payment link -->
-        <a href="contact.html" class="btn-primary text-base" style="padding:1rem 3rem">Join the Waitlist — $500</a>
+        <a href="contact.html" data-waitlist class="btn-primary text-base" style="padding:1rem 3rem">Join the Waitlist — $500</a>
         <p class="text-gray-600 text-xs mt-5">Secure checkout via Stripe &middot; Credited in full toward your unit</p>
       </div>
     </div>
@@ -555,6 +555,19 @@
       { threshold: 0.06 }
     );
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+  </script>
+  <!-- ══ Stripe waitlist deposit ══
+       Paste your Stripe Payment Link below (Dashboard → Payment Links → the $500 deposit link).
+       See STRIPE-SETUP.md. While empty, the button falls back to the contact page. -->
+  <script>
+    const STRIPE_WAITLIST_LINK = ""; // e.g. "https://buy.stripe.com/xxxxxxxx"
+    if (STRIPE_WAITLIST_LINK) {
+      document.querySelectorAll('[data-waitlist]').forEach(a => {
+        a.setAttribute('href', STRIPE_WAITLIST_LINK);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      });
+    }
   </script>
 </body>
 </html>
