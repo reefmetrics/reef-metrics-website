@@ -137,7 +137,7 @@
             <figure><img src="assets/updates/2026-03-rgb-strip.jpg" alt="RGB strip test" class="photo" /><figcaption class="cap">Strip lights up — but needs a level shifter.</figcaption></figure>
             <figure><img src="assets/led-board.png" alt="Dedicated lighting board" class="photo" style="background:#0e1e30" /><figcaption class="cap">So lighting got its own board.</figcaption></figure>
             <figure><img src="assets/updates/2026-04-optics-test.jpg" alt="Optical bench test" class="photo" /><figcaption class="cap">First light through a real cuvette.</figcaption></figure>
-            <figure><img src="assets/updates/2026-04-valve-print.jpg" alt="Printed rotary valve rotor" class="photo" /><figcaption class="cap">The printed rotary valve rotor.</figcaption></figure>
+            <figure><img src="assets/updates/2026-04-valve-print.jpg" alt="First manifold in chemically-inert resin" class="photo" /><figcaption class="cap">First manifold printed in chemically-inert resin.</figcaption></figure>
           </div>
         </div>
 
@@ -163,16 +163,17 @@
           <span class="chapter-period">Late 2025</span>
           <h2>The Custom Electronics &amp; Optics</h2>
           <p>
-            Wavie became a computer. We designed our own ESP32-S3 mainboard — two stepper drivers, isolated
-            pH/ORP front-ends, a CAN bus for future modules, and a pufferfish named "Le Fish" in the
-            silkscreen — plus a sibling <strong>Wavie Power</strong> board of switched outlets on the same
-            bus. The measurement head matured too: a three-wavelength optical bench that reads how much
-            light a developed sample absorbs, no test strips anywhere.
+            Wavie became a computer. We designed our own ESP32-S3 mainboard — the V0 "AutoTester,"
+            pufferfish "Le Fish" and all — reading pH and ORP. Then we redesigned it from the ground up:
+            every analog channel got fully isolated, and the probe suite grew from two channels to five,
+            adding dissolved oxygen, salinity, and temperature. A sibling <strong>Wavie Power</strong> board
+            of switched outlets rides the same CAN bus. Meanwhile the optical bench matured — three
+            wavelengths of light read straight through the sample cell, no test strips anywhere.
           </p>
           <div class="grid sm:grid-cols-2 gap-4 mt-6">
-            <figure><img src="assets/updates/2025-11-board-layout.png" alt="Mainboard layout with pufferfish" class="photo" /><figcaption class="cap">The V0 mainboard, routed — "Le Fish" and all.</figcaption></figure>
-            <figure><img src="assets/updates/2025-11-mainboard.png" alt="Mainboard 3D render" class="showcase" /><figcaption class="cap">Rendered in 3D, with the probe jacks.</figcaption></figure>
-            <figure><img src="assets/updates/2025-11-optics-module.png" alt="Exploded optics module" class="showcase" /><figcaption class="cap">The optical measurement head, exploded.</figcaption></figure>
+            <figure><img src="assets/updates/2025-11-board-layout.png" alt="V0 mainboard layout with pufferfish" class="photo" /><figcaption class="cap">The V0 mainboard — "Le Fish," pH and ORP only.</figcaption></figure>
+            <figure><img src="assets/mainboard.png" alt="Redesigned mainboard" class="showcase" /><figcaption class="cap">The redesign: isolated analog, plus DO, salinity &amp; temperature.</figcaption></figure>
+            <figure><img src="assets/updates/2025-10-optics.png" alt="Optical cell section" class="showcase" /><figcaption class="cap">The optical cell — light straight through the sample.</figcaption></figure>
             <figure><img src="assets/updates/2026-03-power-board.png" alt="Wavie Power board" class="showcase" /><figcaption class="cap">The Wavie Power sibling board.</figcaption></figure>
           </div>
         </div>
@@ -185,13 +186,15 @@
             This was the central mechanical problem of the whole project. Eight individual pinch valves —
             the approach from the very first bench — is a lot of things that can fail. So we consolidated
             them into a single motor-driven rotary valve: one disc, eight ports (six reagents, sample, and
-            waste), 45° apart. It was designed in CAD, printed, and proven on a scrappy blue test
-            frame — the frame the whole current design was later built around.
+            waste), 45° apart, paired with one custom peristaltic pump that meters every fluid. The valve was
+            designed in CAD, printed, and proven on a scrappy blue test frame — the frame the whole current
+            design was later built around.
           </p>
-          <div class="grid sm:grid-cols-3 gap-4 mt-6">
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
             <figure><img src="assets/updates/2025-08-rotary-valve-cad.jpg" alt="Rotary valve body in CAD" class="photo" /><figcaption class="cap">The rotary valve body, in CAD.</figcaption></figure>
-            <figure><img src="assets/updates/2025-10-rotary-parts.jpg" alt="Printed manifold and rotor" class="photo" /><figcaption class="cap">Printed manifold and rotor, with check balls.</figcaption></figure>
             <figure><img src="assets/updates/2025-10-blue-frame.jpg" alt="Blue-frame rotary valve prototype" class="photo" /><figcaption class="cap">The blue-frame prototype that seeded the redesign.</figcaption></figure>
+            <figure><img src="assets/updates/2025-10-rotary-parts.jpg" alt="Printed manifold and rotor" class="photo" /><figcaption class="cap">Printed manifold and rotor, with check balls.</figcaption></figure>
+            <figure><img src="assets/updates/2025-11-optics-module.png" alt="Peristaltic pump, exploded" class="showcase" /><figcaption class="cap">The custom peristaltic pump, exploded.</figcaption></figure>
           </div>
         </div>
 
@@ -203,7 +206,9 @@
             The form factor came together: a tall, compact tower where every part has to earn its
             footprint, wrapped in an enclosure carrying the crescent-ripple mark you now see on the pump and
             the boards. We were confident enough in the concept to take an early prototype — Wavie and Wavie
-            Power — to a trade-show booth.
+            Power — to a trade-show booth. It was very early days: the booth pulled barely a glance, and
+            honestly the project has changed almost beyond recognition since. But standing there with a real
+            box on the table lit a fire under the whole build.
           </p>
           <div class="grid sm:grid-cols-3 gap-4 mt-6">
             <figure><img src="assets/updates/2025-08-enclosure.png" alt="Enclosure" class="showcase" /><figcaption class="cap">The compact tower enclosure.</figcaption></figure>
@@ -223,7 +228,8 @@
             every fluid. The carousel didn't survive, but that idea — one mechanism, every fluid — became
             the rotary valve.
           </p>
-          <div class="grid sm:grid-cols-3 gap-4 mt-6">
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <figure><img src="assets/updates/poc-pinchvalve.jpg" alt="The first pinch valve" class="photo" /><figcaption class="cap">The first pinch valve — what the early CAD was built to hold.</figcaption></figure>
             <figure><img src="assets/updates/2025-03-first-part.png" alt="First CAD part" class="showcase" /><figcaption class="cap">Part number one.</figcaption></figure>
             <figure><img src="assets/updates/2025-03-hollow-block.png" alt="Early hollow body" class="showcase" /><figcaption class="cap">A body to hold the valves.</figcaption></figure>
             <figure><img src="assets/updates/2025-04-carousel.png" alt="Reagent carousel concept" class="showcase" /><figcaption class="cap">The reagent-carousel idea.</figcaption></figure>
@@ -242,10 +248,9 @@
             and Ca/Mg reagents in the loop. It was ugly, and it worked. Everything since has been about
             making it small, tight, and reliable.
           </p>
-          <div class="grid sm:grid-cols-3 gap-4 mt-6">
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
             <figure><img src="assets/updates/poc-bench.jpg" alt="Plywood proof-of-concept" class="photo" /><figcaption class="cap">Eight pinch valves and a spider manifold.</figcaption></figure>
             <figure><img src="assets/updates/poc-testing.jpg" alt="Running real reagents" class="photo" /><figcaption class="cap">Running a real test with ABC reagents.</figcaption></figure>
-            <figure><img src="assets/updates/poc-pinchvalve.jpg" alt="The first pinch valve" class="photo" /><figcaption class="cap">The very first pinch valve.</figcaption></figure>
           </div>
         </div>
 
