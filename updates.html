@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Build Log — Wavie by ReefMetrics</title>
-  <meta name="description" content="The complete Wavie build log — from a plywood proof-of-concept to real hardware on the bench. Eighteen months of designing a compact automated reef tester, in public." />
+  <meta name="description" content="The complete Wavie build log — from a plywood, pinch-valve proof-of-concept to real hardware on the bench. A compact automated reef tester, built in public." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="https://i.postimg.cc/5tP9gFJK/wavie-lgog-96x96.jpg" type="image/png" />
@@ -21,13 +21,10 @@
     .sticky-nav { position:sticky; top:0; z-index:100; background:rgba(10,22,40,0.94); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.06); }
     .label { color:var(--teal); font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; display:block; }
 
-    /* CAD renders (dark frames) — edges melt into the page */
     .showcase { width:100%; height:auto; display:block;
       -webkit-mask-image: radial-gradient(ellipse 80% 84% at 50% 50%, #000 55%, transparent 93%);
               mask-image: radial-gradient(ellipse 80% 84% at 50% 50%, #000 55%, transparent 93%); }
-    /* Real photos + workflow screenshots — framed, not faded */
     .photo { width:100%; height:auto; display:block; border-radius:0.75rem; border:1px solid rgba(255,255,255,0.10); box-shadow:0 14px 44px rgba(0,0,0,0.45); }
-    /* App screenshots */
     .appshot { height:auto; max-height:520px; width:auto; border-radius:1rem; border:1px solid rgba(255,255,255,0.12); box-shadow:0 14px 44px rgba(0,0,0,0.5); }
 
     .tag { font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:999px; }
@@ -38,6 +35,7 @@
     .tag-mechanical{ background:rgba(80,200,120,0.15); color:#6ecf8f;      border:1px solid rgba(80,200,120,0.25); }
     .tag-design    { background:rgba(255,200,80,0.15); color:#ffd060;      border:1px solid rgba(255,200,80,0.25); }
     .tag-app       { background:rgba(120,180,255,0.15);color:#8ab8ff;      border:1px solid rgba(120,180,255,0.25); }
+    .tag-milestone { background:rgba(255,126,103,0.15);color:var(--orange);border:1px solid rgba(255,126,103,0.3); }
 
     .month-badge { background:rgba(58,183,191,0.15); color:var(--teal); font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.2rem 0.75rem; border-radius:999px; }
 
@@ -47,13 +45,11 @@
     .sidebar-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:0.875rem; }
     .subscribe-box { background:linear-gradient(135deg, rgba(58,183,191,0.09), rgba(255,126,103,0.06)); border:1px solid rgba(58,183,191,0.2); border-radius:1rem; }
 
-    /* Month divider */
     .month-head { display:flex; align-items:baseline; gap:0.9rem; flex-wrap:wrap; margin-bottom:0.4rem; }
     .month-head h2 { font-size:1.9rem; font-weight:800; }
     .month-theme { color:var(--teal); font-size:0.8rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
     .month-summary { color:rgba(255,255,255,0.62); font-size:0.95rem; line-height:1.65; margin-bottom:1.6rem; }
 
-    /* Timeline thread */
     .thread { position:relative; margin-left:0.35rem; }
     .entry { position:relative; padding-left:1.9rem; padding-bottom:2rem; border-left:2px solid rgba(255,255,255,0.09); }
     .thread > .entry:last-child { border-left-color:transparent; padding-bottom:0.25rem; }
@@ -84,9 +80,9 @@
         <a href="index.html#measures" class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="updates.html" style="color:var(--teal)">Dev Updates</a>
         <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
-        <a href="index.html#beta" class="btn-primary text-sm py-2 px-5">Join Beta — $500</a>
+        <a href="index.html#beta" class="btn-primary text-sm py-2 px-5">Join Waitlist</a>
       </div>
-      <a href="index.html#beta" class="md:hidden btn-primary text-sm py-2 px-4">Join Beta</a>
+      <a href="index.html#beta" class="md:hidden btn-primary text-sm py-2 px-4">Waitlist</a>
     </div>
   </nav>
 
@@ -97,7 +93,8 @@
       <h1 class="text-5xl font-extrabold mt-3 mb-4">The Whole Story</h1>
       <p class="text-gray-400 text-lg max-w-2xl leading-relaxed mb-5">
         Wavie has been built in the open for over a year and a half — from a plank of plywood and eight
-        hobby servos to real hardware on the bench. Newest updates first — scroll down to go all the way back to where it started.
+        pinch valves to real hardware on the bench, a trade-show booth, and a first full prototype now in
+        sight. Newest updates first — scroll down to go all the way back to where it started.
       </p>
     </div>
   </section>
@@ -113,9 +110,9 @@
         <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="month-badge">July 2026</span>
           <span class="tag tag-hardware">Hardware</span>
-          <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded ml-auto" style="background:rgba(255,126,103,0.15); color:var(--orange)">Where we are now</span>
+          <span class="tag tag-milestone ml-auto">Where we are now</span>
         </div>
-        <h2 class="text-2xl font-bold mb-2">CAD Freeze — and Into Beta</h2>
+        <h2 class="text-2xl font-bold mb-2">CAD Freeze — and the Beta Waitlist Opens</h2>
         <p class="text-gray-500 text-xs mb-5">July 29, 2026</p>
         <img src="assets/wavie-exploded.png" alt="Wavie full exploded assembly" class="showcase mb-6" />
         <div class="text-gray-400 text-sm leading-relaxed space-y-4">
@@ -125,10 +122,12 @@
             middle, electronics at the base, all in a single sealed tower barely taller than a banana.
           </p>
           <p>
-            Every step above led here: the eight-servo proof-of-concept that became a single rotary valve,
+            Every step below led here: the pinch-valve proof-of-concept that became a single rotary valve,
             the pump we designed part by part, the spectrophotometer cell, and the ESP32-S3 mainboard with
-            its isolated probe inputs. With CAD locked, we're heading into the first full beta build — and
-            beta members get to shape what comes next.
+            its isolated probe inputs. The addressable lighting even earned its own board — more on that
+            just below. We're almost ready to show the first full prototype, so the beta waitlist is now
+            open: a <strong>$500 deposit</strong> holds your place at the front of the line for the first
+            units, and is credited in full toward your Wavie when the price is set.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4 mt-6">
@@ -136,34 +135,26 @@
           <img src="assets/wavie-scale.png" alt="Size reference" class="showcase" />
         </div>
         <div class="mt-7">
-          <a href="index.html#beta" class="btn-primary text-sm">Join the Beta — $500</a>
+          <a href="index.html#beta" class="btn-primary text-sm">Join the Waitlist — $500</a>
         </div>
       </div>
 
-    <!-- ── APRIL 2026 ── -->
+      <!-- ══ APRIL 2026 ══ -->
       <div class="fade">
         <div class="month-head"><h2>April 2026</h2><span class="month-theme">Real hardware, real water</span></div>
         <p class="month-summary">
-          The month Wavie became fully physical. The first optical bench tests pushed real light through
-          real cuvettes, the probe kit arrived for calibration, and we printed and test-fit the rotary
-          valve rotor. Peak messy-bench season — and the most fun we've had on the project.
+          The month Wavie became fully physical. The fabricated mainboard powered up, the first optical
+          bench tests pushed real light through real cuvettes, the probe kit arrived for calibration, and
+          we printed and test-fit the rotary valve rotor. Peak messy-bench season.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">April 24, 2026</span>
             <h4>The rotary valve rotor, in hand</h4>
             <p>The eight-port selector rotor came off the printer — the direct descendant of that
-              eight-servo mess from the very first bench. Six reagents, sample, waste; one rotor; 45°
-              between ports. Test-fitting against the glass cell, it indexes cleanly.</p>
+              eight-pinch-valve mess from the very first bench. Six reagents, sample, waste; one rotor;
+              45° between ports. Test-fitting against the glass cell, it indexes cleanly.</p>
             <div class="media"><img src="assets/updates/2026-04-valve-print.jpg" alt="3D-printed rotary valve rotor" class="photo" style="max-width:420px" /></div>
-          </div>
-          <div class="entry">
-            <span class="entry-date">April 21, 2026</span>
-            <h4>Probes arrive for calibration</h4>
-            <p>The pH and ORP probes showed up with their buffer sachets (6.86, 9.18, 10.01). Wavie's probe
-              channels are galvanically isolated, so each one gets calibrated against known references
-              before we trust a single reading off the tank.</p>
-            <div class="media"><img src="assets/updates/2026-04-probes.jpg" alt="pH and ORP probe calibration kit" class="photo" style="max-width:420px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">April 21, 2026</span>
@@ -172,6 +163,14 @@
               holder, dialing in the 10.6&nbsp;mm path length. This little cell is the heart of every
               colorimetric test.</p>
             <div class="media"><img src="assets/updates/2026-04-optics-test.jpg" alt="Optical bench test with cuvettes" class="photo" style="max-width:420px" /></div>
+          </div>
+          <div class="entry">
+            <span class="entry-date">April 7, 2026</span>
+            <h4>Probes arrive for calibration</h4>
+            <p>The pH and ORP probes showed up (hand-labeled "PH-probe" and "ORP-probe") with their buffer
+              sachets — 6.86, 9.18, 10.01. Wavie's probe channels are galvanically isolated, so each one
+              gets calibrated against known references before we trust a reading off the tank.</p>
+            <div class="media"><img src="assets/updates/2026-04-probe-delivery.jpg" alt="pH and ORP probe delivery" class="photo" style="max-width:420px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">April 2, 2026</span>
@@ -184,41 +183,56 @@
         </div>
       </div>
 
-      <!-- ── MARCH 2026 ── -->
+      <!-- ══ MARCH 2026 ══ -->
       <div class="fade">
         <div class="month-head"><h2>March 2026</h2><span class="month-theme">From screen to bench</span></div>
         <p class="month-summary">
-          The jump from CAD to atoms. We printed the first full three-tier chassis, refined the enclosure
-          in Blender, brought the V0 mainboard back populated, lit the status strip, and kicked off the
-          sibling <strong>Wavie Power</strong> board — smart outlets on the same bus Wavie already speaks.
+          The jump from CAD to atoms. The V0.1 boards came back from the fab, powered up first try, and
+          drove their first LEDs — where we hit a real bug. We also refined the enclosure in Blender and
+          started the sibling <strong>Wavie Power</strong> board.
         </p>
         <div class="thread">
           <div class="entry">
+            <span class="entry-date">March 31, 2026</span>
+            <h4>Boards from the fab</h4>
+            <p>A panel of five <em>Wavie V0.1</em> mainboards, fresh off a lead-free blue-soldermask run and
+              across an ocean by FedEx. Nothing beats the box-opening on a board you've only ever seen on a
+              screen.</p>
+            <div class="media"><img src="assets/updates/2026-03-pcb-order.jpg" alt="Wavie V0.1 PCB fabrication label" class="photo" style="max-width:380px" /></div>
+          </div>
+          <div class="entry">
             <span class="entry-date">March 30, 2026</span>
-            <h4>The board is real — and the strip lights up</h4>
-            <p>Holding the populated ESP32-S3 mainboard for the first time — USB-C, 24&nbsp;V input,
-              isolated probe inputs, JST everything. That same night, the 33-LED status strip ran its first
-              rainbow straight off first-boot firmware. The PCB stopped being a render and became a
-              computer.</p>
+            <h4>Power-on, first try</h4>
+            <p>USB-C in, and the power LED came up green — no smoke, no reworks. The ESP32-S3, the
+              regulators, and the probe front-ends all came alive on the first attempt. A very good day.</p>
             <div class="media grid grid-cols-2 gap-4">
-              <img src="assets/updates/2026-03-real-board.jpg" alt="Holding the fabricated mainboard" class="photo" />
-              <img src="assets/updates/2026-03-led-strip.jpg" alt="Addressable LED status strip lit up" class="photo" />
+              <img src="assets/updates/2026-03-real-board.jpg" alt="Fabricated mainboard in hand" class="photo" />
+              <img src="assets/updates/2026-03-board-poweron.jpg" alt="Board powered on, green LED" class="photo" />
             </div>
+          </div>
+          <div class="entry">
+            <span class="entry-date">March 30, 2026</span>
+            <h4>First light on the strip — and a gotcha</h4>
+            <p>The addressable RGB strip lit up in full rainbow… but not reliably. The ESP32's 3.3&nbsp;V
+              data line couldn't drive the strip's 5&nbsp;V input cleanly — a classic case for a logic
+              level shifter. That finding is exactly what led to a dedicated lighting board (see the top of
+              this log).</p>
+            <div class="media"><img src="assets/updates/2026-03-rgb-strip.jpg" alt="RGB strip lit in rainbow during testing" class="photo" style="max-width:420px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">March 28, 2026</span>
             <h4>Wavie Power takes shape</h4>
             <p>Started the sibling board: eight switched AC outlets, a relay array, and its own
               microcontroller riding the same CAN bus Wavie already carries. Pumps, lights, and heaters on
-              one app — the ecosystem we hinted at, now in layout.</p>
+              one app.</p>
             <div class="media"><img src="assets/updates/2026-03-power-board.png" alt="Wavie Power eight-outlet board" class="showcase" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">March 22, 2026</span>
             <h4>Detailing the enclosure</h4>
             <p>Refining the full cutaway in CAD and taking the outer shell into Blender to work the surface
-              finish and texture. Not glamorous work, but it's what turns a functional box into something
-              you'd want on your stand.</p>
+              finish and texture — the step that turns a functional box into something you'd want on your
+              stand.</p>
             <div class="media grid grid-cols-2 gap-4">
               <img src="assets/updates/2026-03-cutaway.png" alt="Full device cutaway" class="showcase" />
               <img src="assets/updates/2026-03-blender-1.png" alt="Enclosure surfacing in Blender" class="photo" />
@@ -228,20 +242,39 @@
             <span class="entry-date">March 5, 2026</span>
             <h4>First full print</h4>
             <p>The first complete three-tier chassis off the resin printer, loosely populated with the
-              pump, the valve, and a stepper to check fit and tubing routing. Held together with hope and a
-              few zip ties, but the first time the whole thing existed off-screen.</p>
+              pump, valve, and a stepper to check fit and tubing routing. Held together with hope and a few
+              zip ties.</p>
             <div class="media"><img src="assets/updates/2026-03-first-build.jpg" alt="First printed three-tier chassis" class="photo" style="max-width:420px" /></div>
           </div>
         </div>
       </div>
 
-      <!-- ── JANUARY 2026 ── -->
+      <!-- ══ FEBRUARY 2026 ══ -->
+      <div class="fade">
+        <div class="month-head"><h2>February 2026</h2><span class="month-theme">Off the screen</span></div>
+        <p class="month-summary">
+          The first assembled chassis on the bench — pump, stepper, and tubing routed through the three
+          tiers. Still driven by breadboard electronics, but the mechanical stack was finally something you
+          could hold.
+        </p>
+        <div class="thread">
+          <div class="entry">
+            <span class="entry-date">February 4, 2026</span>
+            <h4>The stack takes physical form</h4>
+            <p>Optics and pump up top, the valve deck in the middle, a NEMA stepper at the base — with the
+              tell-tale four-colour stepper wiring and silicone tubing threaded through. The proportions
+              from CAD held up in real plastic.</p>
+            <div class="media"><img src="assets/updates/2026-02-chassis.jpg" alt="First assembled chassis" class="photo" style="max-width:420px" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ JANUARY 2026 ══ -->
       <div class="fade">
         <div class="month-head"><h2>January 2026</h2><span class="month-theme">The app, and one full assembly</span></div>
         <p class="month-summary">
           Two big firsts. The mobile app got its first real screens, and every subsystem finally came
-          together in one clean model. The pieces stopped being separate projects and started being a
-          product.
+          together in one clean model.
         </p>
         <div class="thread">
           <div class="entry">
@@ -267,39 +300,41 @@
         </div>
       </div>
 
-      <!-- ── NOVEMBER 2025 ── -->
+      <!-- ══ NOVEMBER 2025 ══ -->
       <div class="fade">
         <div class="month-head"><h2>November 2025</h2><span class="month-theme">The electronics come alive</span></div>
         <p class="month-summary">
-          The month Wavie stopped being a mechanism and became a computer. The optics module matured, and
-          the V0 AutoTester mainboard went from schematic to autorouted to rendered — ESP32-S3, two stepper
-          drivers, isolated probe front-ends, CAN for future modules, and a pufferfish named "Le Fish"
-          hiding in the silkscreen.
+          The month Wavie became a computer. The optics module matured, the cuvette cell got printed and
+          held, and the V0 AutoTester mainboard went from schematic to autorouted to rendered — ESP32-S3,
+          two stepper drivers, isolated probe front-ends, and a pufferfish named "Le Fish" in the silkscreen.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">November 19, 2025</span>
             <h4>Board, meet body</h4>
             <p>Dropped the freshly-designed mainboard into the full tower assembly. For the first time,
-              optics, fluidics, and brains all shared one model — and the probe jacks lined up with the
-              enclosure exactly where they needed to.</p>
+              optics, fluidics, and brains all shared one model.</p>
             <div class="media"><img src="assets/updates/2025-11-assembly.png" alt="Mainboard integrated into the tower" class="showcase" style="max-width:440px" /></div>
-          </div>
-          <div class="entry">
-            <span class="entry-date">November 18, 2025</span>
-            <h4>Rendered in 3D</h4>
-            <p>The same board, rendered — ESP32 module, power stage, and two BNC probe jacks standing off
-              the front edge. Seeing it in 3D is when a schematic finally feels like an object.</p>
-            <div class="media"><img src="assets/updates/2025-11-mainboard.png" alt="V0 mainboard 3D render" class="showcase" style="max-width:440px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">November 18, 2025</span>
             <h4>Routing the V0 board — "Le Fish"</h4>
             <p>The first full mainboard, routed: ESP32-S3, dual TMC stepper drivers, isolated pH/ORP
               front-ends, and a CAN bus for future modules. Signed and dated in the copper — <em>V0
-              AutoTester Dev Board, Evan C, 11/17/25</em> — with a pufferfish in the corner, because a
-              board should have some personality.</p>
-            <div class="media"><img src="assets/updates/2025-11-board-layout.png" alt="V0 AutoTester board layout with pufferfish silkscreen" class="photo" style="max-width:440px" /></div>
+              AutoTester Dev Board, Evan Croft, 11/17/25</em> — with a pufferfish in the corner, because a
+              board should have some personality. The 3D render followed the same night.</p>
+            <div class="media grid grid-cols-2 gap-4">
+              <img src="assets/updates/2025-11-board-layout.png" alt="V0 AutoTester board layout with pufferfish" class="photo" />
+              <img src="assets/updates/2025-11-mainboard.png" alt="V0 mainboard 3D render" class="showcase" />
+            </div>
+          </div>
+          <div class="entry">
+            <span class="entry-date">November 7, 2025</span>
+            <h4>Holding the measurement cell</h4>
+            <p>The clear printed cuvette cell in hand, in front of its CAD model — the little square chamber
+              where sample and reagent mix and the light gets read. Printing it clear enough to pass a
+              clean beam is its own small battle.</p>
+            <div class="media"><img src="assets/updates/2025-11-cuvette-print.jpg" alt="Printed cuvette cell in hand" class="photo" style="max-width:380px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">November 4, 2025</span>
@@ -307,55 +342,78 @@
             <p>The optics module laid open: three wavelengths of LED, a light detector, and the beam path
               running straight down through the cuvette. This is how Wavie reads chemistry — measuring how
               much light a developed sample absorbs, no test strips anywhere.</p>
-            <div class="media"><img src="assets/updates/2025-11-optics-module.png" alt="Exploded optics module with light path" class="showcase" style="max-width:420px" /></div>
+            <div class="media"><img src="assets/updates/2025-11-optics-module.png" alt="Exploded optics module" class="showcase" style="max-width:420px" /></div>
           </div>
         </div>
       </div>
 
-      <!-- ── OCTOBER 2025 ── -->
+      <!-- ══ OCTOBER 2025 ══ -->
       <div class="fade">
-        <div class="month-head"><h2>October 2025</h2><span class="month-theme">Pump and optics, from scratch</span></div>
+        <div class="month-head"><h2>October 2025</h2><span class="month-theme">The rotary valve becomes real</span></div>
         <p class="month-summary">
-          We stopped bolting together off-the-shelf subassemblies and started designing our own — the two
-          subsystems accuracy depends on most.
+          The rotary valve left the screen. We printed the eight-tube manifold and the valve rotor, and
+          built the first working rotary valve on a translucent blue test frame — <strong>the frame the
+          entire current redesign was later based on.</strong> The pump got built up part by part, too.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">October 28, 2025</span>
-            <h4>Sectioning the measurement cell</h4>
-            <p>The first real cross-section through the optical cell, with the LED, detector, and cuvette
-              on a single axis. Getting this geometry right — and the chamber light-tight — is the whole
-              ballgame for colorimetric accuracy.</p>
-            <div class="media"><img src="assets/updates/2025-10-optics.png" alt="Optical cell cross-section" class="showcase" /></div>
+            <h4>The blue-frame rotary valve</h4>
+            <p>A NEMA stepper on a translucent blue printed cage, driving the first real rotary valve with
+              its silicone tubes fanning out below. This scrappy test rig matters more than it looks: its
+              frame became the starting point the whole new design was built around.</p>
+            <div class="media"><img src="assets/updates/2025-10-blue-frame.jpg" alt="Blue-frame first rotary valve prototype" class="photo" style="max-width:380px" /></div>
+          </div>
+          <div class="entry">
+            <span class="entry-date">October 27, 2025</span>
+            <h4>Manifold and rotor, printed</h4>
+            <p>The clear eight-tube manifold and the valve rotor in hand, with the stainless check balls
+              that seat inside. Eight tubes in, one rotating selector — the mechanism that replaced eight
+              separate pinch valves.</p>
+            <div class="media grid grid-cols-2 gap-4">
+              <img src="assets/updates/2025-10-rotary-parts.jpg" alt="Rotary valve rotor and manifold" class="photo" />
+              <img src="assets/updates/2025-10-manifold-real.jpg" alt="Eight-tube manifold with tubing" class="photo" />
+            </div>
           </div>
           <div class="entry">
             <span class="entry-date">October 28, 2025</span>
             <h4>A pump built part by part</h4>
             <p>We designed our own peristaltic pump head from the ground up — rotor, rollers, and the
-              C-shaped occlusion track that squeezes the tube. The goal: one bidirectional pump that meters
-              every fluid to a couple hundredths of a millilitre, with nothing but silicone ever touching
-              the sample.</p>
-            <div class="media"><img src="assets/updates/2025-10-pump-track.png" alt="Peristaltic pump occlusion track" class="showcase" /></div>
+              C-shaped occlusion track that squeezes the tube — and sectioned the optical cell to line up
+              the LED, detector, and cuvette on one axis.</p>
+            <div class="media grid grid-cols-2 gap-4">
+              <img src="assets/updates/2025-10-pump-track.png" alt="Peristaltic pump occlusion track" class="showcase" />
+              <img src="assets/updates/2025-10-optics.png" alt="Optical cell cross-section" class="showcase" />
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ── AUGUST 2025 ── -->
+      <!-- ══ AUGUST 2025 ══ -->
       <div class="fade">
-        <div class="month-head"><h2>August 2025</h2><span class="month-theme">One valve to replace eight</span></div>
+        <div class="month-head"><h2>August 2025</h2><span class="month-theme">One valve to replace eight — and a booth</span></div>
         <p class="month-summary">
-          The biggest mechanical month of the project. This is where the eight-servo fluidics finally
-          died: instead of eight pinch valves, a single motor-driven <strong>rotary selector valve</strong>
-          — one disc, eight ports (six reagents, sample, waste), 45° apart. The pump got its face, the
-          interior was integrated for the first time, and the enclosure got its industrial-design pass —
-          including the crescent-ripple mark that's now our logo.
+          A huge month. The eight-pinch-valve fluidics was finally designed out: a single motor-driven
+          <strong>rotary pinch valve</strong> (one disc, eight ports, 45° apart) took its place. The pump
+          got its badge, the interior was integrated, the enclosure got its industrial-design pass — and we
+          showed the whole idea off at a trade show.
         </p>
         <div class="thread">
           <div class="entry">
+            <span class="entry-date">August 30, 2025</span>
+            <h4>Wavie, at a trade show</h4>
+            <p>We took Wavie and Wavie Power to a booth — right next to Coral Essentials. The banner said it
+              plainly: hands-off reef stability, compact and serviceable, testing calcium, alkalinity,
+              magnesium, nitrate and phosphate, tracking temperature, pH and ORP, with an 8-port rotary
+              pinch valve and programmable outlets. Real people, real reactions — a long way from a plank of
+              plywood.</p>
+            <div class="media"><img src="assets/updates/2025-08-tradeshow.jpg" alt="ReefMetrics trade-show booth" class="photo" style="max-width:460px" /></div>
+          </div>
+          <div class="entry">
             <span class="entry-date">August 25, 2025</span>
             <h4>The shell</h4>
-            <p>The first proper enclosure: a tall rounded tower with the crescent embossed near the base
-              and scalloped slots for tubing along the bottom edge. The whole stack lifts out as one.</p>
+            <p>The first proper enclosure: a tall rounded tower with the crescent-ripple mark embossed near
+              the base and scalloped slots for tubing. The whole stack lifts out as one.</p>
             <div class="media grid grid-cols-2 gap-4">
               <img src="assets/updates/2025-08-enclosure.png" alt="Closed enclosure with logo" class="showcase" />
               <img src="assets/updates/2025-08-enclosure-exploded.png" alt="Exploded enclosure lid" class="showcase" />
@@ -363,46 +421,40 @@
           </div>
           <div class="entry">
             <span class="entry-date">August 19, 2025</span>
-            <h4>Eight ports, one valve</h4>
-            <p>The rotary distribution valve took its real shape: six reagents, a sample line, and waste
-              across eight ports exactly 45° apart, driven straight off a stepper with a single home
-              switch. Eight servos and a spider manifold became one rigid, repeatable rotary index. This
-              was the design change the whole first year was building toward.</p>
-            <div class="media"><img src="assets/updates/2025-08-valve.png" alt="Rotary selector valve" class="showcase" /></div>
+            <h4>Designing the rotary pinch valve</h4>
+            <p>Modeling the <em>rotary valve body</em> and its circular eight-tube manifold in CAD — the
+              part that lets one motor and one disc do what eight servo-driven pinch valves used to. The
+              pump module also picked up its blue concentric-ripple badge this month, the mark you now see
+              everywhere.</p>
+            <div class="media grid grid-cols-2 gap-4">
+              <img src="assets/updates/2025-08-rotary-valve-cad.jpg" alt="Rotary valve body in CAD" class="photo" />
+              <img src="assets/updates/2025-08-branded-pump.png" alt="Branded pump module" class="showcase" />
+            </div>
           </div>
           <div class="entry">
             <span class="entry-date">August 14, 2025</span>
             <h4>Everything, inside — for the first time</h4>
-            <p>The pump, the selector, and the cell all packed into one case in CAD. Cramped, and a couple
-              of parts were fighting for the same three millimetres — but it fit, and "compact-first"
-              stopped being a slogan.</p>
-            <div class="media"><img src="assets/updates/2025-08-interior.png" alt="First integrated interior layout" class="showcase" /></div>
-          </div>
-          <div class="entry">
-            <span class="entry-date">August 13, 2025</span>
-            <h4>The pump gets a face</h4>
-            <p>The peristaltic pump module picked up its blue badge — the concentric-ripple mark you now
-              see on the site and on every board. First time Wavie looked like a product instead of a
-              mechanism.</p>
-            <div class="media"><img src="assets/updates/2025-08-branded-pump.png" alt="Branded pump module with the concentric-ripple logo" class="showcase" style="max-width:360px" /></div>
+            <p>The pump, the selector, and the cell all packed into one case in CAD. Cramped, with parts
+              fighting for the same three millimetres — but it fit, and "compact-first" stopped being a
+              slogan.</p>
+            <div class="media"><img src="assets/updates/2025-08-interior.png" alt="First integrated interior" class="showcase" /></div>
           </div>
         </div>
       </div>
 
-      <!-- ── JUNE–JULY 2025 ── -->
+      <!-- ══ JUNE–JULY 2025 ══ -->
       <div class="fade">
         <div class="month-head"><h2>June–July 2025</h2><span class="month-theme">Going vertical</span></div>
         <p class="month-summary">
-          Two decisions this summer set the shape of everything that followed: the brains and the body. We
-          committed to an ESP32-S3 for the controller, and pivoted the whole form factor from a wide box
-          to a tall, compact tower.
+          Two decisions set the shape of everything that followed: the brains and the body. We committed to
+          an ESP32-S3, and pivoted the whole form factor from a wide box to a tall, compact tower.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">July 22, 2025</span>
             <h4>The tower takes shape</h4>
             <p>Committed to a vertical tower: a slim faceplate with the reagent-well windows stacked down
-              the front. From here on, every part had to earn its footprint. Compact-first.</p>
+              the front. From here on, every part had to earn its footprint.</p>
             <div class="media"><img src="assets/updates/2025-07-tower.png" alt="Tower faceplate" class="showcase" style="max-width:320px" /></div>
           </div>
           <div class="entry">
@@ -410,54 +462,54 @@
             <h4>Picking the brains</h4>
             <p>Settled on the ESP32-S3 — Wi-Fi, plenty of PSRAM, and enough I/O to drive two steppers, the
               optics bus, an addressable LED strip, and five probe channels at once. The Arduino from the
-              proof-of-concept simply couldn't carry all of it.</p>
+              proof-of-concept couldn't carry all of it.</p>
           </div>
         </div>
       </div>
 
-      <!-- ── APRIL 2025 ── -->
+      <!-- ══ APRIL 2025 ══ -->
       <div class="fade">
         <div class="month-head"><h2>April 2025</h2><span class="month-theme">The reagent carousel</span></div>
         <p class="month-summary">
-          The first real architecture idea, and the first attempt to kill the eight-servo mess: put every
-          reagent well on one rotating disc, and route them through a single central manifold. The
-          carousel didn't survive to the final design — but "one mechanism reaches every fluid" did, and
-          it's the DNA of today's rotary valve.
+          The first attempt to tame the pinch-valve sprawl in CAD: put every reagent well on one rotating
+          disc around a central manifold. The carousel didn't survive to the final design — but "one
+          mechanism reaches every fluid" did, and it's the DNA of today's rotary valve.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">April 13, 2025</span>
             <h4>An eight-well disc</h4>
-            <p>Eight reagent wells arranged around a disc, with a central multi-port hub at the middle.
-              The idea: rotate to a well, draw from it, move on — no forest of individual valves.</p>
+            <p>Eight reagent wells arranged around a disc, with a central multi-port hub at the middle —
+              rotate to a well, draw from it, move on.</p>
             <div class="media"><img src="assets/updates/2025-04-carousel.png" alt="Reagent carousel concept" class="showcase" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">April 9, 2025</span>
             <h4>Nozzles and funnels</h4>
-            <p>Small experiments on how fluid actually enters and leaves the cell — funnel and nozzle
-              geometry that would take another year to really get right.</p>
-            <div class="media"><img src="assets/updates/2025-04-funnel.png" alt="Funnel and nozzle experiment" class="showcase" style="max-width:360px" /></div>
+            <p>Small experiments on how fluid actually enters and leaves the cell — geometry that would take
+              another year to really get right.</p>
+            <div class="media"><img src="assets/updates/2025-04-funnel.png" alt="Funnel experiment" class="showcase" style="max-width:360px" /></div>
           </div>
         </div>
       </div>
 
-      <!-- ── MARCH 2025 ── -->
+      <!-- ══ MARCH 2025 ══ -->
       <div class="fade">
         <div class="month-head"><h2>March 2025</h2><span class="month-theme">First lines in CAD</span></div>
         <p class="month-summary">
-          With the concept proven, the real design work started — and so did the learning curve. The
-          first parts are about as crude as CAD gets: flat plates, a pocket, a hole. Every project starts
-          here.
+          With the concept proven on the bench, the real design work — and the learning curve — began. The
+          very first parts were built to hold the pinch valves; from there, the whole architecture kept
+          reshaping itself.
         </p>
         <div class="thread">
           <div class="entry">
             <span class="entry-date">March 29, 2025</span>
-            <h4>First hollow body</h4>
-            <p>A few hours later, the first hollow block with an internal cavity and channels — the
-              earliest attempt at a body that could actually hold something. It changed shape completely a
-              dozen times over the next months.</p>
-            <div class="media"><img src="assets/updates/2025-03-hollow-block.png" alt="Early hollow enclosure block" class="showcase" style="max-width:380px" /></div>
+            <h4>A disc to hold the pinch valves</h4>
+            <p>This hollow disc was meant to hold the pinch valves in a ring around the central manifold. It
+              didn't stay a disc for long: it became a square to pack the valves, then grew to hold the
+              cuvette and pump, then got a whole new manifold once the rotary pinch valve replaced the
+              individual ones. The design changed completely, over and over, in these early months.</p>
+            <div class="media"><img src="assets/updates/2025-03-hollow-block.png" alt="Early disc/hollow body" class="showcase" style="max-width:380px" /></div>
           </div>
           <div class="entry">
             <span class="entry-date">March 29, 2025</span>
@@ -475,63 +527,62 @@
           <span class="month-badge">Prologue</span>
           <span class="tag tag-fluidics">Fluidics</span>
           <span class="tag tag-optics">Optics</span>
-          <span class="tag tag-firmware">Firmware</span>
         </div>
-        <h2 class="text-2xl font-bold mb-2">Does This Even Work? A Plank, Eight Servos, and Some Reef Reagents</h2>
+        <h2 class="text-2xl font-bold mb-2">Where It Started: A Plank and a Pile of Pinch Valves</h2>
         <p class="text-gray-400 text-sm leading-relaxed mb-6">
-          Before a single polished render, Wavie was a plywood board on a desk. The whole premise had to
-          be proven first: could you meter reef reagents, mix a sample in a small cell, and read the
-          result — automatically, with cheap parts? So we built exactly that. <strong>Eight hobby servos,
-          each pinching a silicone tube</strong>, fed a passive 3D-printed spider manifold. An Arduino
-          drove it, a little printed box held the optics, and real ABC Alkalinity and Ca/Mg reagents went
-          in the loop. It was ugly and it worked — and it made the whole project real.
+          Before a single polished render, Wavie was a plywood board on a desk. The whole premise had to be
+          proven first: could you meter reef reagents, mix a sample in a small cell, and read the result —
+          automatically, with cheap parts? So we built exactly that. <strong>Eight hobby servos, each
+          squeezing a silicone tube — pinch valves, all of them</strong> — fed a passive 3D-printed spider
+          manifold. An Arduino drove it, and real ABC Alkalinity and Ca/Mg reagents went in the loop. It
+          was ugly and it worked, and it made the whole project real.
         </p>
-        <img src="assets/updates/poc-bench.jpg" alt="The plywood proof-of-concept: eight servo pinch valves and a spider manifold" class="photo" />
-        <p class="cap">The proof-of-concept rig: eight servo-actuated pinch valves (top and bottom rows) feeding a central spider manifold, with the branded pump and a printed optics box up top.</p>
+        <img src="assets/updates/poc-bench.jpg" alt="Plywood proof-of-concept with eight servo pinch valves" class="photo" />
+        <p class="cap">The proof-of-concept rig: eight servo-driven pinch valves feeding a central spider manifold, with the branded pump up top.</p>
 
         <div class="grid sm:grid-cols-2 gap-4 mt-6">
           <div>
             <img src="assets/updates/poc-testing.jpg" alt="Bench rig running real reef reagents" class="photo" />
-            <p class="cap">Running a real test — ABC Alkalinity and Ca/Mg reagents, cups of developed blue sample, a Pi and Arduino driving it all.</p>
+            <p class="cap">Running a real test — ABC Alkalinity and Ca/Mg reagents, cups of developed blue sample.</p>
           </div>
           <div>
-            <img src="assets/updates/poc-optics.jpg" alt="Early printed optical housing in hand" class="photo" />
-            <p class="cap">The first optical housing — a printed box for the LED, cell, and detector — held together and dropping into the loop.</p>
+            <img src="assets/updates/poc-pinchvalve.jpg" alt="The very first pinch valve prototype" class="photo" />
+            <p class="cap">The very first pinch valve. This exact form was scrapped, but the pinch-valve principle — a motor squeezing a tube — carried all the way to the final rotary valve.</p>
           </div>
         </div>
         <p class="text-gray-400 text-sm leading-relaxed mt-6">
-          Everything below is the story of taking this pile of parts and making it small, tight, and
-          reliable — starting with a hard truth from this rig: <strong>eight servos and eight valves is a
-          lot of things that can fail.</strong> Consolidating that mess became the central mechanical
-          problem of the next year.
+          Everything above is the story of taking this pile of parts and making it small, tight, and
+          reliable — starting with a hard truth from this rig: <strong>eight servos and eight pinch valves
+          is a lot of things that can fail.</strong> Consolidating that mess into a single rotary valve
+          became the central mechanical problem of the next year.
         </p>
       </div>
 
-      </div>
+    </div>
 
     <!-- Sidebar -->
     <div class="space-y-6 lg:sticky lg:top-24">
       <div class="subscribe-box p-7 fade">
-        <span class="label mb-3">Limited Spots</span>
-        <h3 class="text-xl font-bold mt-2 mb-3">Join the Beta</h3>
+        <span class="label mb-3">Beta Waitlist</span>
+        <h3 class="text-xl font-bold mt-2 mb-3">Be First in Line</h3>
         <p class="text-gray-400 text-sm leading-relaxed mb-5">
-          Follow this build as a beta member. Your $500 deposit locks in your unit and your place in the
-          community that shapes it.
+          We're almost ready to show the first full prototype. A $500 deposit holds your place at the front
+          of the line for the first beta units — credited in full toward your Wavie.
         </p>
-        <a href="contact.html" class="btn-primary text-sm w-full text-center block py-3">Reserve Your Spot — $500</a>
-        <p class="text-gray-700 text-xs mt-3 text-center">Secure checkout via Stripe</p>
+        <a href="index.html#beta" class="btn-primary text-sm w-full text-center block py-3">Join the Waitlist — $500</a>
+        <p class="text-gray-700 text-xs mt-3 text-center">Secure checkout via Stripe · Credited to your unit</p>
       </div>
 
       <div class="sidebar-card p-6 fade" style="transition-delay:.08s">
         <h4 class="font-semibold text-sm mb-4">The Journey</h4>
         <ul class="space-y-3 text-sm">
-          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Start</span><span class="text-gray-400">Plywood proof-of-concept</span></li>
-          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Apr '25</span><span class="text-gray-400">Reagent carousel</span></li>
-          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Aug '25</span><span class="text-gray-400">Rotary valve &amp; enclosure</span></li>
-          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Nov '25</span><span class="text-gray-400">Mainboard designed</span></li>
+          <li class="flex gap-3"><span style="color:var(--teal)" class="text-xs w-16 flex-none pt-0.5 font-semibold">Now</span><span class="text-white">CAD freeze &amp; beta waitlist</span></li>
+          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Mar '26</span><span class="text-gray-400">Boards power on</span></li>
           <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Jan '26</span><span class="text-gray-400">App &amp; full assembly</span></li>
-          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Apr '26</span><span class="text-gray-400">Real hardware on the bench</span></li>
-          <li class="flex gap-3"><span style="color:var(--teal)" class="text-xs w-16 flex-none pt-0.5 font-semibold">Now</span><span class="text-white">CAD freeze &amp; beta</span></li>
+          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Nov '25</span><span class="text-gray-400">Mainboard designed</span></li>
+          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Oct '25</span><span class="text-gray-400">Rotary valve, real</span></li>
+          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Aug '25</span><span class="text-gray-400">Rotary valve &amp; trade show</span></li>
+          <li class="flex gap-3"><span class="text-gray-600 text-xs w-16 flex-none pt-0.5">Start</span><span class="text-gray-400">Plywood pinch-valve rig</span></li>
         </ul>
       </div>
 
@@ -568,7 +619,7 @@
         <ul class="space-y-3 text-sm">
           <li><a href="index.html#measures" class="text-gray-400 hover:text-white transition">What It Tests</a></li>
           <li><a href="updates.html"    class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
-          <li><a href="index.html#beta" class="text-gray-400 hover:text-white transition">Beta Program</a></li>
+          <li><a href="index.html#beta" class="text-gray-400 hover:text-white transition">Beta Waitlist</a></li>
           <li><a href="contact.html"    class="text-gray-400 hover:text-white transition">Contact</a></li>
         </ul>
       </div>
