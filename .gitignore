@@ -1,6 +1,1 @@
-# Internal / operational — never publish on the public site repo
-STRIPE-SETUP.md
-BUILD-TIMELINE.md
-scripts/
-worker/
-waitlist-codes.csv
+.DS_Store
