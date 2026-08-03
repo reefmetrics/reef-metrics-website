@@ -67,9 +67,9 @@
         <a href="/#measures" class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="/updates" style="color:var(--teal)">Dev Updates</a>
         <a href="/contact" class="text-gray-400 hover:text-white transition">Contact</a>
-        <a href="/#beta" class="btn-primary text-sm py-2 px-5">Join Waitlist</a>
+        <a href="/#beta" class="btn-primary text-sm py-2 px-5" data-waitlist>Join Waitlist</a>
       </div>
-      <a href="/#beta" class="md:hidden btn-primary text-sm py-2 px-4">Waitlist</a>
+      <a href="/#beta" class="md:hidden btn-primary text-sm py-2 px-4" data-waitlist>Waitlist</a>
     </div>
   </nav>
 
@@ -115,7 +115,7 @@
           <img src="assets/wavie-internals.png" alt="Internal cutaway" class="showcase" />
           <img src="assets/wavie-scale.png" alt="Size next to a banana" class="showcase" />
         </div>
-        <div class="mt-7"><a href="/#beta" class="btn-primary text-sm">Join the Waitlist — $500</a></div>
+        <div class="mt-7"><a href="/#beta" class="btn-primary text-sm" data-waitlist>Join the Waitlist — $500</a></div>
       </div>
 
       <!-- CHAPTERS -->
@@ -268,7 +268,7 @@
           We're almost ready to show the first full prototype. A $500 deposit holds your place at the front
           of the line for the first beta units — credited in full toward your Wavie.
         </p>
-        <a href="/#beta" class="btn-primary text-sm w-full text-center block py-3">Join the Waitlist — $500</a>
+        <a href="/#beta" class="btn-primary text-sm w-full text-center block py-3" data-waitlist>Join the Waitlist — $500</a>
         <p class="text-gray-700 text-xs mt-3 text-center">Secure checkout via Stripe · Credited to your unit</p>
       </div>
 
@@ -332,5 +332,6 @@
     );
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   </script>
+  <script src="/assets/waitlist.js"></script>
 </body>
 </html>

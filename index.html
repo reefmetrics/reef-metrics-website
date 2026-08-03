@@ -147,9 +147,9 @@
         <a href="#measures"    class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="/updates" class="text-gray-400 hover:text-white transition">Dev Updates</a>
         <a href="/contact" class="text-gray-400 hover:text-white transition">Contact</a>
-        <a href="#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem">Join Waitlist</a>
+        <a href="#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem" data-waitlist>Join Waitlist</a>
       </div>
-      <a href="#beta" class="md:hidden btn-primary text-sm" style="padding:0.55rem 1.2rem">Waitlist</a>
+      <a href="#beta" class="md:hidden btn-primary text-sm" style="padding:0.55rem 1.2rem" data-waitlist>Waitlist</a>
     </div>
   </nav>
 
@@ -172,7 +172,7 @@
           hands-free.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="#beta" class="btn-primary">Join the Waitlist — $500</a>
+          <a href="#beta" class="btn-primary" data-waitlist>Join the Waitlist — $500</a>
           <a href="#measures" class="btn-outline">See What It Tests</a>
         </div>
       </div>
@@ -281,7 +281,7 @@
             The automated reef water tester. Six reagents, five live probes, and fully
             automated scheduling in an ultra-compact form factor. Fits where no other system can.
           </p>
-          <a href="#beta" class="btn-primary text-center text-sm" style="padding:0.7rem 1.5rem">Join the Waitlist</a>
+          <a href="#beta" class="btn-primary text-center text-sm" style="padding:0.7rem 1.5rem" data-waitlist>Join the Waitlist</a>
         </div>
 
         <!-- Wavie Power -->
@@ -514,7 +514,7 @@
         The reef community has waited long enough for a testing system that actually fits
         the hobby. Wavie is it — and beta testers are the ones who shape it.
       </p>
-      <a href="#beta" class="btn-primary text-base" style="padding:1rem 3rem">Join the Waitlist — $500</a>
+      <a href="#beta" class="btn-primary text-base" style="padding:1rem 3rem" data-waitlist>Join the Waitlist — $500</a>
     </div>
   </section>
 
@@ -557,18 +557,6 @@
     );
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   </script>
-  <!-- ══ Waitlist deposit checkout ══
-       ⚠ Currently the TEST payment link (sandbox — test cards only, NO real money).
-       Replace with your LIVE Stripe payment link before launch. -->
-  <script>
-    const STRIPE_WAITLIST_LINK = "https://buy.stripe.com/test_5kQ14p6IO33weGn6kUbjW00"; // ⚠ TEST — swap to LIVE before launch
-    if (STRIPE_WAITLIST_LINK) {
-      document.querySelectorAll('[data-waitlist]').forEach(a => {
-        a.setAttribute('href', STRIPE_WAITLIST_LINK);
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener');
-      });
-    }
-  </script>
+  <script src="/assets/waitlist.js"></script>
 </body>
 </html>

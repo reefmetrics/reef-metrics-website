@@ -67,9 +67,9 @@
         <a href="/#measures" class="text-gray-400 hover:text-white transition">What It Tests</a>
         <a href="/updates"        class="text-gray-400 hover:text-white transition">Dev Updates</a>
         <a href="/contact" style="color:var(--teal)">Contact</a>
-        <a href="/#beta" class="btn-primary text-sm py-2 px-5">Join Waitlist</a>
+        <a href="/#beta" class="btn-primary text-sm py-2 px-5" data-waitlist>Join Waitlist</a>
       </div>
-      <a href="/#beta" class="md:hidden btn-primary text-sm py-2 px-4">Join Beta</a>
+      <a href="/#beta" class="md:hidden btn-primary text-sm py-2 px-4" data-waitlist>Join Beta</a>
     </div>
   </nav>
 
@@ -94,7 +94,7 @@
 
       <!-- ▸ Replace href with your Stripe payment link -->
       <a href="mailto:reefmetrics@gmail.com?subject=Wavie%20Beta%20Waitlist&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Wavie%20beta%20waitlist%20with%20the%20%24500%20deposit."
-         class="btn-primary px-8 py-4 text-base">Join the Beta Waitlist — $500</a>
+         class="btn-primary px-8 py-4 text-base" data-waitlist>Join the Beta Waitlist — $500</a>
       <p class="text-gray-600 text-sm mt-4">The $500 holds your place at the front of the line and is credited toward your unit — we'll follow up with Stripe checkout details.</p>
     </div>
   </main>
@@ -109,5 +109,6 @@
     </div>
   </footer>
 
+  <script src="/assets/waitlist.js"></script>
 </body>
 </html>
