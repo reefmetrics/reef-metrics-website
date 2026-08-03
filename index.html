@@ -557,11 +557,11 @@
     );
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   </script>
-  <!-- ══ Stripe waitlist deposit ══
-       Paste your Stripe Payment Link below (Dashboard → Payment Links → the $500 deposit link).
-       See STRIPE-SETUP.md. While empty, the button falls back to the contact page. -->
+  <!-- ══ Waitlist deposit checkout ══
+       ⚠ Currently the TEST payment link (sandbox — test cards only, NO real money).
+       Replace with your LIVE Stripe payment link before launch. -->
   <script>
-    const STRIPE_WAITLIST_LINK = ""; // e.g. "https://buy.stripe.com/xxxxxxxx"
+    const STRIPE_WAITLIST_LINK = "https://buy.stripe.com/test_5kQ14p6IO33weGn6kUbjW00"; // ⚠ TEST — swap to LIVE before launch
     if (STRIPE_WAITLIST_LINK) {
       document.querySelectorAll('[data-waitlist]').forEach(a => {
         a.setAttribute('href', STRIPE_WAITLIST_LINK);
