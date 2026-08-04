@@ -196,6 +196,14 @@
       letter-spacing: 0.17em; text-transform: uppercase;
     }
     .part-card-title { display: block; font-size: 1.05rem; font-weight: 700; line-height: 1.3; margin-top: 0.25rem; }
+    .part-card-hint {
+      display: block; margin-top: 0.6rem; color: var(--teal);
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .part-card-hint::before { content: 'Explore \2192'; }
+    .part-card[aria-selected="true"] .part-card-hint { color: #94a3b8; }
+    .part-card[aria-selected="true"] .part-card-hint::before { content: 'Close \00D7'; }
 
     /* ── Selected component detail ── */
     .part-panel {
@@ -437,6 +445,7 @@
           <span class="part-card-body">
             <span class="part-kicker">Optics</span>
             <span class="part-card-title">The Optical Bench</span>
+            <span class="part-card-hint" aria-hidden="true"></span>
           </span>
         </button>
         <button class="part-card" type="button" role="tab" id="pc-fluidics" aria-controls="pp-fluidics" aria-selected="false" data-part="fluidics" tabindex="-1">
@@ -444,6 +453,7 @@
           <span class="part-card-body">
             <span class="part-kicker">Fluid Path</span>
             <span class="part-card-title">The Pump &amp; Valve</span>
+            <span class="part-card-hint" aria-hidden="true"></span>
           </span>
         </button>
         <button class="part-card" type="button" role="tab" id="pc-mainboard" aria-controls="pp-mainboard" aria-selected="false" data-part="mainboard" tabindex="-1">
@@ -451,6 +461,7 @@
           <span class="part-card-body">
             <span class="part-kicker">Electronics</span>
             <span class="part-card-title">The Mainboard</span>
+            <span class="part-card-hint" aria-hidden="true"></span>
           </span>
         </button>
         <button class="part-card" type="button" role="tab" id="pc-lighting" aria-controls="pp-lighting" aria-selected="false" data-part="lighting" tabindex="-1">
@@ -458,6 +469,7 @@
           <span class="part-card-body">
             <span class="part-kicker">Lighting</span>
             <span class="part-card-title">The RGB Ring</span>
+            <span class="part-card-hint" aria-hidden="true"></span>
           </span>
         </button>
         <button class="part-card" type="button" role="tab" id="pc-chassis" aria-controls="pp-chassis" aria-selected="false" data-part="chassis" tabindex="-1">
@@ -465,6 +477,7 @@
           <span class="part-card-body">
             <span class="part-kicker">Enclosure</span>
             <span class="part-card-title">The Chassis</span>
+            <span class="part-card-hint" aria-hidden="true"></span>
           </span>
         </button>
       </div>
