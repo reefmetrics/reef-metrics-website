@@ -254,8 +254,9 @@
           </div>
           <h3 class="text-2xl font-bold mb-2">Reagent-Based Tests</h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-6">
-            Six reagents feed an internal optical cell. Wavie meters sample and reagent,
-            mixes, and reads absorbance across three wavelengths — no test kits, no color-matching by eye.
+            Six reagents feed an internal optical cell. Wavie meters sample and reagent, mixes, and reads
+            the result across three wavelengths — calcium, alkalinity, and magnesium by automated titration,
+            nitrate and phosphate by colour development. No test kits, no color-matching by eye.
           </p>
           <div class="grid grid-cols-1 gap-3">
             <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Alkalinity</span><span class="text-gray-500 text-sm ml-auto">6–12 dKH</span></div>
@@ -279,10 +280,14 @@
           <div class="grid grid-cols-1 gap-3">
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">pH</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">ORP</span><span class="text-gray-500 text-sm ml-auto">Redox potential</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span><span class="text-gray-500 text-sm ml-auto">Galvanic</span></div>
+            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span><span class="text-sm ml-auto font-semibold" style="color:var(--orange)">Sold separately</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Salinity</span><span class="text-gray-500 text-sm ml-auto">Conductivity</span></div>
             <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Temperature</span></div>
           </div>
+          <p class="text-gray-500 text-xs mt-5 leading-relaxed">
+            Every Wavie ships with pH, ORP, conductivity (salinity), and temperature probes.
+            The dissolved oxygen probe is available separately — the channel for it is built in and ready.
+          </p>
         </div>
 
       </div>
@@ -310,6 +315,13 @@
             The automated reef water tester. Six reagents, five live probes, and fully
             automated scheduling in an ultra-compact form factor. Fits where no other system can.
           </p>
+          <div class="mb-5 pt-5" style="border-top:1px solid rgba(255,255,255,0.08)">
+            <div class="text-xs text-gray-500 mb-1">Expected at launch</div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-2xl font-bold" style="color:var(--teal)">$1,200–$1,500</span>
+              <span class="text-gray-600 text-xs">not final</span>
+            </div>
+          </div>
           <a href="#beta" class="btn-primary text-center text-sm" style="padding:0.7rem 1.5rem" data-waitlist>Join the Waitlist</a>
         </div>
 
@@ -325,6 +337,9 @@
             Intelligent power management and equipment control for your entire reef system.
             Automate pumps, lights, and accessories alongside your water chemistry.
           </p>
+          <p class="text-gray-600 text-xs mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.06)">
+            Wavie already carries the hardware to connect every future expansion module — over CAN bus, the same proven network trusted throughout the automotive world.
+          </p>
         </div>
 
         <!-- Wavie Dose -->
@@ -339,10 +354,13 @@
             Precision auto-dosing triggered by your real test results. Wavie tests,
             Wavie Dose corrects. Close the loop — no manual intervention needed.
           </p>
+          <p class="text-gray-600 text-xs mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.06)">
+            Wavie already carries the hardware to connect every future expansion module — over CAN bus, the same proven network trusted throughout the automotive world.
+          </p>
         </div>
 
       </div>
-      <p class="text-center text-gray-600 text-xs mt-8 fade">Power and Dose connect over Wavie's onboard expansion bus — one ecosystem, one app.</p>
+      <p class="text-center text-gray-600 text-xs mt-8 fade max-w-2xl mx-auto leading-relaxed">Wavie already ships with the onboard hardware for Power and Dose — bringing them online is a software update, not a new purchase of hardware. Both are still in early development and pricing isn't set yet.</p>
     </div>
   </section>
 
@@ -359,8 +377,9 @@
           <div class="teal-bar"></div>
           <h3 class="text-3xl font-bold mb-5">A Spectrophotometer, Not a Guess.</h3>
           <p class="text-gray-400 text-base leading-relaxed">
-            At Wavie's core is a multi-wavelength optical bench. Calibrated LEDs illuminate the
-            sample cell and a precision light sensor reads absorbance directly — the same
+            At Wavie's core is a multi-wavelength optical bench. Three narrow-band LEDs — 540 nm green,
+            615 nm orange, and 880 nm near-infrared — shine through the sample cell one at a time while a
+            high-dynamic-range light sensor reads exactly how much makes it through. It's the same
             colorimetric method a lab uses, automated down to a footprint that fits your cabinet.
             No color cards, no eyeballing, no drift between one test and the next.
           </p>
@@ -401,6 +420,39 @@
         </div>
       </div>
 
+      <!-- Row 4 — connectivity -->
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade order-2 md:order-1" style="transition-delay:.12s">
+          <div class="teal-bar"></div>
+          <h3 class="text-3xl font-bold mb-5">Everything Plugs Into the Back.</h3>
+          <p class="text-gray-400 text-base leading-relaxed">
+            One rear panel carries it all — 24V power, the CAN expansion bus, and isolated inputs for every
+            probe: temperature, pH, ORP, salinity, and dissolved oxygen. Each connector is labeled and keyed,
+            so wiring Wavie in is plug-and-go. That CAN bus is exactly how Wavie Power and Dose join the system
+            later — no new run back to your controller.
+          </p>
+        </div>
+        <div class="fade order-1 md:order-2">
+          <img src="assets/wavie-connectivity.png" alt="Wavie rear panel — labeled 24V, CAN, temperature, pH, ORP, salinity, and dissolved oxygen connectors" class="showcase" />
+        </div>
+      </div>
+
+      <!-- Row 5 — RGB ring -->
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade">
+          <img src="assets/wavie-rgb-ring.png" alt="Wavie base with an addressable RGB LED ring backlighting the ReefMetrics logo" class="showcase" />
+        </div>
+        <div class="fade" style="transition-delay:.12s">
+          <div class="teal-bar"></div>
+          <h3 class="text-3xl font-bold mb-5">Make It Yours.</h3>
+          <p class="text-gray-400 text-base leading-relaxed">
+            A ring of addressable RGB LEDs wraps the base and backlights the ReefMetrics logo. Pick any color,
+            set the brightness, and match your tank's mood — and let it react to what Wavie is doing. It's the
+            finishing touch on a system built to showcase.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -410,7 +462,7 @@
       <div class="text-center mb-14 fade">
         <span class="label mb-3">Under the Hood</span>
         <h2 class="text-4xl font-bold mt-3">Engineered in Three Tiers</h2>
-        <p class="text-gray-500 mt-4 max-w-lg mx-auto">Optics up top, fluidics in the middle, electronics at the base — every subsystem purpose-built and packed tight.</p>
+        <p class="text-gray-500 mt-4 max-w-lg mx-auto">Optics and pump up top, fluidic selection in the middle, electronics at the base — every subsystem purpose-built and packed tight.</p>
       </div>
 
       <!-- Big internal cutaway -->
@@ -423,7 +475,7 @@
         <div class="card p-6 text-center fade">
           <img src="assets/mainboard.png" alt="Wavie main controller board" class="showcase mb-4" />
           <h4 class="font-semibold text-lg mb-1">Custom Mainboard</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">An ESP32-S3 controller with isolated probe front-ends, dual motor drivers, and Wi-Fi — designed and laid out in-house.</p>
+          <p class="text-gray-500 text-sm leading-relaxed">An ESP32-S3 controller — Wi-Fi and Bluetooth, 16 MB storage and 8 MB RAM — with three galvanically isolated probe front-ends, dual stepper drivers, and an onboard CAN transceiver, all designed and laid out in-house.</p>
         </div>
         <div class="card p-6 text-center fade" style="transition-delay:.08s">
           <img src="assets/valve-zoom.png" alt="Wavie custom pump and rotary valve" class="showcase mb-4" />
@@ -436,6 +488,120 @@
           <p class="text-gray-500 text-sm leading-relaxed">An addressable LED ring shows exactly what Wavie is doing — priming, testing, or reporting — from across the room.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════ REAGENTS ══════════ -->
+  <section id="reagents" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade">
+        <span class="label mb-3">The Chemistry, Handled</span>
+        <h2 class="text-4xl font-bold mt-3">Reagents, Formulated In-House</h2>
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+          We're developing Wavie's reagent chemistry ourselves — tuned to the optical bench it runs on,
+          not repackaged from someone else's kit. The goal: precise, repeatable results with refills that last.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card p-8 text-center fade">
+          <div class="stat-num">6</div>
+          <div class="text-gray-300 text-sm mt-2 font-semibold">Reagent Bottles</div>
+          <p class="text-gray-500 text-sm leading-relaxed mt-4">
+            Six lines cover five parameters — alkalinity, calcium, magnesium, nitrate, and phosphate — with calcium and magnesium sharing a single hardness measurement.
+          </p>
+        </div>
+        <div class="card p-8 text-center fade" style="transition-delay:.08s">
+          <div class="stat-num">125<span style="font-size:1.3rem"> ml</span></div>
+          <div class="text-gray-300 text-sm mt-2 font-semibold">Per Bottle</div>
+          <p class="text-gray-500 text-sm leading-relaxed mt-4">
+            Each of the six bottles holds 125 ml. The bottle and bay design isn't finalized yet — we're still dialing in the fit.
+          </p>
+        </div>
+        <div class="card p-8 text-center fade" style="transition-delay:.16s">
+          <div class="stat-num">~1<span style="font-size:1.3rem"> mo</span></div>
+          <div class="text-gray-300 text-sm mt-2 font-semibold">Refill Cadence — Goal</div>
+          <p class="text-gray-500 text-sm leading-relaxed mt-4">
+            We're targeting up to a month between refills — the exact interval depends on how often you schedule test panels. All six bottles are sized to run down together, so restock is one clean swap.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-center text-gray-600 text-xs mt-8 fade max-w-2xl mx-auto leading-relaxed">
+        Reagent formulation and bottle design are still in active development — these details may change before launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ APP ══════════ -->
+  <section id="app" style="background:rgba(255,255,255,0.018)" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div class="fade">
+        <img src="assets/updates/2026-01-app-dashboard.png" alt="Wavie companion app dashboard" class="feature-img" />
+      </div>
+      <div class="fade" style="transition-delay:.12s">
+        <div class="teal-bar"></div>
+        <h3 class="text-3xl font-bold mb-5">Your Reef, in One App.</h3>
+        <p class="text-gray-400 text-base leading-relaxed mb-6">
+          Every reading Wavie takes lands in the companion app — trends, schedules, and alerts for all ten
+          parameters, on your phone. Schedule your test panels, watch the history build, and get notified the
+          moment something drifts out of range.
+        </p>
+        <div class="param" style="border-color:rgba(58,183,191,0.3)">
+          <span class="dot" style="background:var(--teal)"></span>
+          <span class="font-medium">Over-the-Air Updates</span>
+          <span class="text-sm ml-auto font-semibold" style="color:var(--teal)">Supported</span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed mt-4">
+          Wavie keeps getting better after you buy it. New features and improvements arrive as
+          over-the-air (OTA) updates — no cables, no re-flashing, no sending it back.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ REPAIRABILITY ══════════ -->
+  <section id="repair" class="py-28 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade">
+        <span class="label mb-3">Built to Last, Built to Fix</span>
+        <h2 class="text-4xl font-bold mt-3">Repairable by Design</h2>
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+          Things break — we know that. Wavie's whole idea is to be opened, serviced, and kept running for
+          years, not thrown away. Whether you'd rather we handle it or do it yourself, you're covered.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div class="card p-8 fade">
+          <div class="text-2xl mb-4">&#128295;</div>
+          <h4 class="font-semibold text-lg mb-2">User-Repairable First</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            The reef community is full of DIYers, and we build for them. Wavie is designed to be serviced at your
+            own bench. A repair service will likely be offered too — but you'll never be forced to use it.
+          </p>
+        </div>
+        <div class="card p-8 fade" style="transition-delay:.08s">
+          <div class="text-2xl mb-4">&#128181;</div>
+          <h4 class="font-semibold text-lg mb-2">Parts at Cost — Our Pledge</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Our pledge: we sell replacement parts <strong style="color:var(--teal)">at cost</strong>. Keeping your
+            Wavie running shouldn't be a profit center — it should just be possible, for many years to come.
+          </p>
+        </div>
+        <div class="card p-8 fade" style="transition-delay:.16s">
+          <div class="text-2xl mb-4">&#128268;</div>
+          <h4 class="font-semibold text-lg mb-2">USB-C Recovery, Worst Case</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            The mainboard has onboard USB-C programmability for the absolute worst case. We plan to add a
+            web-USB flashing page so a complete firmware re-flash is possible right from your browser, should it
+            ever be needed.
+          </p>
+        </div>
+      </div>
+      <p class="text-center text-gray-600 text-xs fade max-w-2xl mx-auto leading-relaxed">
+        Long-term support is a core goal for ReefMetrics — we want the Wavie you buy to still be running, and serviceable, years from now.
+      </p>
     </div>
   </section>
 
@@ -565,7 +731,12 @@
 
         <details class="faq fade">
           <summary>Can I use my $500 credit on Wavie Power or Dose?</summary>
-          <div class="faq-body">Yes. Your code is valid toward <strong>any ReefMetrics product</strong> at launch — Wavie, Wavie Power, or Wavie Dose. It's a flat $500 credit, used one time.</div>
+          <div class="faq-body">Yes. Your code is valid toward <strong>any ReefMetrics product</strong> at launch — Wavie, Wavie Power, or Wavie Dose. It's a flat $500 credit, used one time. Pricing for Power and Dose isn't set yet, so your $500 may end up covering the full cost of one — potentially even both — but we won't know for certain until pricing is final.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>How much will Wavie cost at launch?</summary>
+          <div class="faq-body">We expect Wavie to land between <strong style="color:var(--teal)">$1,200 and $1,500</strong> at launch, but that isn't final yet. Your $500 deposit comes off the top as a credit toward whichever ReefMetrics product you choose. Pricing for Wavie Power and Wavie Dose isn't set yet — both are still in early development, and Wavie already includes the hardware to run them via a future software update.</div>
         </details>
 
         <details class="faq fade">
@@ -580,7 +751,7 @@
 
         <details class="faq fade">
           <summary>What does Wavie actually test?</summary>
-          <div class="faq-body">Ten parameters: alkalinity, calcium, magnesium, nitrate, and phosphate by reagent chemistry, plus pH, ORP, dissolved oxygen, salinity, and temperature from a five-probe suite — all automatically, on your schedule.</div>
+          <div class="faq-body">Ten parameters: alkalinity, calcium, magnesium, nitrate, and phosphate by reagent chemistry, plus pH, ORP, dissolved oxygen, salinity, and temperature from a five-probe suite — all automatically, on your schedule. Wavie ships with the pH, ORP, conductivity (salinity), and temperature probes; the dissolved oxygen probe is sold separately, and its channel is built in and ready.</div>
         </details>
 
         <details class="faq fade">
