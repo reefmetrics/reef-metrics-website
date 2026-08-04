@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    font-family:'Poppins','Segoe UI',system-ui,sans-serif;
+    background:
+      radial-gradient(ellipse 55% 60% at 82% 40%, rgba(58,183,191,0.22), transparent 68%),
+      radial-gradient(ellipse 50% 55% at 12% 92%, rgba(255,126,103,0.12), transparent 70%),
+      #0A1628;
+    color:#fff; display:flex; align-items:center;
+  }
+  .wrap { display:flex; width:100%; height:100%; align-items:center; padding:0 70px; }
+  .left { flex:1.25; padding-right:20px; }
+  .right { flex:1; display:flex; align-items:center; justify-content:center; height:100%; }
+  .logo { font-weight:800; font-size:30px; letter-spacing:-0.01em; margin-bottom:26px; }
+  .logo span { color:#3AB7BF; }
+  .kicker { color:#3AB7BF; font-size:15px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; margin-bottom:18px; }
+  h1 { font-size:62px; line-height:1.03; font-weight:800; letter-spacing:-0.01em; margin-bottom:22px; }
+  h1 .teal { color:#3AB7BF; }
+  p { color:#c7d0da; font-size:22px; line-height:1.5; font-weight:300; max-width:560px; margin-bottom:30px; }
+  .chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; max-width:560px; }
+  .chip { background:rgba(255,255,255,0.06); border:1px solid rgba(58,183,191,0.3); color:#cfe9eb;
+          font-size:15px; font-weight:500; padding:7px 14px; border-radius:999px; }
+  .foot { display:flex; align-items:center; gap:14px; }
+  .pill { background:#FF7E67; color:#fff; font-weight:700; font-size:18px; padding:11px 24px; border-radius:10px; }
+  .url { color:#8b97a5; font-size:19px; font-weight:500; }
+  .prod {
+    height:540px; width:auto; object-fit:contain;
+    -webkit-mask-image: radial-gradient(ellipse 74% 82% at 50% 50%, #000 60%, transparent 93%);
+            mask-image: radial-gradient(ellipse 74% 82% at 50% 50%, #000 60%, transparent 93%);
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div class="logo"><span>reef</span>metrics</div>
+      <div class="kicker">Reef Automation · Reimagined</div>
+      <h1>The Most Compact<br />Reef Tester <span class="teal">Ever Built.</span></h1>
+      <p>Ten water parameters, tested automatically — six reagents and a five-probe suite in a footprint no other system can match.</p>
+      <div class="chips">
+        <span class="chip">Alk · Ca · Mg · NO₃ · PO₄</span>
+        <span class="chip">pH · ORP · DO · Salinity · Temp</span>
+      </div>
+      <div class="foot">
+        <span class="pill">Beta Waitlist Open</span>
+        <span class="url">reef-metrics.com</span>
+      </div>
+    </div>
+    <div class="right">
+      <img class="prod" src="wavie-hero.png" alt="Wavie" />
+    </div>
+  </div>
+</body>
+</html>

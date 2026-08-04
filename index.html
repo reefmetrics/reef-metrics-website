@@ -12,12 +12,14 @@
   <meta property="og:title" content="Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built" />
   <meta property="og:description" content="Wavie automates your saltwater chemistry — six reagents and a five-probe suite tracking ten parameters, in a footprint no other tester can match." />
   <meta property="og:url" content="https://www.reef-metrics.com/" />
-  <meta property="og:image" content="https://www.reef-metrics.com/assets/wavie-hero.png" />
-  <meta property="og:image:alt" content="Wavie — the compact automated reef testing system" />
+  <meta property="og:image" content="https://www.reef-metrics.com/assets/social-card.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:image:alt" content="Wavie by ReefMetrics — the most compact automated reef tester" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built" />
   <meta name="twitter:description" content="Ten reef parameters, tested automatically, in a footprint no other system can match." />
-  <meta name="twitter:image" content="https://www.reef-metrics.com/assets/wavie-hero.png" />
+  <meta name="twitter:image" content="https://www.reef-metrics.com/assets/social-card.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -146,6 +148,16 @@
     /* ── Logo fallback ── */
     .logo-text { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.01em; color: #fff; text-decoration: none; }
     .logo-text span { color: var(--teal); }
+
+    /* ── FAQ accordion ── */
+    .faq { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 0 1.4rem; transition: border-color 0.2s; }
+    .faq[open] { border-color: rgba(58,183,191,0.35); }
+    .faq summary { list-style: none; cursor: pointer; padding: 1.15rem 0; font-weight: 600; font-size: 1.02rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--teal); font-size: 1.6rem; font-weight: 400; line-height: 1; transition: transform 0.2s; flex: none; }
+    .faq[open] summary::after { transform: rotate(45deg); }
+    .faq-body { color: #9ca3af; line-height: 1.7; font-size: 0.95rem; padding: 0 0 1.25rem; }
+    .faq-body a { color: var(--teal); }
   </style>
 </head>
 <body>
@@ -532,6 +544,57 @@
     </div>
   </section>
 
+  <!-- ══════════ FAQ ══════════ -->
+  <section id="faq" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14 fade">
+        <span class="label mb-3">Questions, Answered</span>
+        <h2 class="text-4xl font-bold mt-3">Beta Waitlist FAQ</h2>
+      </div>
+
+      <div class="space-y-4">
+        <details class="faq fade">
+          <summary>What does the $500 deposit get me?</summary>
+          <div class="faq-body">It reserves your place at the front of the line for the controlled beta launch and directly funds the final push to production. You're credited the full $500 back as a one-time code — and because waitlist members ship first, you get the earliest units before anyone else.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>Is the deposit refundable?</summary>
+          <div class="faq-body">The deposit is non-refundable — it funds development and holds your spot. But it isn't lost: the entire $500 comes back to you as a credit toward your purchase. Your hardware is separately protected by a 30-day warranty with free return shipping. Full details in our <a href="/warranty">Refund &amp; Warranty Policy</a>.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>Can I use my $500 credit on Wavie Power or Dose?</summary>
+          <div class="faq-body">Yes. Your code is valid toward <strong>any ReefMetrics product</strong> at launch — Wavie, Wavie Power, or Wavie Dose. It's a flat $500 credit, used one time.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>When will Wavie ship?</summary>
+          <div class="faq-body">Wavie is in final development, so we're not committing to an exact date — that's the honest answer. Waitlist members are first to order and first to ship, and we'll email you the moment ordering opens. You can follow the build on our <a href="/updates">Dev Updates</a>.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>Can I share my code? What if I lose it?</summary>
+          <div class="faq-body">Keep it to yourself — your code works exactly once, so anyone who has it could spend your $500 before you do. It's emailed to you and tied to your order, so if you can't find it, just email <a href="/contact">support</a> and we'll help.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>What does Wavie actually test?</summary>
+          <div class="faq-body">Ten parameters: alkalinity, calcium, magnesium, nitrate, and phosphate by reagent chemistry, plus pH, ORP, dissolved oxygen, salinity, and temperature from a five-probe suite — all automatically, on your schedule.</div>
+        </details>
+
+        <details class="faq fade">
+          <summary>Who's behind ReefMetrics?</summary>
+          <div class="faq-body">A small team of reef hobbyists building the tools we wanted ourselves. We've been developing Wavie in public for over a year — read the whole build log on our <a href="/updates">Dev Updates</a> page.</div>
+        </details>
+      </div>
+
+      <p class="text-center text-gray-500 mt-10 fade">
+        Still have a question? <a href="/contact" style="color:var(--teal)">Get in touch</a> — we read every email.
+      </p>
+    </div>
+  </section>
+
   <!-- ══════════ FINAL CTA ══════════ -->
   <section class="relative py-36 px-6 overflow-hidden"
            style="background:
@@ -579,6 +642,7 @@
           <li><a href="#measures"       class="text-gray-400 hover:text-white transition">What It Tests</a></li>
           <li><a href="/updates"    class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
           <li><a href="#beta"           class="text-gray-400 hover:text-white transition">Beta Waitlist</a></li>
+          <li><a href="#faq"            class="text-gray-400 hover:text-white transition">FAQ</a></li>
           <li><a href="/contact"    class="text-gray-400 hover:text-white transition">Contact</a></li>
         </ul>
       </div>
