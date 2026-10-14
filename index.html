@@ -3,1099 +3,385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built</title>
-  <meta name="description" content="Wavie is an ultra-compact automated reef testing system: 6 reagents for colorimetric chemistry plus a 5-probe suite — alkalinity, calcium, magnesium, nitrate, phosphate, pH, ORP, dissolved oxygen, salinity, and temperature, tested automatically." />
+  <title>Wavie by ReefMetrics: automated reef water testing</title>
+  <meta name="description" content="Wavie is a compact, open hardware reef aquarium tester that measures ten water parameters automatically. Pre-order the Wavie Beta Kit for $1,999.99. Estimated to ship Q1–Q2 2027." />
+  <meta name="theme-color" content="#000000" />
 
-  <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ReefMetrics" />
-  <meta property="og:title" content="Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built" />
-  <meta property="og:description" content="Wavie automates your saltwater chemistry — six reagents and a five-probe suite tracking ten parameters, in a footprint no other tester can match." />
+  <meta property="og:title" content="Wavie by ReefMetrics" />
+  <meta property="og:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
   <meta property="og:url" content="https://www.reef-metrics.com/" />
   <meta property="og:image" content="https://www.reef-metrics.com/assets/social-card.png" />
   <meta property="og:image:width" content="2400" />
   <meta property="og:image:height" content="1260" />
-  <meta property="og:image:alt" content="Wavie by ReefMetrics — the most compact automated reef tester" />
+  <meta property="og:image:alt" content="The Wavie reef tester, a black tower with a glowing teal base" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wavie by ReefMetrics — The Most Compact Reef Testing System Ever Built" />
-  <meta name="twitter:description" content="Ten reef parameters, tested automatically, in a footprint no other system can match." />
+  <meta name="twitter:title" content="Wavie by ReefMetrics" />
+  <meta name="twitter:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
   <meta name="twitter:image" content="https://www.reef-metrics.com/assets/social-card.png" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="canonical" href="https://www.reef-metrics.com/" />
   <link rel="icon" href="/assets/favicon-32.png?v=5" sizes="32x32" type="image/png" />
   <link rel="icon" href="/assets/favicon-192.png?v=5" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=5" />
-  <style>
-    :root {
-      --bg:      #0A1628;
-      --teal:    #3AB7BF;
-      --orange:  #FF7E67;
-      --orange2: #FF8F3E;
-      --nav-h:   57px;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #fff; margin: 0; }
-
-    .btn-primary {
-      background: var(--orange); color: #fff;
-      padding: 0.85rem 2.2rem; border-radius: 0.5rem; font-weight: 600;
-      display: inline-block; transition: background 0.2s, transform 0.15s; text-decoration: none;
-    }
-    .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); }
-
-    .btn-outline {
-      border: 2px solid var(--teal); color: var(--teal);
-      padding: 0.85rem 2.2rem; border-radius: 0.5rem; font-weight: 600;
-      display: inline-block; transition: all 0.2s; text-decoration: none;
-    }
-    .btn-outline:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
-
-    /* ── Nav ── */
-    .sticky-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(10,22,40,0.93); backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .label {
-      color: var(--teal); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase; display: block;
-    }
-
-    .teal-bar { width: 2.5rem; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 1rem; }
-
-    /* ── Stat numbers ── */
-    .stat-num {
-      font-size: 2.6rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--teal), #8eeef3);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    /* ── Cards ── */
-    .card {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem; transition: border-color 0.25s, transform 0.25s;
-    }
-    .card.featured { border-color: rgba(58,183,191,0.4); }
-
-    /* ── Product card image ── */
-    .product-img {
-      background-size: contain; background-repeat: no-repeat; background-position: center;
-      background-color: #0e1e30; border-radius: 0.75rem; height: 210px;
-    }
-
-    .badge-beta {
-      background: rgba(255,126,103,0.15); color: var(--orange);
-      border: 1px solid rgba(255,126,103,0.3); font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.8rem; border-radius: 999px; display: inline-block;
-    }
-    .badge-soon {
-      background: rgba(58,183,191,0.12); color: var(--teal);
-      border: 1px solid rgba(58,183,191,0.25); font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.8rem; border-radius: 999px; display: inline-block;
-    }
-
-    /* ── Beta box ── */
-    .beta-box {
-      background: linear-gradient(135deg, rgba(58,183,191,0.09) 0%, rgba(255,126,103,0.07) 100%);
-      border: 1px solid rgba(58,183,191,0.25); border-radius: 1.25rem;
-    }
-
-    /* ── Update card ── */
-    .update-card {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 0.875rem; transition: border-color 0.2s;
-    }
-
-    /* ── Placeholder render box ── */
-    .render-placeholder {
-      background: rgba(255,255,255,0.03); border: 1px dashed rgba(58,183,191,0.2);
-      border-radius: 0.75rem; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.5rem;
-      color: rgba(255,255,255,0.2); font-size: 0.8rem;
-    }
-
-    /* ── Showcase renders: edges melt into the page (frames are #1e1e1e / #000) ── */
-    .showcase {
-      width: 100%; height: auto; display: block;
-      -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, transparent 92%);
-              mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, transparent 92%);
-    }
-
-    /* ── Inline feature images sitting on a card ── */
-    .feature-img {
-      width: 100%; height: auto; display: block;
-      border-radius: 0.875rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    }
-
-    /* ── Horizontal scrollers ── */
-    .hscroll {
-      display: flex; gap: 1.5rem;
-      overflow-x: auto; overflow-y: hidden;
-      /* proximity, not mandatory — mandatory fights the swipe on some touch browsers */
-      scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain; touch-action: pan-x pan-y;
-      padding: 0.5rem 0 1.5rem;
-      scrollbar-width: thin; scrollbar-color: rgba(58,183,191,0.4) rgba(255,255,255,0.05);
-    }
-    /* min-width:0 — without it a long heading sets the floor and flex-basis is ignored */
-    .hscroll > * { scroll-snap-align: start; flex: 0 0 auto; min-width: 0; }
-    .hscroll::-webkit-scrollbar { height: 8px; }
-    .hscroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 999px; }
-    .hscroll::-webkit-scrollbar-thumb { background: rgba(58,183,191,0.3); border-radius: 999px; }
-    .hscroll::-webkit-scrollbar-thumb:hover { background: rgba(58,183,191,0.55); }
-    /* 70vw leaves the next card visibly peeking, so the row reads as scrollable on phones. */
-    .hcard-wide { flex-basis: clamp(240px, 70vw, 440px); }
-    .hcard-img  { width: 100%; height: 200px; object-fit: contain; }
-
-    /* ── Tab bar ── */
-    #explore { scroll-margin-top: var(--nav-h); }
-    .tabbar {
-      position: sticky; top: var(--nav-h); z-index: 90;
-      background: rgba(10,22,40,0.96); backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .tabstrip { display: flex; overflow-x: auto; scrollbar-width: none; }
-    .tabstrip::-webkit-scrollbar { display: none; }
-    .tabgroup { display: flex; }
-    .tab {
-      flex: none; background: none; border: 0; cursor: pointer;
-      font-family: inherit; font-size: 0.92rem; font-weight: 600; color: #94a3b8;
-      padding: 1.05rem 0; margin-right: 2rem; white-space: nowrap;
-      border-bottom: 2px solid transparent; text-decoration: none; display: inline-block;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .tabgroup > :last-child { margin-right: 0; }
-    .tab:hover { color: #fff; }
-    .tab[aria-selected="true"], .tab[aria-current="page"] { color: var(--teal); border-bottom-color: var(--teal); }
-    .tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 3px; }
-    .panel[hidden] { display: none; }
-
-    /* ── Component cards: image-led, horizontally scrolled ── */
-    .parts-scroll { padding-bottom: 1.1rem; }
-    .part-card {
-      flex-basis: clamp(240px, 72vw, 320px);
-      display: flex; flex-direction: column; text-align: left;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem; overflow: hidden; padding: 0; cursor: pointer;
-      font-family: inherit; color: inherit;
-      transition: border-color 0.25s, transform 0.25s, background 0.25s;
-    }
-    .part-card:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    .part-card[aria-selected="true"] { border-color: var(--teal); background: rgba(58,183,191,0.09); }
-    /* The render is the card — text is just a caption under it. */
-    .part-card-img { width: 100%; height: 240px; object-fit: contain; background: #0e1e30; display: block; }
-    .part-card-body { padding: 0.95rem 1.05rem 1.15rem; }
-    .part-kicker {
-      display: block; color: var(--teal); font-size: 0.61rem; font-weight: 700;
-      letter-spacing: 0.17em; text-transform: uppercase;
-    }
-    .part-card-title { display: block; font-size: 1.05rem; font-weight: 700; line-height: 1.3; margin-top: 0.25rem; }
-    .part-card-hint {
-      display: block; margin-top: 0.6rem; color: var(--teal);
-      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .part-card-hint::before { content: 'Explore \2192'; }
-    .part-card[aria-selected="true"] .part-card-hint { color: #94a3b8; }
-    .part-card[aria-selected="true"] .part-card-hint::before { content: 'Close \00D7'; }
-
-    /* ── Selected component detail ── */
-    .part-panel {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(58,183,191,0.3);
-      border-radius: 1rem; padding: 1.6rem;
-    }
-    .part-panel[hidden] { display: none; }
-    .part-panel h3 { font-size: 1.35rem; font-weight: 700; margin: 0.3rem 0 0.9rem; }
-    .part-panel > p { color: #9ca3af; font-size: 0.93rem; line-height: 1.8; margin: 0; }
-    .part-gallery {
-      display: grid; gap: 0.7rem; margin-top: 1.3rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
-    }
-    .part-gallery img {
-      width: 100%; aspect-ratio: 16 / 10; object-fit: contain; display: block;
-      border-radius: 0.6rem; background: #0e1e30; border: 1px solid rgba(255,255,255,0.07);
-    }
-    /* A lone render gets its natural proportions — a fixed box would letterbox it. */
-    .part-gallery:has(img:only-child) img { aspect-ratio: auto; background: transparent; border: 0; }
-    @media (max-width: 480px) {
-      .part-card-img { height: 200px; }
-      .part-panel { padding: 1.15rem; }
-    }
-
-    /* Hover feedback only where a pointer can actually hover. On touch the :hover
-       state sticks after a tap, which made static cards look clickable. */
-    @media (hover: hover) and (pointer: fine) {
-      .card:hover        { border-color: rgba(58,183,191,0.45); transform: translateY(-4px); }
-      .update-card:hover { border-color: rgba(58,183,191,0.4); }
-      .param:hover       { border-color: rgba(58,183,191,0.4); background: rgba(58,183,191,0.06); }
-      .part-card:hover   { border-color: rgba(58,183,191,0.4); transform: translateY(-3px); }
-    }
-    /* No grey tap flash on things that aren't buttons. */
-    .card, .param, .update-card { -webkit-tap-highlight-color: transparent; }
-
-    /* ── Parameter chips ── */
-    .param {
-      display: flex; align-items: center; gap: 0.75rem;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 0.6rem; padding: 0.7rem 0.9rem; transition: border-color 0.2s, background 0.2s;
-    }
-    .param .dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; flex: none; }
-
-    /* ── Fade in ── */
-    .fade { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade.in { opacity: 1; transform: none; }
-
-    /* ── Logo fallback ── */
-    .logo-text { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.01em; color: #fff; text-decoration: none; }
-    .logo-text span { color: var(--teal); }
-    .site-mark { height: 36px; width: auto; display: block; flex: none; }
-    /* Bigger lockup where there is room; phones keep it clear of the CTA. */
-    @media (min-width: 768px) {
-      .site-mark { height: 48px; }
-      .sticky-nav .logo-text { font-size: 1.7rem; }
-    }
-
-    /* ── FAQ accordion ── */
-    .faq { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 0 1.4rem; transition: border-color 0.2s; }
-    .faq[open] { border-color: rgba(58,183,191,0.35); }
-    .faq summary { list-style: none; cursor: pointer; padding: 1.15rem 0; font-weight: 600; font-size: 1.02rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: '+'; color: var(--teal); font-size: 1.6rem; font-weight: 400; line-height: 1; transition: transform 0.2s; flex: none; }
-    .faq[open] summary::after { transform: rotate(45deg); }
-    .faq-body { color: #9ca3af; line-height: 1.7; font-size: 0.95rem; padding: 0 0 1.25rem; }
-    .faq-body a { color: var(--teal); }
-
-    /* ── Phones: keep the hero short so the tab strip is reachable immediately ── */
-    @media (max-width: 767px) {
-      /* !important — the Tailwind CDN injects its utilities after this block */
-      .hero { padding-top: 0.85rem !important; padding-bottom: 1.5rem !important; }
-      .hero .label { margin-bottom: 0.85rem; }
-      .hero h1 { font-size: 2rem !important; line-height: 1.14; margin-bottom: 1rem; }
-      .hero .grid { gap: 1.25rem; }
-      .hero > div > div:first-child > p { margin-bottom: 1.25rem; }
-    }
-    /* ── Social links ── */
-    .social {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 2.2rem; height: 2.2rem; flex: none; border-radius: 0.6rem;
-      color: #94a3b8; background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .social svg { width: 1.15rem; height: 1.15rem; display: block; }
-    .social:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    @media (hover: hover) and (pointer: fine) {
-      .social:hover { color: #fff; background: rgba(58,183,191,0.14);
-                      border-color: rgba(58,183,191,0.5); transform: translateY(-2px); }
-    }
-    .btn-primary { white-space: nowrap; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="/assets/seq/desktop/0001.webp" media="(min-width: 861px)" />
+  <link rel="preload" as="image" href="/assets/seq/mobile/0001.webp" media="(max-width: 860px)" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    // Pinned scroll tour unless reduced motion is requested (see assets/js/unveil.js).
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");
+  </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ══════════ NAV ══════════ -->
-  <nav class="sticky-nav">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/logo-mark.png?v=2" alt="" class="site-mark" />
-        <span class="logo-text" style="display:inline"><span>reef</span>metrics</span>
-      </a>
-      <div class="flex items-center gap-7 text-sm font-medium">
-        <a href="#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem" data-waitlist>Join Waitlist</a>
-      </div>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
+      <ul class="nav-links">
+        <li><a href="#measures">What it measures</a></li>
+        <li><a href="#open">Open hardware</a></li>
+        <li><a href="#faq">Questions</a></li>
+        <li class="nav-cta"><a class="btn btn-primary btn-small" href="#beta-kit">Pre-order</a></li>
+      </ul>
     </div>
-  </nav>
+  </header>
 
-  <!-- ══════════ HERO — minimal ══════════ -->
-  <section class="hero relative overflow-hidden px-6 pt-16 pb-16 md:pt-20 md:pb-20"
-           style="background:
-             radial-gradient(ellipse 60% 55% at 78% 42%, rgba(58,183,191,0.16), transparent 70%),
-             radial-gradient(ellipse 50% 50% at 20% 90%, rgba(255,126,103,0.08), transparent 70%),
-             var(--bg);">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-      <div class="max-w-xl fade">
-        <span class="label mb-5">Reef Automation · Reimagined</span>
-        <h1 class="font-extrabold mb-6" style="font-size:clamp(2.5rem,5.5vw,4rem); line-height:1.07">
-          The Most Compact<br />Reef Testing<br />
-          <span style="color:var(--teal)">System Ever Built.</span>
-        </h1>
-        <p class="text-gray-300 text-lg mb-8 max-w-md leading-relaxed" style="font-weight:300">
-          Ten reef parameters, tested automatically — in a footprint no other system can match.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#beta" class="btn-primary" data-waitlist>Join the Waitlist — $500</a>
-          <a href="#explore" class="btn-outline">Explore Wavie</a>
-        </div>
-        <p class="text-gray-500 text-sm mt-5 max-w-md leading-relaxed">
-          Your $500 reserves your spot and becomes a $500 credit toward any ReefMetrics product at launch.
-        </p>
-      </div>
-      <div class="fade" style="transition-delay:.12s">
-        <img src="assets/wavie-hero.png?v=2" alt="Wavie automated reef tester" class="showcase" />
-      </div>
-    </div>
-  </section>
+  <main id="main">
 
-  <!-- ══════════ TABS + PANELS ══════════ -->
-  <div id="explore">
+    <!-- Hero and scroll tour share one pinned stage. Each .beat is a caption for
+         one beat of the rendered sequence (see assets/js/unveil.js). -->
+    <section class="unveil" id="unveil" aria-label="Wavie, opened up">
+      <div class="unveil-stage">
+        <picture>
+          <source media="(max-width: 860px)" srcset="/assets/seq/mobile/0001.webp" />
+          <img class="unveil-poster" src="/assets/seq/desktop/0001.webp" alt="Wavie: a black tower about the height of a banana, with a glowing teal ring at its base and a lit crescent logo" width="1920" height="1080" />
+        </picture>
+        <canvas class="unveil-canvas" aria-hidden="true"></canvas>
+        <div class="tour-labels" aria-hidden="true"></div>
 
-  <div class="tabbar">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="tabstrip">
-        <div class="tabgroup" role="tablist" aria-label="Explore Wavie">
-          <button class="tab" role="tab" id="tab-tests"   aria-controls="panel-tests"   aria-selected="true"  data-tab="tests">What It Tests</button>
-          <button class="tab" role="tab" id="tab-inside"  aria-controls="panel-inside"  aria-selected="false" data-tab="inside"  tabindex="-1">Inside Wavie</button>
-          <button class="tab" role="tab" id="tab-reagents" aria-controls="panel-reagents" aria-selected="false" data-tab="reagents" tabindex="-1">Reagents</button>
-          <button class="tab" role="tab" id="tab-app"     aria-controls="panel-app"     aria-selected="false" data-tab="app"     tabindex="-1">The App</button>
-          <button class="tab" role="tab" id="tab-repair"  aria-controls="panel-repair"  aria-selected="false" data-tab="repair"  tabindex="-1">Repairability</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════ PANEL — WHAT IT TESTS ══════════ -->
-  <section class="panel py-20 px-6" id="panel-tests" role="tabpanel" aria-labelledby="tab-tests" tabindex="0">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-20 fade">
-        <div>
-          <div class="stat-num">10</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Parameters Tracked</div>
-        </div>
-        <div>
-          <div class="stat-num">6</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Reagents</div>
-        </div>
-        <div>
-          <div class="stat-num">5</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Live Probes</div>
-        </div>
-        <div>
-          <div class="stat-num">24/7</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Automated Testing</div>
-        </div>
-      </div>
-
-      <div class="text-center mb-14 fade">
-        <span class="label mb-3">One Box, Ten Parameters</span>
-        <h2 class="text-4xl font-bold mt-3">Everything Your Reef Needs, Measured</h2>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">
-          Wavie pairs an onboard colorimetric spectrophotometer with a suite of live probes —
-          the wet chemistry that needs reagents, and the electrode readings that don't, in a single unit.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-
-        <!-- Colorimetric chemistry -->
-        <div class="card p-8 fade">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="badge-beta">Colorimetric Chemistry</span>
+        <article class="beat beat-hero is-on" data-beat="sealed">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h1>Ten reef parameters. <br />One sealed tower.</h1>
+              <p class="lede">Wavie tests your aquarium water on a schedule and reports to your phone.</p>
+              <div class="hero-price">
+                <a class="btn btn-primary" href="#beta-kit">Pre-order the Beta Kit</a>
+                <p class="fine">$1,999.99<br />Estimated to ship Q1–Q2 2027</p>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-bold mb-2">Reagent-Based Tests</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">
-            Six reagents feed an internal optical cell. Wavie meters sample and reagent, mixes, and reads
-            the result across three wavelengths — calcium, alkalinity, and magnesium by automated titration,
-            nitrate and phosphate by colour development. No test kits, no color-matching by eye.
-          </p>
-          <div class="grid grid-cols-1 gap-3">
-            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Alkalinity</span><span class="text-gray-500 text-sm ml-auto">6–12 dKH</span></div>
-            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Calcium</span><span class="text-gray-500 text-sm ml-auto">350–500 ppm</span></div>
-            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Magnesium</span><span class="text-gray-500 text-sm ml-auto">1150–1500 ppm</span></div>
-            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Nitrate</span><span class="text-gray-500 text-sm ml-auto">0–30 ppm</span></div>
-            <div class="param"><span class="dot" style="background:var(--teal)"></span><span class="font-medium">Phosphate</span><span class="text-gray-500 text-sm ml-auto">0–0.5 ppm</span></div>
+        </article>
+
+        <article class="beat" data-beat="lift">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Open it up.</h2>
+              <p class="lede">The sleeve comes straight off, and everything inside can be reached.</p>
+            </div>
           </div>
+          <img class="beat-still" src="/assets/img/tour-lift.webp" alt="Wavie with its sleeve lifting away" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="internals">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Three tiers.</h2>
+              <p class="lede">Optics and pump at the top. The valve in the middle. Electronics at the base.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-internals.webp" alt="Wavie with its sleeve removed, showing three tiers of components inside a black frame" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="explode">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Every part comes out.</h2>
+              <p class="lede">Pump, optics, valve and boards are separate modules, so one can be repaired or replaced without the rest.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-explode.webp" alt="Every part of Wavie separated in an exploded view" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="optics">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>The optical bench</h2>
+              <p class="lede">Three LEDs at 540, 615 and 880 nm shine through a clear cuvette onto a light sensor. How much light the sample absorbs becomes the reading.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-optics.webp" alt="The optics: an LED board, a clear cuvette with a beam of light passing through it, and a sensor board" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="pump">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>The pump</h2>
+              <p class="lede">One peristaltic pump meters the tank sample and every reagent through a single path, in both directions.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-pump.webp" alt="The peristaltic pump with its translucent blue cover and three rollers" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="valve">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>The rotary valve</h2>
+              <p class="lede">A stepper-driven valve selects one of eight ports: six reagents, the sample and waste. It homes itself before every run.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-valve.webp" alt="The rotary valve above its stepper motor" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="mainboard">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>The mainboard</h2>
+              <p class="lede">One custom board runs the instrument on an ESP32-S3 with Wi-Fi and Bluetooth. It carries isolated probe inputs, two stepper drivers, a CAN bus for expansion and USB-C for recovery.</p>
+              <ul class="port-list" aria-label="Mainboard connectors">
+                <li>24 V power in</li>
+                <li>CAN bus for Wavie Dose and Wavie Power</li>
+                <li>USB-C for firmware recovery</li>
+                <li>pH, ORP and dissolved oxygen probe inputs, each isolated</li>
+                <li>Salinity probe input</li>
+                <li>Temperature probe input</li>
+              </ul>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-mainboard.webp" alt="The blue Wavie mainboard with its probe connectors" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="ring">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>The RGB ring</h2>
+              <p class="lede">Thirty-three LEDs under a diffuser, and a separately lit logo. Set them to any colour, or let them show what Wavie is doing.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-ring.webp" alt="The RGB ring glowing beneath its white diffuser" width="1920" height="1080" loading="lazy" />
+        </article>
+        <article class="beat" data-beat="reassemble">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>And it all goes back.</h2>
+              <p class="lede">A small laboratory in a tower 184 mm tall.</p>
+              <div class="hero-price">
+                <a class="btn btn-primary" href="#beta-kit">Pre-order the Beta Kit</a>
+              </div>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-reassemble.webp" alt="Wavie reassembled: a sealed black tower with a glowing teal ring" width="1920" height="1080" loading="lazy" />
+        </article>
+
+        <p class="scroll-cue" aria-hidden="true">Scroll to open it</p>
+      </div>
+    </section>
+
+    <section class="section" id="measures">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What it measures</h2>
+          <p class="lede">Five parameters by reagent chemistry and five by probe, without test kits or matching colours by eye.</p>
         </div>
-
-        <!-- Live probes -->
-        <div class="card p-8 fade" style="transition-delay:.1s">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="badge-soon">Live Probes</span>
+        <div class="params">
+          <div>
+            <h3>By reagent</h3>
+            <ul>
+              <li>Alkalinity</li>
+              <li>Calcium</li>
+              <li>Magnesium</li>
+              <li>Nitrate</li>
+              <li>Phosphate</li>
+            </ul>
           </div>
-          <h3 class="text-2xl font-bold mb-2">Continuous Electrode Readings</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">
-            Five isolated probe channels track the parameters an electrode reads directly —
-            continuously, alongside every scheduled chemistry run.
-          </p>
-          <div class="grid grid-cols-1 gap-3">
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">pH</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">ORP</span><span class="text-gray-500 text-sm ml-auto">Redox potential</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Dissolved Oxygen</span><span class="text-sm ml-auto font-semibold" style="color:var(--orange)">Sold separately</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Salinity</span><span class="text-gray-500 text-sm ml-auto">Conductivity</span></div>
-            <div class="param"><span class="dot" style="background:var(--orange)"></span><span class="font-medium">Temperature</span></div>
-          </div>
-          <p class="text-gray-500 text-xs mt-5 leading-relaxed">
-            Every Wavie ships with pH, ORP, conductivity (salinity), and temperature probes.
-            The dissolved oxygen probe is available separately — the channel for it is built in and ready.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ PANEL — INSIDE WAVIE ══════════ -->
-  <section class="panel py-20 px-6" id="panel-inside" role="tabpanel" aria-labelledby="tab-inside" tabindex="0" hidden>
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12 fade">
-        <span class="label mb-3">Under the Hood</span>
-        <h2 class="text-4xl font-bold mt-3">The Parts of Wavie</h2>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Five subsystems, each purpose-built for the reef. Open any part to see how it works and what it looks like up close.</p>
-      </div>
-
-      <!-- Big exploded assembly -->
-      <div class="fade max-w-4xl mx-auto mb-10">
-        <img src="assets/wavie-exploded.png" alt="Wavie exploded assembly showing the optics, fluidics, and electronics tiers" class="showcase" />
-      </div>
-
-      <div class="hscroll parts-scroll fade" role="tablist" aria-label="Wavie components">
-        <button class="part-card" type="button" role="tab" id="pc-optics" aria-controls="pp-optics" aria-selected="false" data-part="optics">
-          <img class="part-card-img" src="assets/spectral-sensor.png" alt="" />
-          <span class="part-card-body">
-            <span class="part-kicker">Optics</span>
-            <span class="part-card-title">The Optical Bench</span>
-            <span class="part-card-hint" aria-hidden="true"></span>
-          </span>
-        </button>
-        <button class="part-card" type="button" role="tab" id="pc-fluidics" aria-controls="pp-fluidics" aria-selected="false" data-part="fluidics" tabindex="-1">
-          <img class="part-card-img" src="assets/valve-zoom.png" alt="" />
-          <span class="part-card-body">
-            <span class="part-kicker">Fluid Path</span>
-            <span class="part-card-title">The Pump &amp; Valve</span>
-            <span class="part-card-hint" aria-hidden="true"></span>
-          </span>
-        </button>
-        <button class="part-card" type="button" role="tab" id="pc-mainboard" aria-controls="pp-mainboard" aria-selected="false" data-part="mainboard" tabindex="-1">
-          <img class="part-card-img" src="assets/mainboard.png" alt="" />
-          <span class="part-card-body">
-            <span class="part-kicker">Electronics</span>
-            <span class="part-card-title">The Mainboard</span>
-            <span class="part-card-hint" aria-hidden="true"></span>
-          </span>
-        </button>
-        <button class="part-card" type="button" role="tab" id="pc-lighting" aria-controls="pp-lighting" aria-selected="false" data-part="lighting" tabindex="-1">
-          <img class="part-card-img" src="assets/wavie-rgb-ring.png" alt="" />
-          <span class="part-card-body">
-            <span class="part-kicker">Lighting</span>
-            <span class="part-card-title">The RGB Ring</span>
-            <span class="part-card-hint" aria-hidden="true"></span>
-          </span>
-        </button>
-        <button class="part-card" type="button" role="tab" id="pc-chassis" aria-controls="pp-chassis" aria-selected="false" data-part="chassis" tabindex="-1">
-          <img class="part-card-img" src="assets/wavie-scale.png" alt="" />
-          <span class="part-card-body">
-            <span class="part-kicker">Enclosure</span>
-            <span class="part-card-title">The Chassis</span>
-            <span class="part-card-hint" aria-hidden="true"></span>
-          </span>
-        </button>
-      </div>
-
-      <div class="max-w-5xl mx-auto fade">
-        <div class="part-panel" id="pp-optics" role="tabpanel" aria-labelledby="pc-optics" tabindex="0" hidden>
-          <span class="part-kicker">Optics</span>
-          <h3>The Optical Bench</h3>
-          <p>
-            Wavie&rsquo;s spectrophotometer is a multi-wavelength optical bench. Three narrow-band LEDs &mdash; 540&nbsp;nm green, 615&nbsp;nm orange, and 880&nbsp;nm near-infrared &mdash; fire one at a time through a fixed-geometry cuvette while a high-dynamic-range light sensor reads exactly how much light makes it through. How much of each wavelength gets absorbed is what turns a colour change into a number: the same colorimetric method a lab uses, shrunk to fit a cabinet.
-          </p>
-          <div class="part-gallery">
-            <img src="assets/spectral-sensor.png" alt="Wavie spectral sensor board" loading="lazy" />
-            <img src="assets/wavie-exploded-optics.png" alt="Cuvette assembly exploded — cuvette, LED board, detector, and stir fan" loading="lazy" />
+          <div>
+            <h3>By probe</h3>
+            <ul>
+              <li>pH</li>
+              <li>ORP</li>
+              <li>Salinity</li>
+              <li>Temperature</li>
+              <li>Dissolved oxygen <small>probe sold separately</small></li>
+            </ul>
           </div>
         </div>
-        <div class="part-panel" id="pp-fluidics" role="tabpanel" aria-labelledby="pc-fluidics" tabindex="0" hidden>
-          <span class="part-kicker">Fluid Path</span>
-          <h3>The Pump &amp; Valve</h3>
-          <p>
-            A single bidirectional peristaltic pump meters every fluid in the system to hundredths of a millilitre &mdash; the tank sample, all six reagents, and waste. It works through a purpose-built rotary valve that selects one of eight positions: six reagent lines, the sample line, and waste. One shared path, re-homed before every run so the valve always knows exactly where it is.
-          </p>
-          <div class="part-gallery">
-            <img src="assets/fluidics-manifold.png" alt="CAD render of the fluidics manifold — eight radial ports meeting one shared path" loading="lazy" />
-            <img src="assets/pump.png" alt="Peristaltic pump, exploded" loading="lazy" />
-          </div>
+        <p class="fine" style="margin-top:28px;max-width:38rem">The reagents are still in development and have not been formulated yet. <a href="#beta-kit">Read what is and isn't finished</a> before you order.</p>
+      </div>
+    </section>
+
+    <section class="section" id="size">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Small enough to forget about</h2>
+          <p class="lede">Wavie stands in a sump cabinet or on a shelf beside the tank.</p>
         </div>
-        <div class="part-panel" id="pp-mainboard" role="tabpanel" aria-labelledby="pc-mainboard" tabindex="0" hidden>
-          <span class="part-kicker">Electronics</span>
-          <h3>The Mainboard</h3>
-          <p>
-            Every subsystem answers to one custom board. An ESP32-S3 brings Wi-Fi and Bluetooth with 16&nbsp;MB of storage and 8&nbsp;MB of RAM. Around it sit three galvanically isolated probe front-ends, dual stepper drivers for the pump and valve, a CAN transceiver ready for future expansion modules, and USB-C for worst-case firmware recovery.
-          </p>
-          <div class="part-gallery">
-            <img src="assets/updates/2025-11-board-layout.png" alt="Mainboard PCB layout" loading="lazy" />
-            <img src="assets/updates/2025-11-mainboard.png" alt="Mainboard render" loading="lazy" />
-            <img src="assets/updates/2026-03-real-board.jpg" alt="First fabricated mainboard" loading="lazy" />
-            <img src="assets/updates/2026-03-board-poweron.jpg" alt="Mainboard first power-on" loading="lazy" />
-          </div>
-        </div>
-        <div class="part-panel" id="pp-lighting" role="tabpanel" aria-labelledby="pc-lighting" tabindex="0" hidden>
-          <span class="part-kicker">Lighting</span>
-          <h3>The RGB Ring</h3>
-          <p>
-            A dedicated board carries a ring of addressable RGB LEDs, with a second independent channel backlighting the ReefMetrics logo. Together they tell you what Wavie is doing &mdash; priming, testing, or reporting &mdash; from across the room. Both zones are yours to set: pick any colour and brightness to match your tank, or let them react to the run in progress.
-          </p>
-          <div class="part-gallery">
-            <img src="assets/led-board.png" alt="Addressable RGB LED board" loading="lazy" />
-          </div>
-        </div>
-        <div class="part-panel" id="pp-chassis" role="tabpanel" aria-labelledby="pc-chassis" tabindex="0" hidden>
-          <span class="part-kicker">Enclosure</span>
-          <h3>The Chassis</h3>
-          <p>
-            Optics and pump up top, fluidic selection in the middle, electronics at the base &mdash; stacked into a single sealed tower barely taller than a banana. It tucks into a sump cabinet, sits on a shelf, or mounts to a wall. Everything connects at the back: 24V power, the CAN expansion bus, and a labeled, keyed input for every probe.
-          </p>
-          <div class="part-gallery">
-            <img src="assets/wavie-scale.png" alt="Wavie size compared to a banana" loading="lazy" />
-            <img src="assets/wavie-connectivity.png" alt="Labeled rear connector panel" loading="lazy" />
-          </div>
+        <div class="duo figure">
+          <figure>
+            <img src="/assets/img/banana-dims.webp" alt="Wavie beside a banana for scale, with dimension lines showing 184 mm tall and 88 mm wide" width="1200" height="1200" loading="lazy" />
+            <figcaption><strong>184 × 88 × 88 mm</strong>Banana for scale.</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/img/rear-ports.webp" alt="The rear of Wavie showing its row of connectors" width="1200" height="1200" loading="lazy" />
+            <figcaption><strong>Everything connects at the back</strong>24 V power, the CAN expansion bus, and inputs for temperature, pH, ORP, salinity and dissolved oxygen.</figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════ PANEL — REAGENTS ══════════ -->
-  <section class="panel py-20 px-6" id="panel-reagents" role="tabpanel" aria-labelledby="tab-reagents" tabindex="0" hidden>
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14 fade">
-        <span class="label mb-3">The Chemistry, Handled</span>
-        <h2 class="text-4xl font-bold mt-3">Reagents, Formulated In-House</h2>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
-          We're developing Wavie's reagent chemistry ourselves — tuned to the optical bench it runs on,
-          not repackaged from someone else's kit. The goal: precise, repeatable results with refills that last.
-        </p>
-      </div>
+    <section class="section" id="beta-kit">
+      <div class="wrap offer">
+        <div class="offer-buy">
+          <h2>The Wavie Beta Kit</h2>
+          <p class="lede">The first run of Wavie, for reefers who want to help finish it.</p>
+          <p class="price" aria-label="1,999 dollars and 99 cents">$1,999<sup>.99</sup></p>
+          <p class="muted">Estimated to ship Q1–Q2 2027, provided the project is fully funded.</p>
+          <label class="ack">
+            <input type="checkbox" id="ack" />
+            <span>I understand that this pre-order funds development, is non-refundable, carries no warranty, and that the ship date is an estimate.</span>
+          </label>
+          <a class="btn btn-primary" id="preorder" href="#beta-kit" aria-disabled="true" data-label="Pre-order for $1,999.99">Pre-order for $1,999.99</a>
+          <p class="fine">Shipping to the US and Canada is included; Canadian import duties are paid by the recipient. Payment is taken in full at checkout by Stripe. By ordering you agree to the <a href="/terms">Pre-order Terms</a> and the <a href="/warranty">Refund and Warranty Policy</a>.</p>
+        </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="card p-8 text-center fade">
-          <div class="stat-num">6</div>
-          <div class="text-gray-300 text-sm mt-2 font-semibold">Reagent Bottles</div>
-          <p class="text-gray-500 text-sm leading-relaxed mt-4">
-            Six lines cover five parameters — alkalinity, calcium, magnesium, nitrate, and phosphate — with calcium and magnesium sharing a single hardness measurement.
-          </p>
-        </div>
-        <div class="card p-8 text-center fade" style="transition-delay:.08s">
-          <div class="stat-num">125<span style="font-size:1.3rem"> ml</span></div>
-          <div class="text-gray-300 text-sm mt-2 font-semibold">Per Bottle</div>
-          <p class="text-gray-500 text-sm leading-relaxed mt-4">
-            Each of the six bottles holds 125 ml. The bottle and bay design isn't finalized yet — we're still dialing in the fit.
-          </p>
-        </div>
-        <div class="card p-8 text-center fade" style="transition-delay:.16s">
-          <div class="stat-num">~1<span style="font-size:1.3rem"> mo</span></div>
-          <div class="text-gray-300 text-sm mt-2 font-semibold">Refill Cadence — Goal</div>
-          <p class="text-gray-500 text-sm leading-relaxed mt-4">
-            We're targeting up to a month between refills — the exact interval depends on how often you schedule test panels. All six bottles are sized to run down together, so restock is one clean swap.
-          </p>
+        <div class="offer-detail">
+          <h3>In the kit</h3>
+          <ul class="rows">
+            <li><strong>Wavie</strong>, the automated tester</li>
+            <li><strong>Four probes:</strong> pH, ORP, salinity and temperature</li>
+            <li><strong>Reagents</strong>, shipped in the box with the kit</li>
+          </ul>
+
+          <h3>Before you order</h3>
+          <ul class="rows terms">
+            <li><strong>Your pre-order funds the project.</strong> The money goes toward completing Wavie, so pre-orders are non-refundable.</li>
+            <li><strong>The reagents have not been formulated yet.</strong> The chemistry is still in development.</li>
+            <li><strong>Q1–Q2 2027 is an estimate.</strong> It depends on the project being properly funded and could move.</li>
+            <li><strong>The Beta Kit has no warranty.</strong> It is early hardware for people comfortable with that.</li>
+            <li><strong>The dissolved oxygen probe is not included.</strong> It will be sold separately in our store at launch.</li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <p class="text-center text-gray-600 text-xs mt-8 fade max-w-2xl mx-auto leading-relaxed">
-        Reagent formulation and bottle design are still in active development — these details may change before launch.
-      </p>
-    </div>
-  </section>
-
-  <!-- ══════════ PANEL — THE APP ══════════ -->
-  <section class="panel py-20 px-6" id="panel-app" role="tabpanel" aria-labelledby="tab-app" tabindex="0" hidden>
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-      <div class="fade">
-        <img src="assets/updates/2026-01-app-dashboard.png" alt="Wavie companion app dashboard" class="feature-img" />
-      </div>
-      <div class="fade" style="transition-delay:.12s">
-        <div class="teal-bar"></div>
-        <h3 class="text-3xl font-bold mb-5">Your Reef, in One App.</h3>
-        <p class="text-gray-400 text-base leading-relaxed mb-6">
-          Every reading Wavie takes lands in the companion app — trends, schedules, and alerts for all ten
-          parameters, on your phone. Schedule your test panels, watch the history build, and get notified the
-          moment something drifts out of range.
-        </p>
-        <div class="param" style="border-color:rgba(58,183,191,0.3)">
-          <span class="dot" style="background:var(--teal)"></span>
-          <span class="font-medium">Over-the-Air Updates</span>
-          <span class="text-sm ml-auto font-semibold" style="color:var(--teal)">Supported</span>
+    <section class="section" id="planned">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Planned functionality</h2>
+          <p class="lede">What we are building toward. Some of it will arrive after the Beta Kit ships, through software updates.</p>
         </div>
-        <p class="text-gray-500 text-sm leading-relaxed mt-4">
-          Wavie keeps getting better after you buy it. New features and improvements arrive as
-          over-the-air (OTA) updates — no cables, no re-flashing, no sending it back.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ PANEL — REPAIRABILITY ══════════ -->
-  <section class="panel py-20 px-6" id="panel-repair" role="tabpanel" aria-labelledby="tab-repair" tabindex="0" hidden>
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14 fade">
-        <span class="label mb-3">Built to Last, Built to Fix</span>
-        <h2 class="text-4xl font-bold mt-3">Repairable by Design</h2>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
-          Things break — we know that. Wavie's whole idea is to be opened, serviced, and kept running for
-          years, not thrown away. Whether you'd rather we handle it or do it yourself, you're covered.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <div class="card p-8 fade">
-          <div class="text-2xl mb-4">&#129408;</div>
-          <h4 class="font-semibold text-lg mb-2">User-Repairable First</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            The reef community is full of DIYers, and we build for them. Wavie is designed to be serviced at your
-            own bench. A repair service will likely be offered too — but you'll never be forced to use it.
-          </p>
-        </div>
-        <div class="card p-8 fade" style="transition-delay:.08s">
-          <div class="text-2xl mb-4">&#129424;</div>
-          <h4 class="font-semibold text-lg mb-2">Parts at Cost — Our Pledge</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Our pledge: we sell replacement parts <strong style="color:var(--teal)">at cost</strong>. Keeping your
-            Wavie running shouldn't be a profit center — it should just be possible, for many years to come.
-          </p>
-        </div>
-        <div class="card p-8 fade" style="transition-delay:.16s">
-          <div class="text-2xl mb-4">&#128033;</div>
-          <h4 class="font-semibold text-lg mb-2">USB-C Recovery, Worst Case</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            The mainboard has onboard USB-C programmability for the absolute worst case. We plan to add a
-            web-USB flashing page so a complete firmware re-flash is possible right from your browser, should it
-            ever be needed.
-          </p>
-        </div>
-      </div>
-      <p class="text-center text-gray-600 text-xs fade max-w-2xl mx-auto leading-relaxed">
-        Long-term support is a core goal for ReefMetrics — we want the Wavie you buy to still be running, and serviceable, years from now.
-      </p>
-    </div>
-  </section>
-
-  </div><!-- /#explore -->
-
-  <!-- ══════════ PRODUCT LINE ══════════ -->
-  <section id="products" style="background:rgba(255,255,255,0.018)" class="py-24 px-6">
-    <div class="mx-auto" style="max-width:1480px">
-      <div class="text-center mb-12 fade">
-        <span class="label mb-3">The Wavie Ecosystem</span>
-        <h2 class="text-4xl font-bold mt-3">Built for the Complete Reef Setup</h2>
-        <p class="text-gray-500 mt-4 max-w-lg mx-auto">One cohesive system — chemistry, power, and dosing — designed to work together automatically.</p>
-      </div>
-
-      <div class="hscroll fade">
-
-        <!-- Wavie -->
-        <div class="card featured p-8 flex flex-col hcard-wide">
-          <div class="mb-5"><span class="badge-beta">Beta Waitlist Open</span></div>
-          <div class="product-img mb-6"
-               style="background-image:url('assets/wavie-hero.png?v=2')"></div>
-          <h3 class="text-2xl font-bold mb-2">Wavie</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-            The automated reef water tester. Six reagents, five live probes, and fully
-            automated scheduling in an ultra-compact form factor. Fits where no other system can.
-          </p>
-          <div class="pt-5" style="border-top:1px solid rgba(255,255,255,0.08)">
-            <div class="text-xs text-gray-500 mb-2">Expected at launch</div>
-            <div class="font-extrabold leading-none" style="color:var(--teal); font-size:clamp(1.45rem,6.4vw,1.9rem); white-space:nowrap">$1,200–$1,500</div>
-            <div class="text-gray-600 text-xs mt-2">not final</div>
-          </div>
-        </div>
-
-        <!-- Wavie Power -->
-        <div class="card p-8 flex flex-col hcard-wide">
-          <div class="mb-5"><span class="badge-soon">Coming Soon</span></div>
-          <div class="product-img mb-6"
-               style="background-image:url('assets/wavie-power.png')"></div>
-          <h3 class="text-2xl font-bold mb-2">Wavie Power</h3>
-          <p class="text-gray-400 text-sm leading-relaxed flex-grow">
-            Intelligent power management and equipment control for your entire reef system.
-            Automate pumps, lights, and accessories alongside your water chemistry.
-          </p>
-          <p class="text-gray-600 text-xs mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.06)">
-            Wavie already carries the hardware to connect every future expansion module — over CAN bus, the same proven network trusted throughout the automotive world.
-          </p>
-        </div>
-
-        <!-- Wavie Dose -->
-        <div class="card p-8 flex flex-col hcard-wide">
-          <div class="mb-5"><span class="badge-soon">Coming Soon</span></div>
-          <div class="render-placeholder mb-6" style="height:210px">
-            <div style="font-size:2.5rem; opacity:0.25">&#129425;</div>
-            <span>Render Coming Soon</span>
-          </div>
-          <h3 class="text-2xl font-bold mb-2">Wavie Dose</h3>
-          <p class="text-gray-400 text-sm leading-relaxed flex-grow">
-            Precision auto-dosing triggered by your real test results. Wavie tests,
-            Wavie Dose corrects. Close the loop — no manual intervention needed.
-          </p>
-          <p class="text-gray-600 text-xs mt-4 pt-4" style="border-top:1px solid rgba(255,255,255,0.06)">
-            Wavie already carries the hardware to connect every future expansion module — over CAN bus, the same proven network trusted throughout the automotive world.
-          </p>
-        </div>
-
-      </div>
-      <p class="text-center text-gray-600 text-xs mt-4 fade max-w-2xl mx-auto leading-relaxed">Wavie already ships with the onboard hardware for Power and Dose — bringing them online is a software update, not a new purchase of hardware. Both are still in early development and pricing isn't set yet.</p>
-    </div>
-  </section>
-
-  <!-- ══════════ BETA ══════════ -->
-  <section id="beta" class="py-24 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="beta-box p-10 md:p-14 text-center fade">
-        <span class="label mb-4">The Beta Waitlist Is Open</span>
-        <h2 class="text-4xl font-bold mb-4 mt-3">Back the Build. Get In First.</h2>
-        <p class="text-gray-300 text-lg mb-4 max-w-2xl mx-auto leading-relaxed">
-          We're almost ready to show the first full prototype — and we're opening a small waitlist to the
-          reefers who want to help bring it home. Your <strong>$500 deposit directly funds the final push
-          to production</strong> and reserves your place at the front of the line.
-        </p>
-        <p class="text-gray-400 text-base mb-10 max-w-2xl mx-auto leading-relaxed">
-          It's <strong style="color:var(--teal)">credited to your unit in full</strong> when ReefMetrics
-          products go on sale — and the moment your deposit clears, you receive a unique
-          <strong style="color:var(--teal)">$500 credit code valid toward any ReefMetrics product</strong>
-          at launch: Wavie, Wavie Power, or Wavie Dose.
-        </p>
-
-        <div class="grid sm:grid-cols-3 gap-5 mb-10 text-left">
-          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
-            <div class="text-2xl mb-3">&#129416;</div>
-            <h4 class="font-semibold mb-1 text-sm">A Controlled, First Launch</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">We release to the waitlist first, in order. Deposit holders get the earliest units — before anything opens to the public.</p>
-          </div>
-          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
-            <div class="text-2xl mb-3">&#128026;</div>
-            <h4 class="font-semibold mb-1 text-sm">$500 Toward Any Product</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">Your deposit isn't a fee — it becomes a personal $500 credit code that comes off any ReefMetrics product, in full, at release.</p>
-          </div>
-          <div class="rounded-xl p-5" style="background:rgba(255,255,255,0.05)">
-            <div class="text-2xl mb-3">&#128032;</div>
-            <h4 class="font-semibold mb-1 text-sm">Shape &amp; Validate It</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">Run Wavie on your own reef and feed back to the team. Waitlist members help validate the system before it's finalized.</p>
-          </div>
-        </div>
-
-        <a href="/contact" data-waitlist class="btn-primary text-base" style="padding:1rem 3rem">Join the Waitlist — $500</a>
-        <p class="text-gray-400 text-sm mt-6 max-w-2xl mx-auto leading-relaxed">
-          <strong class="text-gray-200">How it works:</strong> pay the $500 deposit &rarr; instantly receive
-          your personal $500 credit code by email &rarr; redeem it toward any ReefMetrics product when the store opens.
-        </p>
-        <p class="text-gray-600 text-xs mt-4 max-w-2xl mx-auto leading-relaxed">
-          The beta waitlist deposit is <strong>non-refundable</strong> — it directly funds development and holds
-          your spot in the controlled launch. Your hardware is still fully protected: every Wavie, Wavie Power,
-          and Wavie Dose ships with a <strong>30-day warranty and free return shipping</strong>. Secure checkout via Stripe.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ DEV UPDATES PREVIEW ══════════ -->
-  <section id="updates" style="background:rgba(255,255,255,0.018)" class="py-24 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 fade">
-        <div>
-          <span class="label mb-3">From the Workshop</span>
-          <h2 class="text-4xl font-bold mt-3">We Build in Public</h2>
-        </div>
-        <div class="flex flex-col items-start md:items-end gap-3">
-          <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
-            Follow what we're building, what's breaking, and what's coming next
-            on the road to the first beta units.
-          </p>
-          <a href="/updates" class="btn-outline text-sm" style="padding:0.6rem 1.4rem">View All Updates &rarr;</a>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="update-card p-6 fade">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(255,126,103,0.15);color:var(--orange)">Latest</span>
-            <span class="text-gray-600 text-xs">July 2026</span>
-          </div>
-          <h4 class="font-semibold text-base mb-2">Full CAD Freeze &amp; Assembly Fit</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">The complete three-tier assembly is modeled and fit-checked end to end — optics, fluidics, and the custom mainboard all in the final chassis.</p>
-          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
-            <a href="/updates" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
-          </div>
-        </div>
-        <div class="update-card p-6 fade" style="transition-delay:.1s">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Optics</span>
-            <span class="text-gray-600 text-xs">July 2026</span>
-          </div>
-          <h4 class="font-semibold text-base mb-2">Spectrophotometer Bench Comes Together</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Three-wavelength illumination and the detector are mounted to the optical cell — the heart of every colorimetric test.</p>
-          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
-            <a href="/updates" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
-          </div>
-        </div>
-        <div class="update-card p-6 fade" style="transition-delay:.2s">
-          <div class="flex items-center gap-3 mb-5">
-            <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(58,183,191,0.15);color:var(--teal)">Fluidics</span>
-            <span class="text-gray-600 text-xs">June 2026</span>
-          </div>
-          <h4 class="font-semibold text-base mb-2">Pump &amp; Rotary Valve Validated</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Gravimetric calibration of the peristaltic pump and homing of the eight-position selector valve — the fluid path is proven.</p>
-          <div class="mt-5 pt-4" style="border-top:1px solid rgba(255,255,255,0.05)">
-            <a href="/updates" class="text-xs font-semibold" style="color:var(--teal)">Read update &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ FAQ ══════════ -->
-  <section id="faq" class="py-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12 fade">
-        <span class="label mb-3">Questions, Answered</span>
-        <h2 class="text-4xl font-bold mt-3">Beta Waitlist FAQ</h2>
-      </div>
-
-      <div class="space-y-4">
-        <details class="faq fade">
-          <summary>What does the $500 deposit get me?</summary>
-          <div class="faq-body">It reserves your place at the front of the line for the controlled beta launch and directly funds the final push to production. You're credited the full $500 back as a one-time code — and because waitlist members ship first, you get the earliest units before anyone else.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>Is the deposit refundable?</summary>
-          <div class="faq-body">The deposit is non-refundable — it funds development and holds your spot. But it isn't lost: the entire $500 comes back to you as a credit toward your purchase. Your hardware is separately protected by a 30-day warranty with free return shipping. Full details in our <a href="/warranty">Refund &amp; Warranty Policy</a>.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>Can I use my $500 credit on Wavie Power or Dose?</summary>
-          <div class="faq-body">Yes. Your code is valid toward <strong>any ReefMetrics product</strong> at launch — Wavie, Wavie Power, or Wavie Dose. It's a flat $500 credit, used one time. Pricing for Power and Dose isn't set yet, so your $500 may end up covering the full cost of one — potentially even both — but we won't know for certain until pricing is final.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>How much will Wavie cost at launch?</summary>
-          <div class="faq-body">We expect Wavie to land between <strong style="color:var(--teal)">$1,200 and $1,500</strong> at launch, but that isn't final yet. Your $500 deposit comes off the top as a credit toward whichever ReefMetrics product you choose. Pricing for Wavie Power and Wavie Dose isn't set yet — both are still in early development, and Wavie already includes the hardware to run them via a future software update.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>When will Wavie ship?</summary>
-          <div class="faq-body">Wavie is in final development, so we're not committing to an exact date — that's the honest answer. Waitlist members are first to order and first to ship, and we'll email you the moment ordering opens. You can follow the build on our <a href="/updates">Dev Updates</a>.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>Can I share my code? What if I lose it?</summary>
-          <div class="faq-body">Keep it to yourself — your code works exactly once, so anyone who has it could spend your $500 before you do. It's emailed to you and tied to your order, so if you can't find it, just email <a href="/contact">support</a> and we'll help.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>What does Wavie actually test?</summary>
-          <div class="faq-body">Ten parameters: alkalinity, calcium, magnesium, nitrate, and phosphate by reagent chemistry, plus pH, ORP, dissolved oxygen, salinity, and temperature from a five-probe suite — all automatically, on your schedule. Wavie ships with the pH, ORP, conductivity (salinity), and temperature probes; the dissolved oxygen probe is sold separately, and its channel is built in and ready.</div>
-        </details>
-
-        <details class="faq fade">
-          <summary>Who's behind ReefMetrics?</summary>
-          <div class="faq-body">A small team of reef hobbyists building the tools we wanted ourselves. We've been developing Wavie in public for over a year — read the whole build log on our <a href="/updates">Dev Updates</a> page.</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ CONTACT ══════════ -->
-  <section id="contact" class="py-24 px-6" style="border-top:1px solid rgba(255,255,255,0.05)">
-    <div class="max-w-2xl mx-auto text-center fade">
-      <span class="label mb-3">Still Have a Question?</span>
-      <h2 class="text-4xl font-bold mt-3 mb-5">Get In Touch</h2>
-      <p class="text-gray-400 text-base leading-relaxed mb-9 max-w-lg mx-auto">
-        We're a small team of reefers and we read every email — about Wavie, the beta waitlist,
-        or anything else you want to ask.
-      </p>
-      <a href="/contact" class="btn-outline">Contact Us</a>
-    </div>
-  </section>
-
-  <!-- ══════════ FOOTER ══════════ -->
-  <footer class="py-14 px-6" style="background:var(--bg); border-top:1px solid rgba(255,255,255,0.05)">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
-      <div class="md:col-span-2">
-        <a href="/" class="flex items-center gap-2 mb-4">
-          <span class="logo-text" style="display:inline;font-size:1.1rem"><span>reef</span>metrics</span>
-        </a>
-        <p class="text-gray-600 text-sm max-w-xs leading-relaxed">
-          ReefMetrics is building the next generation of reef aquarium automation tools — starting with Wavie.
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <a href="https://discord.gg/4rHbTdAK5G" class="social" target="_blank" rel="noopener noreferrer" aria-label="Join the ReefMetrics Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.79.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.65 12.65 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.32.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .31.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .78.009c.12.099.246.198.373.292a.077.077 0 0 1-.6.127 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.41.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .84.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
-          <span class="text-gray-600 text-xs">Join the community on Discord</span>
-        </div>
-        <p class="text-gray-700 text-xs mt-6">&copy; 2026 ReefMetrics. All rights reserved.</p>
-      </div>
-      <div>
-        <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">PRODUCTS</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="#products" class="text-gray-400 hover:text-white transition">Wavie</a></li>
-          <li><span class="text-gray-700">Wavie Power <span class="text-xs">(Soon)</span></span></li>
-          <li><span class="text-gray-700">Wavie Dose <span class="text-xs">(Soon)</span></span></li>
+        <ul class="planned">
+          <li><strong>Automated chemistry</strong>Alkalinity, calcium, magnesium, nitrate and phosphate from six reagents.</li>
+          <li><strong>Continuous probe readings</strong>pH, ORP, salinity and temperature around the clock.</li>
+          <li><strong>Dissolved oxygen</strong>With the add-on probe; the input for it is built in.</li>
+          <li><strong>Scheduled testing</strong>Choose which tests run and how often.</li>
+          <li><strong>The ReefMetrics app</strong>One app for the whole ecosystem: readings, trends and alerts. It is still being built.</li>
+          <li><strong>Over-the-air updates</strong>New features and fixes delivered over Wi-Fi.</li>
+          <li><strong>Custom lighting</strong>Any colour for the ring and logo, or status at a glance.</li>
+          <li><strong>USB-C recovery</strong>Re-flash the firmware from a computer if anything goes wrong.</li>
+          <li><strong>Expansion over CAN</strong>The connection that Wavie Dose and Wavie Power will use.</li>
         </ul>
       </div>
-      <div>
-        <h4 class="text-xs font-semibold mb-5 tracking-widest" style="color:var(--teal)">COMPANY</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="#tests"  class="text-gray-400 hover:text-white transition">What It Tests</a></li>
-          <li><a href="/updates" class="text-gray-400 hover:text-white transition">Dev Updates</a></li>
-          <li><a href="#beta"    class="text-gray-400 hover:text-white transition">Beta Waitlist</a></li>
-          <li><a href="#faq"     class="text-gray-400 hover:text-white transition">FAQ</a></li>
-          <li><a href="/contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-        </ul>
+    </section>
+
+    <section class="section" id="open">
+      <div class="wrap split">
+        <div>
+          <h2>Open hardware</h2>
+          <p class="lede">Wavie is built to be opened, understood and repaired by the person who owns it.</p>
+          <p class="muted">The design files and documentation are being published on GitHub under a non-commercial licence: build, repair and modify your own, but not for resale. The wiki explains how each part works in far more detail than this page.</p>
+          <p class="muted">We will sell replacement parts at cost. Reagents are formulated and sold only by ReefMetrics, which is what keeps the project running.</p>
+          <div class="links">
+            <a class="btn btn-quiet" href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Read the Wavie wiki</a>
+            <a class="btn btn-quiet" href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+        <img src="/assets/img/exploded.webp" alt="Every part of Wavie laid out in an exploded view" width="1200" height="1200" loading="lazy" />
       </div>
-    </div>
-    <div class="max-w-7xl mx-auto mt-12 pt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs" style="border-top:1px solid rgba(255,255,255,0.05)">
-      <a href="/terms" class="text-gray-500 hover:text-white transition">Terms of Sale</a>
-      <a href="/privacy" class="text-gray-500 hover:text-white transition">Privacy Policy</a>
-      <a href="/warranty" class="text-gray-500 hover:text-white transition">Refund &amp; Warranty</a>
+    </section>
+
+    <section class="section" id="ecosystem">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Coming soon</h2>
+          <p class="lede">Two more devices are planned for the ReefMetrics ecosystem. They connect to Wavie over its CAN bus. Neither is available to order yet, and neither has a release date.</p>
+        </div>
+        <div class="soon">
+          <article>
+            <p class="tag">Coming soon</p>
+            <h3>Wavie Dose</h3>
+            <p>Dosing that responds to Wavie's own test results, so the tank is corrected as well as measured.</p>
+          </article>
+          <article>
+            <p class="tag">Coming soon</p>
+            <h3>Wavie Power</h3>
+            <p>Switched power and control for the pumps, lights and heaters around the tank.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2>Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>What is the Beta Kit?</summary>
+            <div><p>It is the first production run of Wavie, sold before the project is finished to the people who want to help finish it. You get the tester, four probes and reagents. You also get early hardware, unfinished software and no warranty.</p></div>
+          </details>
+          <details>
+            <summary>When will it ship?</summary>
+            <div><p>Our estimate is the first half of 2027, between Q1 and Q2. That depends on the project being properly funded, and the date could move. We will post progress on Discord.</p></div>
+          </details>
+          <details>
+            <summary>Can I get a refund?</summary>
+            <div><p>No. Pre-orders pay for the work of completing Wavie, so the money is spent on development rather than held. Please only order if you are comfortable with that. The <a href="/warranty">Refund and Warranty Policy</a> has the detail.</p></div>
+          </details>
+          <details>
+            <summary>Is there a warranty?</summary>
+            <div><p>The Beta Kit has no warranty. Wavie is designed to be repaired by its owner: the design files and wiki are there to help, and we will sell replacement parts at cost.</p></div>
+          </details>
+          <details>
+            <summary>Are the reagents ready?</summary>
+            <div><p>Not yet. The reagent chemistry has not been formulated, and it is the largest piece of work still ahead. The Beta Kit ships with reagents in the box. Reagents are made and sold only by ReefMetrics.</p></div>
+          </details>
+          <details>
+            <summary>Which probes are included?</summary>
+            <div><p>pH, ORP, salinity and temperature. Wavie also has an input for dissolved oxygen; that probe will be sold separately in our store at launch.</p></div>
+          </details>
+          <details>
+            <summary>What does open hardware mean here?</summary>
+            <div><p>The design files and documentation for Wavie are published so owners can understand, repair and modify their own unit. The licence is non-commercial, so the designs cannot be used to make units for sale. The reagent formulations are not published.</p></div>
+          </details>
+          <details>
+            <summary>What about Wavie Dose and Wavie Power?</summary>
+            <div><p>Both are still planned and Wavie already has the CAN connection they will use. Neither has a confirmed release date or price.</p></div>
+          </details>
+          <details>
+            <summary>Where can I follow progress?</summary>
+            <div><p>On <a href="https://discord.gg/4rHbTdAK5G" rel="noopener">our Discord</a>. Build updates are posted there, and it is the fastest way to ask us something.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <ul>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="/terms">Pre-order Terms</a></li>
+        <li><a href="/warranty">Refunds and Warranty</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+      </ul>
+      <p class="fine">© 2026 ReefMetrics. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    /* ── Sticky tab bar sits directly under the nav ── */
-    const nav = document.querySelector('.sticky-nav');
-    const setNavHeight = () =>
-      document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
-    setNavHeight();
-    addEventListener('resize', setNavHeight);
-
-    /* ── Fade-in on scroll ── */
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
-      { threshold: 0.06 }
-    );
-    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-
-    /* ── Tabs ── */
-    const tabs = [...document.querySelectorAll('.tab[role="tab"]')];
-
-    // Scroll the strip horizontally only. scrollIntoView would also move the PAGE
-    // vertically, which yanked mobile visitors past the hero on load.
-    function revealTabInStrip(tab) {
-      const strip = tab.closest('.tabstrip, .hscroll');
-      if (!strip) return;
-      const t = tab.getBoundingClientRect(), s = strip.getBoundingClientRect();
-      if (t.left < s.left) strip.scrollLeft += t.left - s.left;
-      else if (t.right > s.right) strip.scrollLeft += t.right - s.right;
-    }
-
-    // Land the tab strip flush under the nav so no panel content hides beneath it.
-    // Measure #explore, not .tabbar — once the bar is stuck it reports its pinned
-    // position, which would make this a no-op exactly when a scroll is needed.
-    function scrollToTabs(behavior = 'smooth') {
-      const top = document.getElementById('explore').getBoundingClientRect().top
-                + scrollY - nav.offsetHeight;
-      scrollTo({ top, behavior });
-    }
-
-    // Legacy/deep-link hashes that should open a tab instead of scrolling.
-    const HASH_TO_TAB = { tests: 'tests', measures: 'tests', inside: 'inside', reagents: 'reagents', app: 'app', repair: 'repair' };
-
-    function activateTab(name, { focus = false, scroll = false } = {}) {
-      const tab = tabs.find(t => t.dataset.tab === name);
-      if (!tab) return false;
-
-      tabs.forEach(t => {
-        const on = t === tab;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.tabIndex = on ? 0 : -1;
-        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-      });
-
-      // Panels start hidden, so their fade elements never intersect — reveal them on open.
-      document.getElementById(tab.getAttribute('aria-controls'))
-        .querySelectorAll('.fade').forEach(el => el.classList.add('in'));
-
-      if (focus) tab.focus();
-      revealTabInStrip(tab);
-      if (scroll) scrollToTabs();
-      return true;
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Always return to the top of the freshly opened panel — otherwise you keep
-        // whatever scroll depth you had in the previous (longer) panel.
-        activateTab(tab.dataset.tab, { scroll: true });
-        history.replaceState(null, '', '#' + tab.dataset.tab);
-      });
-      tab.addEventListener('keydown', e => {
-        const i = tabs.indexOf(tab);
-        let next;
-        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
-        else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
-        else if (e.key === 'Home') next = tabs[0];
-        else if (e.key === 'End') next = tabs[tabs.length - 1];
-        else return;
-        e.preventDefault();
-        activateTab(next.dataset.tab, { focus: true, scroll: true });
-        history.replaceState(null, '', '#' + next.dataset.tab);
-      });
-    });
-
-    // Any in-page link pointing at a tab opens it rather than jumping.
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      const target = HASH_TO_TAB[a.getAttribute('href').slice(1)];
-      if (!target) return;
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        activateTab(target, { scroll: true });
-        history.replaceState(null, '', '#' + target);
-      });
-    });
-
-    // Covers back/forward and any hash set after load.
-    addEventListener('hashchange', () => {
-      const t = HASH_TO_TAB[location.hash.slice(1)];
-      if (t) activateTab(t, { scroll: true });
-    });
-
-    const initial = HASH_TO_TAB[location.hash.slice(1)];
-    if (initial) activateTab(initial, { scroll: true });
-    else activateTab('tests');
-
-    /* ── Component cards → detail panel ── */
-    const partCards = [...document.querySelectorAll('.part-card')];
-
-    function selectPart(id, { focus = false } = {}) {
-      const card = partCards.find(c => c.dataset.part === id);
-      if (!card) return;
-      partCards.forEach(c => {
-        const on = c === card;
-        c.setAttribute('aria-selected', on ? 'true' : 'false');
-        c.tabIndex = on ? 0 : -1;
-        document.getElementById(c.getAttribute('aria-controls')).hidden = !on;
-      });
-      revealTabInStrip(card);
-      if (focus) card.focus();
-    }
-
-    // Nothing is open until a card is clicked; clicking the open card closes it again.
-    function closeParts() {
-      partCards.forEach(c => {
-        c.setAttribute('aria-selected', 'false');
-        document.getElementById(c.getAttribute('aria-controls')).hidden = true;
-      });
-    }
-
-    partCards.forEach(card => {
-      card.addEventListener('click', () => {
-        if (card.getAttribute('aria-selected') === 'true') closeParts();
-        else selectPart(card.dataset.part);
-      });
-      card.addEventListener('keydown', e => {
-        const i = partCards.indexOf(card);
-        let next;
-        if (e.key === 'ArrowRight') next = partCards[(i + 1) % partCards.length];
-        else if (e.key === 'ArrowLeft') next = partCards[(i - 1 + partCards.length) % partCards.length];
-        else if (e.key === 'Home') next = partCards[0];
-        else if (e.key === 'End') next = partCards[partCards.length - 1];
-        else return;
-        e.preventDefault();
-        selectPart(next.dataset.part, { focus: true });
-      });
-    });
-  </script>
-  <script src="/assets/waitlist.js"></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/unveil.js" defer></script>
 </body>
 </html>

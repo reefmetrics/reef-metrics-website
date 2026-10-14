@@ -3,147 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Refund &amp; Warranty Policy — ReefMetrics</title>
-  <meta name="description" content="ReefMetrics refund and warranty policy: the beta deposit is non-refundable; Wavie, Power, and Dose ship with a 30-day warranty and free return shipping." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>Refund and Warranty Policy | ReefMetrics</title>
+  <meta name="description" content="Wavie Beta Kit pre-orders are non-refundable and the Beta Kit has no warranty. Replacement parts are sold at cost." />
+  <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://www.reef-metrics.com/warranty" />
   <link rel="icon" href="/assets/favicon-32.png?v=5" sizes="32x32" type="image/png" />
   <link rel="icon" href="/assets/favicon-192.png?v=5" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=5" />
-  <style>
-    :root { --bg:#0A1628; --teal:#3AB7BF; --orange:#FF7E67; --orange2:#FF8F3E; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Poppins',sans-serif; background:var(--bg); color:#fff; margin:0; min-height:100vh; display:flex; flex-direction:column; }
-    main { flex:1; }
-    .sticky-nav { position:sticky; top:0; z-index:100; background:rgba(10,22,40,0.93); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.06); }
-    .btn-primary { background:var(--orange); color:#fff; padding:0.55rem 1.4rem; border-radius:0.5rem; font-weight:600; display:inline-block; transition:background .2s, transform .15s; text-decoration:none; }
-    .btn-primary:hover { background:var(--orange2); transform:translateY(-1px); }
-    .logo-text { font-weight:800; font-size:1.3rem; letter-spacing:-0.01em; color:#fff; text-decoration:none; }
-    .logo-text span { color:var(--teal); }
-    .site-mark { height: 36px; width: auto; display: block; flex: none; }
-    /* Bigger lockup where there is room; phones keep it clear of the CTA. */
-    @media (min-width: 768px) {
-      .site-mark { height: 48px; }
-      .sticky-nav .logo-text { font-size: 1.7rem; }
-    }
-    .label { color:var(--teal); font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; display:block; }
-    .legal h2 { font-size:1.3rem; font-weight:700; margin:2.4rem 0 0.75rem; color:#fff; }
-    .legal p, .legal li { color:#9ca3af; line-height:1.75; font-size:0.95rem; }
-    .legal p { margin:0.6rem 0; }
-    .legal ul { padding-left:1.2rem; margin:0.5rem 0; list-style:disc; }
-    .legal li { margin-bottom:0.4rem; }
-    .legal strong { color:#e5e7eb; }
-    .legal a { color:var(--teal); text-decoration:none; }
-    .legal a:hover { text-decoration:underline; }
-    .callout { background:rgba(58,183,191,0.08); border:1px solid rgba(58,183,191,0.25); border-radius:0.75rem; padding:1rem 1.25rem; margin:1.25rem 0; }
-    .callout p { color:#e5e7eb; margin:0; }
-    /* ── Social links ── */
-    .social {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 2.2rem; height: 2.2rem; flex: none; border-radius: 0.6rem;
-      color: #94a3b8; background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .social svg { width: 1.15rem; height: 1.15rem; display: block; }
-    .social:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    @media (hover: hover) and (pointer: fine) {
-      .social:hover { color: #fff; background: rgba(58,183,191,0.14);
-                      border-color: rgba(58,183,191,0.5); transform: translateY(-2px); }
-    }
-    .btn-primary { white-space: nowrap; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <nav class="sticky-nav">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/logo-mark.png?v=2" alt="" class="site-mark" />
-        <span class="logo-text" style="display:inline"><span>reef</span>metrics</span>
-      </a>
-      <div class="flex items-center gap-7 text-sm font-medium">
-        <a href="/#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem" data-waitlist>Join Waitlist</a>
-      </div>
+  <header class="nav is-solid" id="nav">
+    <div class="wrap">
+      <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
+      <ul class="nav-links">
+        <li><a href="/#measures">What it measures</a></li>
+        <li><a href="/#open">Open hardware</a></li>
+        <li><a href="/#faq">Questions</a></li>
+        <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
+      </ul>
     </div>
-  </nav>
+  </header>
 
-  <main class="px-6 py-16">
-    <div class="max-w-3xl mx-auto legal">
-      <span class="label mb-3">Legal</span>
-      <h1 class="text-4xl font-extrabold mt-2 mb-2">Refund &amp; Warranty Policy</h1>
-      <p class="text-gray-600 text-sm mb-6">Last updated: August 4, 2026</p>
+  <main id="main" class="doc">
+    <div class="wrap">
+      <div class="doc-body">
+        <h1>Refund and Warranty Policy</h1>
+        <p class="fine updated">Last updated October 13, 2026</p>
+        <p class="summary">Beta Kit pre-orders are non-refundable, and the Beta Kit has no warranty. We sell replacement parts at cost so you can keep yours running.</p>
 
-      <h2>1. Beta waitlist deposit — non-refundable</h2>
-      <p>
-        The <strong>$500 beta waitlist deposit is non-refundable</strong>. It directly funds the final
-        development of Wavie and reserves your place in the launch order. What you get in return is real: the
-        full $500 is credited back to you as a one-time <strong>$500 code valid toward any ReefMetrics
-        product</strong> at release (Wavie, Wavie Power, or Wavie Dose). See the
-        <a href="/terms">Beta Waitlist Terms</a> for full details on the deposit and credit code.
-      </p>
-      <div class="callout">
-        <p>Your deposit isn't lost money — it becomes a $500 credit toward your purchase. It simply can't be
-        withdrawn as a cash refund.</p>
+        <h2>1. Pre-orders are non-refundable</h2>
+        <p>A Beta Kit pre-order pays for the work of completing Wavie. The money is spent on development, parts and reagent chemistry rather than held, so it cannot be refunded once paid.</p>
+        <p>Please order only if you are comfortable funding a project that is still in development, with an estimated ship date of Q1–Q2 2027 that depends on funding. The <a href="/terms">Pre-order Terms</a> set this out in full.</p>
+
+        <h2>2. The Beta Kit has no warranty</h2>
+        <p>The Beta Kit is early hardware. It is supplied without a warranty, "as is", to the fullest extent the law allows. We do not offer free repair, replacement or return shipping for Beta Kits.</p>
+
+        <h2>3. Repairs and parts</h2>
+        <p>Wavie is designed to be opened and repaired by its owner. To make that practical:</p>
+        <ul>
+          <li>the hardware design files and documentation are published on GitHub;</li>
+          <li>the Wavie wiki explains how each part works;</li>
+          <li>we will sell replacement parts at cost.</li>
+        </ul>
+
+        <h2>4. Damage in shipping</h2>
+        <p>If your kit arrives damaged, email <a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a> with photos of the packaging and the unit as soon as you can, so we can help you with a claim against the carrier.</p>
+
+        <h2>5. Reagents, the dissolved oxygen probe and later products</h2>
+        <p>Reagent refills and the dissolved oxygen probe will be sold in our store at launch. Wavie Dose and Wavie Power are planned but have no confirmed release. The refund and warranty terms for anything sold in the store will be published when the store opens.</p>
+
+        <h2>6. Your legal rights</h2>
+        <p>This policy does not remove any right you have under the law of the place you live if that right cannot be waived by agreement.</p>
+
+        <h2>7. Contact</h2>
+        <p>Email <a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a> with any question about this policy.</p>
       </div>
-
-      <h2>2. Hardware warranty</h2>
-      <p>
-        Every <strong>Wavie, Wavie Power, and Wavie Dose</strong> unit is covered by a <strong>30-day limited
-        warranty</strong> from the date you receive it. If your hardware arrives defective or fails due to a
-        manufacturing fault within 30 days, we'll repair or replace it at no cost to you.
-      </p>
-
-      <h2>3. Free return shipping</h2>
-      <p>
-        For any valid warranty claim within the 30-day window, <strong>we cover return shipping both ways</strong>.
-        You won't pay to send a defective unit back or to receive its repair or replacement.
-      </p>
-
-      <h2>4. What's covered</h2>
-      <ul>
-        <li>Manufacturing defects in materials or workmanship.</li>
-        <li>Hardware that fails to function as described under normal aquarium use.</li>
-        <li>Units that arrive damaged in transit (report within 30 days of delivery).</li>
-      </ul>
-
-      <h2>5. What's not covered</h2>
-      <ul>
-        <li>Damage from misuse, accident, modification, or use outside the product's guidelines.</li>
-        <li>Normal wear of consumables such as reagents and tubing.</li>
-        <li>Damage caused by using non-ReefMetrics reagents or parts where ReefMetrics parts are specified.</li>
-      </ul>
-
-      <h2>6. How to make a claim</h2>
-      <p>
-        Email <a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a> with your order details and a
-        short description of the issue (photos or a short video help). We'll respond quickly with next steps and a
-        prepaid return label if a return is needed.
-      </p>
-
-      <h2>7. Contact</h2>
-      <p>
-        Questions about refunds or warranty coverage? Reach us anytime at
-        <a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a>.
-      </p>
     </div>
   </main>
 
-  <footer class="py-10 px-6" style="border-top:1px solid rgba(255,255,255,0.05)">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <a href="/" class="logo-text" style="font-size:1rem"><span>reef</span>metrics</a>
-      <a href="https://discord.gg/4rHbTdAK5G" class="social" target="_blank" rel="noopener noreferrer" aria-label="Join the ReefMetrics Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.79.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.65 12.65 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.32.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .31.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .78.009c.12.099.246.198.373.292a.077.077 0 0 1-.6.127 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.41.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .84.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
-      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs">
-        <a href="/terms" class="text-gray-500 hover:text-white transition">Terms of Sale</a>
-        <a href="/privacy" class="text-gray-500 hover:text-white transition">Privacy Policy</a>
-        <a href="/warranty" class="text-gray-500 hover:text-white transition">Refund &amp; Warranty</a>
-        <a href="/contact" class="text-gray-500 hover:text-white transition">Contact</a>
-      </div>
-      <p class="text-gray-700 text-xs">&copy; 2026 ReefMetrics.</p>
+  <footer class="footer">
+    <div class="wrap">
+      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <ul>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="/terms">Pre-order Terms</a></li>
+        <li><a href="/warranty">Refunds and Warranty</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+      </ul>
+      <p class="fine">© 2026 ReefMetrics. All rights reserved.</p>
     </div>
   </footer>
-
-  <script src="/assets/waitlist.js"></script>
 </body>
 </html>

@@ -3,159 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — ReefMetrics</title>
-  <meta name="description" content="Get in touch with the ReefMetrics team about Wavie, the beta waitlist, or a partnership." />
-
-  <!-- Open Graph / social share -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="ReefMetrics" />
-  <meta property="og:title" content="Contact — ReefMetrics" />
-  <meta property="og:description" content="Questions about Wavie, the beta waitlist, or a partnership? We're a small team and we actually read our email." />
-  <meta property="og:url" content="https://www.reef-metrics.com/contact" />
-  <meta property="og:image" content="https://www.reef-metrics.com/assets/social-card.png" />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — ReefMetrics" />
-  <meta name="twitter:description" content="Questions about Wavie or the beta waitlist? We actually read our email." />
-  <meta name="twitter:image" content="https://www.reef-metrics.com/assets/social-card.png" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>Contact | ReefMetrics</title>
+  <meta name="description" content="How to reach ReefMetrics: email, Discord and the Wavie wiki." />
+  <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://www.reef-metrics.com/contact" />
   <link rel="icon" href="/assets/favicon-32.png?v=5" sizes="32x32" type="image/png" />
   <link rel="icon" href="/assets/favicon-192.png?v=5" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=5" />
-  <style>
-    :root {
-      --bg:      #0A1628;
-      --teal:    #3AB7BF;
-      --orange:  #FF7E67;
-      --orange2: #FF8F3E;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    main { flex: 1; }
-
-    .sticky-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(10,22,40,0.94); backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .btn-primary {
-      background: var(--orange); color: #fff;
-      padding: 0.8rem 2rem; border-radius: 0.5rem; font-weight: 600;
-      display: inline-block; transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
-
-    .contact-card {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem; transition: border-color 0.25s, transform 0.2s;
-    }
-    .contact-card:hover { border-color: rgba(58,183,191,0.4); transform: translateY(-3px); }
-
-    .label {
-      color: var(--teal); font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase; display: block;
-    }
-
-    .logo-text { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.01em; color: #fff; }
-    .logo-text span { color: var(--teal); }
-    .site-mark { height: 36px; width: auto; display: block; flex: none; }
-    /* Bigger lockup where there is room; phones keep it clear of the CTA. */
-    @media (min-width: 768px) {
-      .site-mark { height: 48px; }
-      .sticky-nav .logo-text { font-size: 1.7rem; }
-    }
-    /* ── Social links ── */
-    .social {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 2.2rem; height: 2.2rem; flex: none; border-radius: 0.6rem;
-      color: #94a3b8; background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .social svg { width: 1.15rem; height: 1.15rem; display: block; }
-    .social:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-    @media (hover: hover) and (pointer: fine) {
-      .social:hover { color: #fff; background: rgba(58,183,191,0.14);
-                      border-color: rgba(58,183,191,0.5); transform: translateY(-2px); }
-    }
-    .btn-primary { white-space: nowrap; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- NAV -->
-  <nav class="sticky-nav">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/logo-mark.png?v=2" alt="" class="site-mark" />
-        <span class="logo-text" style="display:inline"><span>reef</span>metrics</span>
-      </a>
-      <div class="flex items-center gap-7 text-sm font-medium">
-        <a href="/#beta" class="btn-primary text-sm" style="padding:0.55rem 1.4rem" data-waitlist>Join Waitlist</a>
-      </div>
+  <header class="nav is-solid" id="nav">
+    <div class="wrap">
+      <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
+      <ul class="nav-links">
+        <li><a href="/#measures">What it measures</a></li>
+        <li><a href="/#open">Open hardware</a></li>
+        <li><a href="/#faq">Questions</a></li>
+        <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
+      </ul>
     </div>
-  </nav>
+  </header>
 
-  <!-- CONTACT -->
-  <main class="flex items-center justify-center px-6 py-32">
-    <div class="max-w-xl w-full text-center">
-      <span class="label mb-4">Get in Touch</span>
-      <h1 class="text-5xl font-extrabold mb-4 mt-2">Contact Us</h1>
-      <p class="text-gray-400 text-lg mb-12 leading-relaxed max-w-md mx-auto">
-        Questions about Wavie, the beta program, or a partnership?
-        We're a small team and we actually read our email.
-      </p>
+  <main id="main" class="doc">
+    <div class="wrap">
+      <div class="doc-body">
+        <h1>Contact</h1>
 
-      <a href="mailto:support@reef-metrics.com"
-         class="contact-card p-8 flex flex-col items-center gap-3 text-center max-w-sm mx-auto mb-10">
-        <div class="text-4xl">&#9993;</div>
-        <div>
-          <div class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-1">Email</div>
-          <div class="font-semibold text-lg" style="color:var(--teal)">support@reef-metrics.com</div>
-        </div>
-      </a>
+        <h2>Email</h2>
+        <p><a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a>. We are a small team and we read everything.</p>
 
-      <a href="mailto:support@reef-metrics.com?subject=Wavie%20Beta%20Waitlist&body=Hi%2C%20I%27d%20like%20to%20join%20the%20Wavie%20beta%20waitlist%20with%20the%20%24500%20deposit."
-         class="btn-primary px-8 py-4 text-base" data-waitlist>Join the Beta Waitlist — $500</a>
-      <p class="text-gray-400 text-sm mt-5 max-w-md mx-auto leading-relaxed">
-        Your $500 deposit funds development and holds your place at the front of the controlled launch.
-        It's credited to your unit in full — you'll instantly receive a personal $500 credit code valid
-        toward any ReefMetrics product (Wavie, Power, or Dose) at release.
-      </p>
-      <p class="text-gray-600 text-xs mt-4 max-w-md mx-auto leading-relaxed">
-        The deposit is non-refundable. Every unit ships with a 30-day warranty and free return shipping.
-      </p>
+        <h2>Discord</h2>
+        <p>Build updates and the quickest answers are on <a href="https://discord.gg/4rHbTdAK5G" rel="noopener">our Discord</a>.</p>
+
+        <h2>Documentation</h2>
+        <p>The <a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a> on GitHub explains how Wavie works in detail.</p>
+
+        <h2>Pre-orders</h2>
+        <p>The Wavie Beta Kit is <a href="/#beta-kit">open for pre-order</a>. Pre-orders are non-refundable and the Beta Kit has no warranty; see the <a href="/terms">Pre-order Terms</a>.</p>
+      </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="py-8 px-6" style="border-top:1px solid rgba(255,255,255,0.05)">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <a href="/" class="flex items-center gap-2">
-        <span class="logo-text" style="display:inline;font-size:1rem"><span>reef</span>metrics</span>
-      </a>
-      <a href="https://discord.gg/4rHbTdAK5G" class="social" target="_blank" rel="noopener noreferrer" aria-label="Join the ReefMetrics Discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.79.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.65 12.65 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.32.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .31.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .78.009c.12.099.246.198.373.292a.077.077 0 0 1-.6.127 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.41.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .84.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
-      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs">
-        <a href="/terms" class="text-gray-500 hover:text-white transition">Terms of Sale</a>
-        <a href="/privacy" class="text-gray-500 hover:text-white transition">Privacy Policy</a>
-        <a href="/warranty" class="text-gray-500 hover:text-white transition">Refund &amp; Warranty</a>
-      </div>
-      <p class="text-gray-700 text-xs">&copy; 2026 ReefMetrics. All rights reserved.</p>
+  <footer class="footer">
+    <div class="wrap">
+      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <ul>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a href="/terms">Pre-order Terms</a></li>
+        <li><a href="/warranty">Refunds and Warranty</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+      </ul>
+      <p class="fine">© 2026 ReefMetrics. All rights reserved.</p>
     </div>
   </footer>
-
-  <script src="/assets/waitlist.js"></script>
 </body>
 </html>
