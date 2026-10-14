@@ -106,9 +106,9 @@ a:hover { text-decoration-color: currentColor; }
 .beat {
   position: absolute; inset: 0; display: flex; align-items: center;
   pointer-events: none; opacity: 0; visibility: hidden;
-  transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
-.beat.is-on { opacity: 1; visibility: visible; transition: opacity 0.7s ease 0.15s, visibility 0s; }
+.beat.is-on { opacity: 1; visibility: visible; transition: opacity 0.5s ease 0.1s, visibility 0s; }
 .beat.is-on .beat-copy { pointer-events: auto; }
 .beat .wrap { flex: 1; }
 .beat-copy { width: min(38%, 32rem); }
@@ -166,7 +166,7 @@ a:hover { text-decoration-color: currentColor; }
 /* Figures with a wide render */
 .figure { margin: clamp(40px, 6vw, 80px) 0 0; }
 .figure img { width: 100%; height: auto; }
-.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); align-items: start; }
 .duo figure { margin: 0; }
 .duo figcaption { margin-top: 18px; color: var(--ink-2); max-width: 26rem; }
 .duo figcaption strong { display: block; color: var(--ink); font-weight: 500; font-size: var(--step-1); letter-spacing: -0.01em; margin-bottom: 4px; }
@@ -266,7 +266,7 @@ html.js .unveil:not(.is-static) .port-list { position: absolute; width: 1px; hei
 
 /* The open hardware render is square; keep it from dominating the section */
 #open .split { align-items: center; }
-#open .split > img { width: 100%; max-width: 620px; aspect-ratio: 1; object-fit: contain; justify-self: center; }
+#open .split > img { width: 100%; height: auto; max-width: min(620px, 70vh); aspect-ratio: 1; object-fit: contain; justify-self: center; }
 
 /* Connector labels on a still render */
 figure[data-labels] { position: relative; }
@@ -275,3 +275,13 @@ figure[data-labels] { position: relative; }
 .figure-labels polyline { fill: none; stroke: rgba(255, 255, 255, 0.35); stroke-width: 1; }
 .figure-labels circle { fill: var(--teal-bright); }
 .figure-labels .tour-label { font-size: 0.75rem; }
+
+/* The size and connection stills are framed photographs, shown as matching rectangles */
+.duo img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; }
+
+/* Short screens: keep the measures list inside one screen */
+@media (min-width: 701px) and (max-height: 820px) {
+  #measures .params { margin-top: 36px; }
+  #measures .params li { padding: 11px 0; font-size: 1.3rem; }
+  #measures .params h3 { padding-bottom: 12px; }
+}

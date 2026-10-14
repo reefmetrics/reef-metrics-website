@@ -34,6 +34,12 @@
     mobile: { pxPerFrame: 22, holdVh: 0.6, ease: 0.08 },
   };
   const FIRST_HOLD_VH = 0.25;
+  // A beat that starts moving straight away (no glide to a new subject first)
+  // gets a short lead-in: its caption arrives while the picture is still, and
+  // only then does the motion begin, so the words come before the action.
+  const LEAD_IN_VH = 0.35;
+  // Some moves read better slower than the rest of the tour.
+  const BEAT_SPEED = { lift: 1.8 };
   const HOLD_DRIFT = 0.025; // the picture scales by this much across a hold
   const LOAD_LANES = 6;
   // Beats whose labels the page draws. Empty: the mainboard's labels are part
@@ -76,14 +82,21 @@
       const fromFrame = beat.from - 1;
       const toFrame = beat.to - 1;
       const el = captionById.get(beat.id);
+      const pxPerFrame = PX_PER_FRAME * (BEAT_SPEED[beat.id] || 1);
       if (el) {
         const glide = beat.action_from ? (beat.action_from - beat.from) / 2 : 0;
-        const handover = cursor + glide * PX_PER_FRAME;
+        const handover = cursor + glide * pxPerFrame;
         const previous = captions[captions.length - 1];
         if (previous) previous.end = handover;
         captions.push({ id: beat.id, el, start: index === 0 ? -1 : handover, end: Infinity });
+        if (index > 0 && !beat.action_from) {
+          const leadIn = viewport * LEAD_IN_VH;
+          const still = Math.max(0, fromFrame - 1);
+          segments.push({ start: cursor, end: cursor + leadIn, fromFrame: still, toFrame: still, hold: false });
+          cursor += leadIn;
+        }
       }
-      const moveLength = Math.max(0, toFrame - fromFrame) * PX_PER_FRAME;
+      const moveLength = Math.max(0, toFrame - fromFrame) * pxPerFrame;
       if (moveLength > 0) {
         segments.push({ start: cursor, end: cursor + moveLength, fromFrame, toFrame, hold: false });
         cursor += moveLength;
@@ -157,6 +170,7 @@
     const ratio = canvas.width / canvas.clientWidth;
     imageRect = { x: x / ratio, y: y / ratio, width: width / ratio, height: height / ratio };
     drawn = isLoaded(frames[index]) ? index : -1;
+    root.dataset.frame = String(index + 1); // read by the end-to-end site check
     root.classList.add("is-ready");
   }
 
