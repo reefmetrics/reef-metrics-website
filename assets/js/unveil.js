@@ -30,16 +30,16 @@
   // Touch scrolling moves in long flicks with momentum, so phones get more
   // scroll distance per frame, longer holds and a softer follow than mice.
   const TUNING = {
-    desktop: { pxPerFrame: 12, holdVh: 0.45, ease: 0.12 },
-    mobile: { pxPerFrame: 22, holdVh: 0.6, ease: 0.08 },
+    desktop: { pxPerFrame: 7, holdVh: 0.3, ease: 0.12 },
+    mobile: { pxPerFrame: 14, holdVh: 0.4, ease: 0.08 },
   };
   const FIRST_HOLD_VH = 0.25;
   // A beat that starts moving straight away (no glide to a new subject first)
   // gets a short lead-in: its caption arrives while the picture is still, and
   // only then does the motion begin, so the words come before the action.
-  const LEAD_IN_VH = 0.35;
+  const LEAD_IN_VH = 0.25;
   // Some moves read better slower than the rest of the tour.
-  const BEAT_SPEED = { lift: 1.8 };
+  const BEAT_SPEED = { lift: 1.4 };
   const HOLD_DRIFT = 0.025; // the picture scales by this much across a hold
   const LOAD_LANES = 6;
   // Beats whose labels the page draws. Empty: the mainboard's labels are part

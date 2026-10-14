@@ -18,15 +18,36 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav is-solid" id="nav">
+  <header class="nav" id="nav">
     <div class="wrap">
       <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
-      <ul class="nav-links">
-        <li><a href="/#measures">What it measures</a></li>
-        <li><a href="/#open">Open hardware</a></li>
-        <li><a href="/#faq">Questions</a></li>
-        <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
-      </ul>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <nav id="site-menu" class="site-menu" aria-label="Main">
+        <ul class="nav-links">
+          <li class="has-menu">
+            <a href="/features">Features</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Features sections"></button>
+            <ul class="submenu">
+              <li><a href="/features#capabilities">What it measures</a></li>
+              <li><a href="/features#parts">The parts</a></li>
+              <li><a href="/features#lighting">Lighting</a></li>
+              <li><a href="/features#size">Size and connections</a></li>
+              <li><a href="/features#open">Open hardware</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a href="/updates">Updates</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Updates sections"></button>
+            <ul class="submenu">
+              <li><a href="/updates#planned">Planned functionality</a></li>
+              <li><a href="/updates#coming-soon">Coming soon</a></li>
+              <li><a href="/updates#follow">Follow progress</a></li>
+            </ul>
+          </li>
+          <li><a href="/questions">Questions</a></li>
+          <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -52,14 +73,20 @@
 
   <footer class="footer">
     <div class="wrap">
-      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <div>
+        <img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" />
+        <p class="fine footer-note">Wavie is open hardware. The documentation and design files live on GitHub.</p>
+      </div>
       <ul>
-        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a></li>
         <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
       <ul>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/updates">Updates</a></li>
+        <li><a href="/questions">Questions</a></li>
         <li><a href="/terms">Pre-order Terms</a></li>
         <li><a href="/warranty">Refunds and Warranty</a></li>
         <li><a href="/privacy">Privacy</a></li>

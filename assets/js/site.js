@@ -12,6 +12,46 @@ const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
     window.addEventListener("scroll", setNav, { passive: true });
   }
 
+  // Menus: dropdowns on desktop (hover or the arrow button), and a menu panel
+  // on phones opened by the Menu button.
+  const menuToggle = document.querySelector(".menu-toggle");
+  const closeSubmenus = (except) => document.querySelectorAll(".has-menu.is-open").forEach((item) => {
+    if (item === except) return;
+    item.classList.remove("is-open");
+    item.querySelector(".sub-toggle").setAttribute("aria-expanded", "false");
+  });
+  const setMenu = (open) => {
+    if (!nav || !menuToggle) return;
+    nav.classList.toggle("is-menu-open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.textContent = open ? "Close" : "Menu";
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+  if (menuToggle) menuToggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-menu-open")));
+  document.querySelectorAll(".sub-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const item = toggle.closest(".has-menu");
+      const open = !item.classList.contains("is-open");
+      closeSubmenus(item);
+      item.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  });
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".has-menu")) closeSubmenus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeSubmenus();
+    setMenu(false);
+  });
+  // Choosing any link in the menu closes it.
+  document.querySelectorAll(".site-menu a").forEach((link) => link.addEventListener("click", () => {
+    closeSubmenus();
+    setMenu(false);
+  }));
+
   // In-page links: bring the target section's content to the middle of the
   // space below the nav, or to the top of it when the content is taller.
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -28,8 +68,11 @@ const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
     return true;
   }
   document.addEventListener("click", (event) => {
-    const link = event.target.closest('a[href^="#"], a[href^="/#"]');
-    if (!link || (link.pathname !== window.location.pathname && link.getAttribute("href").startsWith("/"))) return;
+    const link = event.target.closest('a[href*="#"]');
+    if (!link || link.origin !== window.location.origin) return;
+    const here = window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+    const there = link.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
+    if (here !== there) return;
     if (link.id === "preorder") return;
     if (centreOn(link.hash, true)) {
       event.preventDefault();

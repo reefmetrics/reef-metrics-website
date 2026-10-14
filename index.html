@@ -42,12 +42,33 @@
   <header class="nav" id="nav">
     <div class="wrap">
       <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
-      <ul class="nav-links">
-        <li><a href="#measures">What it measures</a></li>
-        <li><a href="#open">Open hardware</a></li>
-        <li><a href="#faq">Questions</a></li>
-        <li class="nav-cta"><a class="btn btn-primary btn-small" href="#beta-kit">Pre-order</a></li>
-      </ul>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <nav id="site-menu" class="site-menu" aria-label="Main">
+        <ul class="nav-links">
+          <li class="has-menu">
+            <a href="/features">Features</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Features sections"></button>
+            <ul class="submenu">
+              <li><a href="/features#capabilities">What it measures</a></li>
+              <li><a href="/features#parts">The parts</a></li>
+              <li><a href="/features#lighting">Lighting</a></li>
+              <li><a href="/features#size">Size and connections</a></li>
+              <li><a href="/features#open">Open hardware</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a href="/updates">Updates</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Updates sections"></button>
+            <ul class="submenu">
+              <li><a href="/updates#planned">Planned functionality</a></li>
+              <li><a href="/updates#coming-soon">Coming soon</a></li>
+              <li><a href="/updates#follow">Follow progress</a></li>
+            </ul>
+          </li>
+          <li><a href="/questions">Questions</a></li>
+          <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -62,17 +83,22 @@
           <img class="unveil-poster" src="/assets/seq/desktop/0001.webp" alt="Wavie: a black tower about the height of a banana, with a glowing teal ring at its base and a lit crescent logo" width="1920" height="1080" />
         </picture>
         <canvas class="unveil-canvas" aria-hidden="true"></canvas>
-        <div class="tour-labels" aria-hidden="true"></div>
-
+        
         <article class="beat beat-hero is-on" data-beat="sealed">
           <div class="wrap">
             <div class="beat-copy">
               <h1>Ten reef parameters. <br />One sealed tower.</h1>
-              <p class="lede">Wavie tests your aquarium water on a schedule and reports to your phone.</p>
+              <p class="lede">Wavie tests your reef's water automatically and reports to your phone.</p>
+              <ul class="facts">
+                <li><strong>10 parameters</strong> <span>tested on a schedule</span></li>
+                <li><strong>4 probes included</strong> <span>pH, ORP, salinity, temperature</span></li>
+                <li><strong>184 mm tall</strong> <span>88 mm square</span></li>
+              </ul>
               <div class="hero-price">
                 <a class="btn btn-primary" href="#beta-kit">Pre-order the Beta Kit</a>
-                <p class="fine">$1,999.99<br />Estimated to ship Q1–Q2 2027</p>
+                <a class="btn btn-quiet" href="/features">See the features</a>
               </div>
+              <p class="fine hero-note">$1,999.99. Estimated to ship Q1–Q2 2027.</p>
             </div>
           </div>
         </article>
@@ -81,87 +107,28 @@
           <div class="wrap">
             <div class="beat-copy">
               <h2>Open it up.</h2>
-              <p class="lede">The sleeve comes straight off, and everything inside can be reached.</p>
+              <p class="lede">The sleeve comes straight off. Optics and pump at the top, the valve in the middle, electronics at the base.</p>
             </div>
           </div>
-          <img class="beat-still" src="/assets/img/tour-lift.webp" alt="Wavie with its sleeve lifting away" width="1920" height="1080" loading="lazy" />
+          <img class="beat-still" src="/assets/img/tour-internals.webp" alt="Wavie with its sleeve off, showing three tiers inside a black frame" width="1920" height="1080" loading="lazy" />
         </article>
-        <article class="beat" data-beat="internals">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>Three tiers.</h2>
-              <p class="lede">Optics and pump at the top. The valve in the middle. Electronics at the base.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-internals.webp" alt="Wavie with its sleeve removed, showing three tiers of components inside a black frame" width="1920" height="1080" loading="lazy" />
-        </article>
+
         <article class="beat" data-beat="explode">
           <div class="wrap">
             <div class="beat-copy">
               <h2>Every part comes out.</h2>
               <p class="lede">Pump, optics, valve and boards are separate modules, so one can be repaired or replaced without the rest.</p>
+              <p><a class="text-link" href="/features#parts">How each part works</a></p>
             </div>
           </div>
           <img class="beat-still" src="/assets/img/tour-explode.webp" alt="Every part of Wavie separated in an exploded view" width="1920" height="1080" loading="lazy" />
         </article>
-        <article class="beat" data-beat="optics">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>The optical bench</h2>
-              <p class="lede">Three LEDs at 540, 615 and 880 nm shine through a clear cuvette onto a light sensor. How much light the sample absorbs becomes the reading.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-optics.webp" alt="The optics: an LED board, a clear cuvette with a beam of light passing through it, and a sensor board" width="1920" height="1080" loading="lazy" />
-        </article>
-        <article class="beat" data-beat="pump">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>The pump</h2>
-              <p class="lede">One peristaltic pump meters the tank sample and every reagent through a single path, in both directions.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-pump.webp" alt="The peristaltic pump with its translucent blue cover and three rollers" width="1920" height="1080" loading="lazy" />
-        </article>
-        <article class="beat" data-beat="valve">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>The rotary valve</h2>
-              <p class="lede">A stepper-driven valve selects one of eight ports: six reagents, the sample and waste. It homes itself before every run.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-valve.webp" alt="The rotary valve above its stepper motor" width="1920" height="1080" loading="lazy" />
-        </article>
-        <article class="beat" data-beat="mainboard">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>The mainboard</h2>
-              <p class="lede">One custom board runs the instrument on an ESP32-S3 with Wi-Fi and Bluetooth. It carries isolated probe inputs, two stepper drivers, a CAN bus for expansion and USB-C for recovery.</p>
-              <ul class="port-list" aria-label="Mainboard connectors">
-                <li>24 V power in</li>
-                <li>CAN bus for Wavie Dose and Wavie Power</li>
-                <li>USB-C for firmware recovery</li>
-                <li>pH, ORP and dissolved oxygen probe inputs, each isolated</li>
-                <li>Salinity probe input</li>
-                <li>Temperature probe input</li>
-              </ul>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-mainboard.webp" alt="The blue Wavie mainboard with its probe connectors" width="1920" height="1080" loading="lazy" />
-        </article>
-        <article class="beat" data-beat="ring">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>The RGB ring</h2>
-              <p class="lede">Thirty-three LEDs under a diffuser, and a separately lit logo. Set them to any colour, or let them show what Wavie is doing.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-ring.webp" alt="The RGB ring glowing beneath its white diffuser" width="1920" height="1080" loading="lazy" />
-        </article>
+
         <article class="beat" data-beat="reassemble">
           <div class="wrap">
             <div class="beat-copy">
               <h2>And it all goes back.</h2>
-              <p class="lede">A small laboratory in a tower 184 mm tall.</p>
+              <p class="lede">A small laboratory, sealed in a tower 184 mm tall.</p>
               <div class="hero-price">
                 <a class="btn btn-primary" href="#beta-kit">Pre-order the Beta Kit</a>
               </div>
@@ -171,57 +138,6 @@
         </article>
 
         <p class="scroll-cue" aria-hidden="true">Scroll to open it</p>
-      </div>
-    </section>
-
-    <section class="section" id="measures">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>What it measures</h2>
-          <p class="lede">Five parameters by reagent chemistry and five by probe, without test kits or matching colours by eye.</p>
-        </div>
-        <div class="params">
-          <div>
-            <h3>By reagent</h3>
-            <ul>
-              <li>Alkalinity</li>
-              <li>Calcium</li>
-              <li>Magnesium</li>
-              <li>Nitrate</li>
-              <li>Phosphate</li>
-            </ul>
-          </div>
-          <div>
-            <h3>By probe</h3>
-            <ul>
-              <li>pH</li>
-              <li>ORP</li>
-              <li>Salinity</li>
-              <li>Temperature</li>
-              <li>Dissolved oxygen <small>probe sold separately</small></li>
-            </ul>
-          </div>
-        </div>
-        <p class="fine" style="margin-top:28px;max-width:38rem">The reagents are still in development and have not been formulated yet. <a href="#beta-kit">Read what is and isn't finished</a> before you order.</p>
-      </div>
-    </section>
-
-    <section class="section" id="size">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Small enough to forget about</h2>
-          <p class="lede">Wavie stands in a sump cabinet or on a shelf beside the tank.</p>
-        </div>
-        <div class="duo figure">
-          <figure>
-            <img src="/assets/img/banana-dims.webp" alt="Wavie beside a banana for scale, with dimension lines showing 184 mm tall and 88 mm wide" width="1600" height="1200" loading="lazy" />
-            <figcaption><strong>184 × 88 × 88 mm</strong>Banana for scale.</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/img/rear-ports.webp" alt="The rear connector panel of Wavie, labelled 24V, CAN, TMP, ORP, SA, PH and DO" width="1600" height="1200" loading="lazy" />
-            <figcaption><strong>Everything connects at the back</strong>24 V power, the CAN expansion bus, and inputs for temperature, pH, ORP, salinity and dissolved oxygen.</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
 
@@ -260,103 +176,21 @@
       </div>
     </section>
 
-    <section class="section" id="planned">
+    <section class="section" id="explore">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Planned functionality</h2>
-          <p class="lede">What we are building toward. Some of it will arrive after the Beta Kit ships, through software updates.</p>
-        </div>
-        <ul class="planned">
-          <li><strong>Automated chemistry</strong>Alkalinity, calcium, magnesium, nitrate and phosphate from six reagents.</li>
-          <li><strong>Continuous probe readings</strong>pH, ORP, salinity and temperature around the clock.</li>
-          <li><strong>Dissolved oxygen</strong>With the add-on probe; the input for it is built in.</li>
-          <li><strong>Scheduled testing</strong>Choose which tests run and how often.</li>
-          <li><strong>The ReefMetrics app</strong>One app for the whole ecosystem: readings, trends and alerts. It is still being built.</li>
-          <li><strong>Over-the-air updates</strong>New features and fixes delivered over Wi-Fi.</li>
-          <li><strong>Custom lighting</strong>Any colour for the ring and logo, or status at a glance.</li>
-          <li><strong>USB-C recovery</strong>Re-flash the firmware from a computer if anything goes wrong.</li>
-          <li><strong>Expansion over CAN</strong>The connection that Wavie Dose and Wavie Power will use.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="open">
-      <div class="wrap split">
-        <div>
-          <h2>Open hardware</h2>
-          <p class="lede">Wavie is built to be opened, understood and repaired by the person who owns it.</p>
-          <p class="muted">The design files and documentation are being published on GitHub under a non-commercial licence: build, repair and modify your own, but not for resale. The wiki explains how each part works in far more detail than this page.</p>
-          <p class="muted">We will sell replacement parts at cost. Reagents are formulated and sold only by ReefMetrics, which is what keeps the project running.</p>
-          <div class="links">
-            <a class="btn btn-quiet" href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Read the Wavie wiki</a>
-            <a class="btn btn-quiet" href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">View on GitHub</a>
-          </div>
-        </div>
-        <img src="/assets/img/exploded.webp" alt="Every part of Wavie laid out in an exploded view" width="1200" height="1200" loading="lazy" />
-      </div>
-    </section>
-
-    <section class="section" id="ecosystem">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Coming soon</h2>
-          <p class="lede">Two more devices are planned for the ReefMetrics ecosystem. They connect to Wavie over its CAN bus. Neither is available to order yet, and neither has a release date.</p>
-        </div>
-        <div class="soon">
-          <article>
-            <p class="tag">Coming soon</p>
-            <h3>Wavie Dose</h3>
-            <p>Dosing that responds to Wavie's own test results, so the tank is corrected as well as measured.</p>
-          </article>
-          <article>
-            <p class="tag">Coming soon</p>
-            <h3>Wavie Power</h3>
-            <p>Switched power and control for the pumps, lights and heaters around the tank.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="wrap">
-        <h2>Questions</h2>
-        <div class="faq">
-          <details>
-            <summary>What is the Beta Kit?</summary>
-            <div><p>It is the first production run of Wavie, sold before the project is finished to the people who want to help finish it. You get the tester, four probes and reagents. You also get early hardware, unfinished software and no warranty.</p></div>
-          </details>
-          <details>
-            <summary>When will it ship?</summary>
-            <div><p>Our estimate is the first half of 2027, between Q1 and Q2. That depends on the project being properly funded, and the date could move. We will post progress on Discord.</p></div>
-          </details>
-          <details>
-            <summary>Can I get a refund?</summary>
-            <div><p>No. Pre-orders pay for the work of completing Wavie, so the money is spent on development rather than held. Please only order if you are comfortable with that. The <a href="/warranty">Refund and Warranty Policy</a> has the detail.</p></div>
-          </details>
-          <details>
-            <summary>Is there a warranty?</summary>
-            <div><p>The Beta Kit has no warranty. Wavie is designed to be repaired by its owner: the design files and wiki are there to help, and we will sell replacement parts at cost.</p></div>
-          </details>
-          <details>
-            <summary>Are the reagents ready?</summary>
-            <div><p>Not yet. The reagent chemistry has not been formulated, and it is the largest piece of work still ahead. The Beta Kit ships with reagents in the box. Reagents are made and sold only by ReefMetrics.</p></div>
-          </details>
-          <details>
-            <summary>Which probes are included?</summary>
-            <div><p>pH, ORP, salinity and temperature. Wavie also has an input for dissolved oxygen; that probe will be sold separately in our store at launch.</p></div>
-          </details>
-          <details>
-            <summary>What does open hardware mean here?</summary>
-            <div><p>The design files and documentation for Wavie are published so owners can understand, repair and modify their own unit. The licence is non-commercial, so the designs cannot be used to make units for sale. The reagent formulations are not published.</p></div>
-          </details>
-          <details>
-            <summary>What about Wavie Dose and Wavie Power?</summary>
-            <div><p>Both are still planned and Wavie already has the CAN connection they will use. Neither has a confirmed release date or price.</p></div>
-          </details>
-          <details>
-            <summary>Where can I follow progress?</summary>
-            <div><p>On <a href="https://discord.gg/4rHbTdAK5G" rel="noopener">our Discord</a>. Build updates are posted there, and it is the fastest way to ask us something.</p></div>
-          </details>
+        <div class="explore">
+          <a href="/features">
+            <h3>Features</h3>
+            <p>What it measures, every part, the lighting, size and connections, open hardware.</p>
+          </a>
+          <a href="/updates">
+            <h3>Updates</h3>
+            <p>Planned functionality, Wavie Dose and Wavie Power, and where to follow the build.</p>
+          </a>
+          <a href="/questions">
+            <h3>Questions</h3>
+            <p>Shipping, refunds, warranty, reagents and probes, answered plainly.</p>
+          </a>
         </div>
       </div>
     </section>
@@ -365,14 +199,20 @@
 
   <footer class="footer">
     <div class="wrap">
-      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <div>
+        <img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" />
+        <p class="fine footer-note">Wavie is open hardware. The documentation and design files live on GitHub.</p>
+      </div>
       <ul>
-        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a></li>
         <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
       <ul>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/updates">Updates</a></li>
+        <li><a href="/questions">Questions</a></li>
         <li><a href="/terms">Pre-order Terms</a></li>
         <li><a href="/warranty">Refunds and Warranty</a></li>
         <li><a href="/privacy">Privacy</a></li>

@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build updates | ReefMetrics</title>
-  <meta name="description" content="ReefMetrics build updates are now posted on Discord." />
+  <title>Updates | Wavie by ReefMetrics</title>
+  <meta name="description" content="Planned Wavie functionality, the coming Wavie Dose and Wavie Power, and where to follow progress." />
   <meta name="theme-color" content="#000000" />
-  <meta name="robots" content="noindex" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ReefMetrics" />
+  <meta property="og:title" content="Wavie by ReefMetrics" />
+  <meta property="og:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
+  <meta property="og:url" content="https://www.reef-metrics.com/updates" />
+  <meta property="og:image" content="https://www.reef-metrics.com/assets/social-card.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:image:alt" content="The Wavie reef tester, a black tower with a glowing teal base" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wavie by ReefMetrics" />
+  <meta name="twitter:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
+  <meta name="twitter:image" content="https://www.reef-metrics.com/assets/social-card.png" />
+
   <link rel="canonical" href="https://www.reef-metrics.com/updates" />
   <link rel="icon" href="/assets/favicon-32.png?v=5" sizes="32x32" type="image/png" />
   <link rel="icon" href="/assets/favicon-192.png?v=5" sizes="192x192" type="image/png" />
@@ -19,39 +33,119 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav is-solid" id="nav">
+  <header class="nav" id="nav">
     <div class="wrap">
       <a class="nav-logo" href="/" aria-label="ReefMetrics home"><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" /></a>
-      <ul class="nav-links">
-        <li><a href="/#measures">What it measures</a></li>
-        <li><a href="/#open">Open hardware</a></li>
-        <li><a href="/#faq">Questions</a></li>
-        <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
-      </ul>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <nav id="site-menu" class="site-menu" aria-label="Main">
+        <ul class="nav-links">
+          <li class="has-menu">
+            <a href="/features">Features</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Features sections"></button>
+            <ul class="submenu">
+              <li><a href="/features#capabilities">What it measures</a></li>
+              <li><a href="/features#parts">The parts</a></li>
+              <li><a href="/features#lighting">Lighting</a></li>
+              <li><a href="/features#size">Size and connections</a></li>
+              <li><a href="/features#open">Open hardware</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a href="/updates">Updates</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Updates sections"></button>
+            <ul class="submenu">
+              <li><a href="/updates#planned">Planned functionality</a></li>
+              <li><a href="/updates#coming-soon">Coming soon</a></li>
+              <li><a href="/updates#follow">Follow progress</a></li>
+            </ul>
+          </li>
+          <li><a href="/questions">Questions</a></li>
+          <li class="nav-cta"><a class="btn btn-primary btn-small" href="/#beta-kit">Pre-order</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main id="main" class="doc">
-    <div class="wrap">
-      <div class="doc-body">
-        <h1>Build updates have moved</h1>
+  <main id="main" class="subpage">
+    <section class="section page-head">
+      <div class="wrap"><div class="section-head">
+        <h1>Updates</h1>
+        <p class="lede">What is planned for Wavie, what else is coming, and where to follow the build.</p>
+      </div></div>
+    </section>
 
-        <p>We now post progress on <a href="https://discord.gg/4rHbTdAK5G" rel="noopener">our Discord</a>. Technical detail lives in the <a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a>.</p>
-        <p><a href="/">Back to Wavie</a></p>
+    <section class="section" id="planned">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Planned functionality</h2>
+          <p class="lede">What we are building toward. Some of it will arrive after the Beta Kit ships, through software updates.</p>
+        </div>
+        <ul class="planned">
+          <li><strong>Automated chemistry</strong>Alkalinity, calcium, magnesium, nitrate and phosphate from six reagents.</li>
+          <li><strong>Continuous probe readings</strong>pH, ORP, salinity and temperature around the clock.</li>
+          <li><strong>Dissolved oxygen</strong>With the add-on probe; the input for it is built in.</li>
+          <li><strong>Scheduled testing</strong>Choose which tests run and how often.</li>
+          <li><strong>The ReefMetrics app</strong>One app for the whole ecosystem: readings, trends and alerts. It is still being built.</li>
+          <li><strong>Over-the-air updates</strong>New features and fixes delivered over Wi-Fi.</li>
+          <li><strong>Custom lighting</strong>Any colour for the ring and logo, or status at a glance.</li>
+          <li><strong>USB-C recovery</strong>Re-flash the firmware from a computer if anything goes wrong.</li>
+          <li><strong>Expansion over CAN</strong>The connection that Wavie Dose and Wavie Power will use.</li>
+        </ul>
       </div>
-    </div>
+    </section>
+
+    <section class="section" id="coming-soon">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Coming soon</h2>
+          <p class="lede">Two more devices are planned for the ReefMetrics ecosystem. They connect to Wavie over its CAN bus. Neither is available to order yet, and neither has a release date.</p>
+        </div>
+        <div class="soon">
+          <article>
+            <p class="tag">Coming soon</p>
+            <h3>Wavie Dose</h3>
+            <p>Dosing that responds to Wavie's own test results, so the tank is corrected as well as measured.</p>
+          </article>
+          <article>
+            <p class="tag">Coming soon</p>
+            <h3>Wavie Power</h3>
+            <p>Switched power and control for the pumps, lights and heaters around the tank.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="follow">
+      <div class="wrap split">
+        <div>
+          <h2>Follow progress</h2>
+          <p class="lede">Build updates, photos and questions answered as they happen.</p>
+        </div>
+        <div class="links">
+          <a class="btn btn-quiet" href="https://discord.gg/4rHbTdAK5G" rel="noopener">Join the Discord</a>
+          <a class="btn btn-quiet" href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">Watch on GitHub</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="wrap">
-      <div><img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" /></div>
+      <div>
+        <img src="/assets/logo-full.png" alt="ReefMetrics" width="397" height="242" loading="lazy" />
+        <p class="fine footer-note">Wavie is open hardware. The documentation and design files live on GitHub.</p>
+      </div>
       <ul>
-        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
+        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a></li>
         <li><a href="https://github.com/reefmetrics/wavie-hardware" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wiki</a></li>
+        <li><a href="https://discord.gg/4rHbTdAK5G" rel="noopener">Discord</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
       <ul>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/updates">Updates</a></li>
+        <li><a href="/questions">Questions</a></li>
         <li><a href="/terms">Pre-order Terms</a></li>
         <li><a href="/warranty">Refunds and Warranty</a></li>
         <li><a href="/privacy">Privacy</a></li>
@@ -59,5 +153,7 @@
       <p class="fine">© 2026 ReefMetrics. All rights reserved.</p>
     </div>
   </footer>
+
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
