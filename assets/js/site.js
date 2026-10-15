@@ -2,7 +2,7 @@
 // PREORDER_URL is the one place the Stripe checkout link lives. While it is
 // empty the button says pre-orders are not open yet and goes nowhere.
 // This is the LIVE link: real $1,999.99 charges.
-const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
+const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
 
 (function () {
   const nav = document.getElementById("nav");
