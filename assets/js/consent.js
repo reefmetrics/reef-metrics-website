@@ -7,7 +7,7 @@
 //
 // CF_ANALYTICS_TOKEN is the site token from the Cloudflare dashboard
 // (Analytics & Logs > Web Analytics). While it is empty nothing is loaded.
-const CF_ANALYTICS_TOKEN = "";
+const CF_ANALYTICS_TOKEN = "bcbcd6ac3bff4215a87b61a7826391eb";
 
 (function () {
   const KEY = "rm-analytics-choice"; // "yes" or "no"
