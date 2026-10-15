@@ -166,6 +166,8 @@
     const y = (canvas.height - height) / 2;
     context.fillStyle = "#000";
     context.fillRect(0, 0, canvas.width, canvas.height);
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
     context.drawImage(image, x, y, width, height);
     const ratio = canvas.width / canvas.clientWidth;
     imageRect = { x: x / ratio, y: y / ratio, width: width / ratio, height: height / ratio };
