@@ -245,54 +245,28 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
     update();
   }
 
+  // The pre-order button goes straight to Stripe checkout. The text next to
+  // it says that clicking it means the visitor understands what a Beta Kit
+  // pre-order is. While checkout opens, the button shows a loading state.
   const button = document.getElementById("preorder");
-  const ack = document.getElementById("ack");
-  if (!button || !ack) return;
+  if (!button) return;
 
   if (!PREORDER_URL) {
     button.textContent = "Pre-orders open soon";
-    ack.closest("label").hidden = true;
+    button.removeAttribute("href");
     return;
   }
 
-  // Error state: pressing pre-order without ticking the box explains why.
-  // Loading state: once ticked, the button shows that checkout is opening.
-  const error = document.createElement("p");
-  error.className = "form-error";
-  error.id = "ack-error";
-  error.setAttribute("role", "alert");
-  error.hidden = true;
-  error.textContent = "Please tick the box to confirm you've read what the Beta Kit is before you pre-order.";
-  ack.closest("label").after(error);
-  const sync = () => {
-    button.setAttribute("aria-disabled", String(!ack.checked));
-    button.setAttribute("href", ack.checked ? PREORDER_URL : "#beta-kit");
-    if (ack.checked) {
-      error.hidden = true;
-      ack.closest("label").classList.remove("has-error");
-      ack.removeAttribute("aria-invalid");
-    }
-  };
-  ack.addEventListener("change", sync);
-  button.addEventListener("click", (event) => {
-    if (ack.checked) {
-      button.classList.add("is-loading");
-      button.setAttribute("aria-busy", "true");
-      button.textContent = "Opening secure checkout…";
-      // If the visitor comes back (e.g. with the Back button), reset the button.
-      window.addEventListener("pageshow", () => {
-        button.classList.remove("is-loading");
-        button.removeAttribute("aria-busy");
-        button.textContent = button.dataset.label;
-      }, { once: true });
-      return;
-    }
-    event.preventDefault();
-    error.hidden = false;
-    ack.closest("label").classList.add("has-error");
-    ack.setAttribute("aria-invalid", "true");
-    ack.setAttribute("aria-describedby", "ack-error");
-    ack.focus();
+  button.setAttribute("href", PREORDER_URL);
+  button.addEventListener("click", () => {
+    button.classList.add("is-loading");
+    button.setAttribute("aria-busy", "true");
+    button.textContent = "Opening secure checkout…";
+    // If the visitor comes back (e.g. with the Back button), reset the button.
+    window.addEventListener("pageshow", () => {
+      button.classList.remove("is-loading");
+      button.removeAttribute("aria-busy");
+      button.textContent = button.dataset.label;
+    }, { once: true });
   });
-  sync();
 })();

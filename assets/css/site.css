@@ -179,8 +179,6 @@ a:hover { text-decoration-color: currentColor; }
 .offer-buy > * + * { margin-top: 22px; }
 .price { font-size: var(--step-4); font-weight: 500; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 .price sup { font-size: 0.42em; vertical-align: 0.95em; letter-spacing: 0; margin-left: 2px; }
-.ack { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-size: 0.9375rem; color: var(--ink-2); cursor: pointer; }
-.ack input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--teal); }
 .offer-detail h3 { padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .offer-detail h3:not(:first-child) { margin-top: clamp(40px, 5vw, 64px); }
 .rows { list-style: none; margin: 0; padding: 0; }
@@ -577,9 +575,6 @@ html.js .unveil:not(.is-static) .beat.is-on .beat-copy { transform: none; }
 }
 
 /* Pre-order form states */
-.ack.has-error span { color: var(--ink); }
-.ack.has-error input { outline: 2px solid #ff8a7a; outline-offset: 2px; }
-.form-error { margin-top: 10px !important; color: #ff9d90; font-size: 0.875rem; }
 .btn.is-loading { pointer-events: none; opacity: 0.8; }
 .btn.is-loading::before { content: ""; width: 14px; height: 14px; margin-right: 10px; border-radius: 50%; border: 2px solid rgba(0, 0, 0, 0.25); border-top-color: #000; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -602,3 +597,6 @@ html.js .unveil:not(.is-static) .beat.is-on .beat-copy { transform: none; }
   .consent { left: 12px; right: 12px; top: calc(var(--nav-h) + 8px); bottom: auto; max-width: none; padding: 12px 14px; font-size: 0.8125rem; }
   .consent-actions { margin-top: 8px; }
 }
+
+/* Pre-order acknowledgement shown next to the button */
+.preorder-note { margin-top: 14px; color: var(--ink-2); font-size: 0.875rem; line-height: 1.55; max-width: 34rem; }
