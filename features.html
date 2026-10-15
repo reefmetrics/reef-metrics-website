@@ -30,6 +30,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    // Pinned scroll tour unless reduced motion is requested (see assets/js/unveil.js).
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -75,121 +79,188 @@
       </div></div>
     </section>
 
+    <!-- Scroll tour: one pinned stage; each .beat is a caption for one beat of
+         the rendered sequence (see assets/js/unveil.js). -->
+    <section class="unveil" id="unveil" aria-label="Wavie, opened up">
+      <div class="unveil-stage">
+        <picture>
+          <source media="(max-width: 860px)" srcset="/assets/seq/mobile/0001.webp" />
+          <img class="unveil-poster" src="/assets/seq/desktop/0001.webp" alt="Wavie: a black tower about the height of a banana, with a glowing teal ring at its base and a lit crescent logo" width="1920" height="1080" />
+        </picture>
+        <canvas class="unveil-canvas" aria-hidden="true"></canvas>
+        
+        <article class="beat beat-hero is-on" data-beat="sealed">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Take it apart.</h2>
+              <p class="lede">Scroll to open Wavie and see how it fits together.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="beat" data-beat="lift">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Open it up.</h2>
+              <p class="lede">The sleeve comes straight off. Optics and pump at the top, the valve in the middle, electronics at the base.</p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-internals.webp" alt="Wavie with its sleeve off, showing three tiers inside a black frame" width="1920" height="1080" loading="lazy" />
+        </article>
+
+        <article class="beat" data-beat="explode">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>Every part comes out.</h2>
+              <p class="lede">Pump, optics, valve and boards are separate modules, so one can be repaired or replaced without the rest.</p>
+              <p><a class="text-link" href="#parts">How each part works</a></p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-explode.webp" alt="Every part of Wavie separated in an exploded view" width="1920" height="1080" loading="lazy" />
+        </article>
+
+        <article class="beat" data-beat="reassemble">
+          <div class="wrap">
+            <div class="beat-copy">
+              <h2>And it all goes back.</h2>
+              <p class="lede">A small laboratory, sealed in a tower 184 mm tall.</p>
+              <p><a class="text-link" href="/#beta-kit">Pre-order the Beta Kit</a></p>
+            </div>
+          </div>
+          <img class="beat-still" src="/assets/img/tour-reassemble.webp" alt="Wavie reassembled: a sealed black tower with a glowing teal ring" width="1920" height="1080" loading="lazy" />
+        </article>
+
+        <p class="scroll-cue" aria-hidden="true">Scroll</p>
+      </div>
+    </section>
+
     <section class="section" id="capabilities">
       <div class="wrap">
         <div class="section-head">
           <h2>What it measures</h2>
-          <p class="lede">Five parameters by reagent chemistry and five by probe, without test kits or matching colours by eye.</p>
+          <p class="lede">Ten parameters on a schedule, with no test kits and no matching colours by eye.</p>
         </div>
-        <div class="params">
-          <div>
-            <h3>By reagent</h3>
-            <ul>
-              <li>Alkalinity</li>
-              <li>Calcium</li>
-              <li>Magnesium</li>
-              <li>Nitrate</li>
-              <li>Phosphate</li>
-            </ul>
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Measurement method">
+            <button type="button" role="tab" id="tab-reagent" aria-controls="panel-reagent" aria-selected="true">By reagent</button>
+            <button type="button" role="tab" id="tab-probe" aria-controls="panel-probe" aria-selected="false" tabindex="-1">By probe</button>
           </div>
-          <div>
-            <h3>By probe</h3>
-            <ul>
-              <li>pH</li>
-              <li>ORP</li>
-              <li>Salinity</li>
-              <li>Temperature</li>
-              <li>Dissolved oxygen <small>probe sold separately</small></li>
+          <div role="tabpanel" id="panel-reagent" aria-labelledby="tab-reagent">
+            <ul class="chips">
+              <li>Alkalinity</li><li>Calcium</li><li>Magnesium</li><li>Nitrate</li><li>Phosphate</li>
             </ul>
+            <p class="muted panel-note">Measured by colour in the optical bench. The reagents are still being formulated and ship with the Beta Kit.</p>
+          </div>
+          <div role="tabpanel" id="panel-probe" aria-labelledby="tab-probe" hidden>
+            <ul class="chips">
+              <li>pH</li><li>ORP</li><li>Salinity</li><li>Temperature</li><li>Dissolved oxygen</li>
+            </ul>
+            <p class="muted panel-note">Read continuously. pH, ORP, salinity and temperature probes are included; the dissolved oxygen probe is sold separately at launch.</p>
           </div>
         </div>
-        <p class="fine" style="margin-top:28px;max-width:38rem">The reagents are still in development and have not been formulated yet. <a href="/#beta-kit">Read what is and isn't finished</a> before you order.</p>
       </div>
     </section>
 
-    <section class="section flush" id="parts">
-      <div class="wrap"><div class="section-head">
-        <h2>The parts</h2>
-        <p class="lede">Four modules do the work. Each one comes out on its own.</p>
-      </div></div>
-      <div class="frame-rows">
-        <article class="frame-row" id="part-optics">
-          <picture>
-            <source media="(max-width: 860px)" srcset="/assets/img/feature-optics-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-optics.webp" alt="The optics: an LED board, a clear cuvette with a beam of light passing through it, and a sensor board" width="1920" height="1080" loading="lazy" />
-          </picture>
-          <div class="wrap frame-copy">
-            <h3>The optical bench</h3>
-            <p>Three LEDs at 540, 615 and 880 nm shine through a clear cuvette onto a light sensor. How much light the sample absorbs becomes the reading.</p>
+    <section class="section" id="parts">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The parts</h2>
+          <p class="lede">Four modules do the work. Pick one.</p>
+        </div>
+        <div class="picker" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Parts">
+            <button type="button" role="tab" id="tab-optics" aria-controls="panel-optics" aria-selected="true">Optical bench</button>
+            <button type="button" role="tab" id="tab-pump" aria-controls="panel-pump" aria-selected="false" tabindex="-1">Pump</button>
+            <button type="button" role="tab" id="tab-valve" aria-controls="panel-valve" aria-selected="false" tabindex="-1">Rotary valve</button>
+            <button type="button" role="tab" id="tab-mainboard" aria-controls="panel-mainboard" aria-selected="false" tabindex="-1">Mainboard</button>
           </div>
-        </article>
-        <article class="frame-row" id="part-pump">
-          <picture>
-            <source media="(max-width: 860px)" srcset="/assets/img/feature-pump-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-pump.webp" alt="The peristaltic pump opened into its parts: motor, rollers and translucent blue cover" width="1920" height="1080" loading="lazy" />
-          </picture>
-          <div class="wrap frame-copy">
-            <h3>The pump</h3>
-            <p>A peristaltic pump meters the tank sample and every reagent through one shared path, in both directions. Liquid only ever touches the tubing.</p>
+          <div class="picker-panel" role="tabpanel" id="panel-optics" aria-labelledby="tab-optics">
+            <picture>
+              <source media="(max-width: 860px)" srcset="/assets/img/feature-optics-m.webp" width="900" height="1600" />
+              <img src="/assets/img/feature-optics.webp" alt="The optics: an LED board, a clear cuvette with a beam of light passing through it, and a sensor board" width="1920" height="1080" loading="lazy" />
+            </picture>
+            <div class="picker-copy">
+              <h3>Optical bench</h3>
+              <p>Three LEDs at 540, 615 and 880 nm shine through a clear cuvette onto a light sensor. How much light the sample absorbs becomes the reading.</p>
+            </div>
           </div>
-        </article>
-        <article class="frame-row" id="part-valve">
-          <picture>
-            <source media="(max-width: 860px)" srcset="/assets/img/feature-valve-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-valve.webp" alt="The rotary valve seen from above, with one of its eight ports lit teal" width="1920" height="1080" loading="lazy" />
-          </picture>
-          <div class="wrap frame-copy">
-            <h3>The rotary valve</h3>
-            <p>A stepper-driven rotor selects one of eight ports: six reagents, the sample and waste. It homes itself before every run.</p>
+          <div class="picker-panel" role="tabpanel" id="panel-pump" aria-labelledby="tab-pump" hidden>
+            <picture>
+              <source media="(max-width: 860px)" srcset="/assets/img/feature-pump-m.webp" width="900" height="1600" />
+              <img src="/assets/img/feature-pump.webp" alt="The peristaltic pump opened into its parts: motor, rollers and translucent blue cover" width="1920" height="1080" loading="lazy" />
+            </picture>
+            <div class="picker-copy">
+              <h3>Pump</h3>
+              <p>A peristaltic pump meters the tank sample and every reagent through one shared path, in both directions. Liquid only ever touches the tubing.</p>
+            </div>
           </div>
-        </article>
-        <article class="frame-row" id="part-mainboard">
-          <picture>
-            <source media="(max-width: 860px)" srcset="/assets/img/feature-mainboard-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-mainboard.webp" alt="The mainboard with its connectors labelled 24 V, CAN, TEMP, ORP, SALINITY, pH and DO" width="1920" height="1080" loading="lazy" />
-          </picture>
-          <div class="wrap frame-copy">
-            <h3>The mainboard</h3>
-            <p>One custom board runs everything on an ESP32-S3 with Wi-Fi and Bluetooth: isolated probe inputs, two stepper drivers, a CAN bus for expansion and USB-C for recovery.</p>
+          <div class="picker-panel" role="tabpanel" id="panel-valve" aria-labelledby="tab-valve" hidden>
+            <picture>
+              <source media="(max-width: 860px)" srcset="/assets/img/feature-valve-m.webp" width="900" height="1600" />
+              <img src="/assets/img/feature-valve.webp" alt="The rotary valve seen from above, with one of its eight ports lit teal" width="1920" height="1080" loading="lazy" />
+            </picture>
+            <div class="picker-copy">
+              <h3>Rotary valve</h3>
+              <p>A stepper-driven rotor selects one of eight ports: six reagents, the sample and waste. It homes itself before every run.</p>
+            </div>
           </div>
-        </article>
+          <div class="picker-panel" role="tabpanel" id="panel-mainboard" aria-labelledby="tab-mainboard" hidden>
+            <picture>
+              <source media="(max-width: 860px)" srcset="/assets/img/feature-mainboard-m.webp" width="900" height="1600" />
+              <img src="/assets/img/feature-mainboard.webp" alt="The mainboard with its connectors labelled 24 V, CAN, TEMP, ORP, SALINITY, pH and DO" width="1920" height="1080" loading="lazy" />
+            </picture>
+            <div class="picker-copy">
+              <h3>Mainboard</h3>
+              <p>One custom board runs everything on an ESP32-S3 with Wi-Fi and Bluetooth: isolated probe inputs, two stepper drivers, a CAN bus for expansion and USB-C for recovery.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section flush" id="lighting">
-      <div class="wrap"><div class="section-head">
-        <h2>Lighting</h2>
-        <p class="lede">Status you can read from across the room.</p>
-      </div></div>
-      <div class="frame-rows">
-        <article class="frame-row" id="part-ring">
+    <section class="section" id="lighting">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Lighting</h2>
+          <p class="lede">Thirty-three LEDs under a diffuser at the base and a separately lit logo. Set any colour, or let them show what Wavie is doing.</p>
+        </div>
+        <div class="lighting" data-lighting>
           <picture>
             <source media="(max-width: 860px)" srcset="/assets/img/feature-ring-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-ring.webp" alt="The RGB ring glowing teal beneath its white diffuser" width="1920" height="1080" loading="lazy" />
+            <img src="/assets/img/feature-ring.webp" alt="The RGB ring glowing beneath its white diffuser" width="1920" height="1080" loading="lazy" />
           </picture>
-          <div class="wrap frame-copy">
-            <h3>The RGB ring</h3>
-            <p>Thirty-three LEDs under a diffuser at the base, and a separately lit crescent logo. Pick any colour for each, or let them show what Wavie is doing: testing, finished, or needs attention.</p>
+          <div class="swatches" role="radiogroup" aria-label="Try a colour">
+            <button type="button" role="radio" aria-checked="true" data-hue="0" style="--swatch:#3fc6cf" aria-label="Teal"></button>
+            <button type="button" role="radio" aria-checked="false" data-hue="80" style="--swatch:#6a7cf0" aria-label="Blue violet"></button>
+            <button type="button" role="radio" aria-checked="false" data-hue="125" style="--swatch:#c45ce8" aria-label="Purple"></button>
+            <button type="button" role="radio" aria-checked="false" data-hue="175" style="--swatch:#ef5a8f" aria-label="Pink"></button>
+            <button type="button" role="radio" aria-checked="false" data-hue="215" style="--swatch:#f0a24a" aria-label="Amber"></button>
+            <button type="button" role="radio" aria-checked="false" data-hue="-55" style="--swatch:#5fdc7a" aria-label="Green"></button>
           </div>
-        </article>
+          <p class="fine swatch-note">Try a colour. Colours on the real device are set in the app.</p>
+        </div>
       </div>
     </section>
 
     <section class="section" id="size">
       <div class="wrap">
         <div class="section-head">
-          <h2>Small enough to forget about</h2>
-          <p class="lede">Wavie stands in a sump cabinet or on a shelf beside the tank.</p>
+          <h2>Size and connections</h2>
+          <p class="lede">184 mm tall and 88 mm square. Everything plugs in at the back.</p>
         </div>
-        <div class="duo figure">
-          <figure>
-            <img src="/assets/img/banana-dims.webp" alt="Wavie beside a banana for scale, with dimension lines showing 184 mm tall and 88 mm wide" width="1600" height="1200" loading="lazy" />
-            <figcaption><strong>184 × 88 × 88 mm</strong>Banana for scale.</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/img/rear-ports.webp" alt="The rear connector panel of Wavie, labelled 24V, CAN, TMP, ORP, SA, PH and DO" width="1600" height="1200" loading="lazy" />
-            <figcaption><strong>Everything connects at the back</strong>24 V power, the CAN expansion bus, and inputs for temperature, pH, ORP, salinity and dissolved oxygen.</figcaption>
-          </figure>
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="Size and connections">
+            <button type="button" role="tab" id="tab-size" aria-controls="panel-size" aria-selected="true">Size</button>
+            <button type="button" role="tab" id="tab-ports" aria-controls="panel-ports" aria-selected="false" tabindex="-1">Connections</button>
+          </div>
+          <div role="tabpanel" id="panel-size" aria-labelledby="tab-size">
+            <img class="photo" src="/assets/img/banana-dims.webp" alt="Wavie beside a banana for scale, with dimension lines showing 184 mm tall and 88 mm wide" width="1600" height="1200" loading="lazy" />
+            <p class="muted panel-note">Small enough for a sump cabinet or a shelf beside the tank. Banana for scale.</p>
+          </div>
+          <div role="tabpanel" id="panel-ports" aria-labelledby="tab-ports" hidden>
+            <img class="photo" src="/assets/img/rear-ports.webp" alt="The rear connector panel of Wavie, labelled 24V, CAN, TMP, ORP, SA, PH and DO" width="1600" height="1200" loading="lazy" />
+            <p class="muted panel-note">24 V power, the CAN expansion bus, and inputs for temperature, pH, ORP, salinity and dissolved oxygen.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -209,7 +280,6 @@
         <img src="/assets/img/exploded.webp" alt="Every part of Wavie laid out in an exploded view" width="1200" height="1200" loading="lazy" />
       </div>
     </section>
-
   </main>
 
   <footer class="footer">
@@ -237,5 +307,7 @@
   </footer>
 
   <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/unveil.js" defer></script>
+  <script src="/assets/js/features.js" defer></script>
 </body>
 </html>

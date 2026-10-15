@@ -29,13 +29,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="/assets/seq/desktop/0001.webp" media="(min-width: 861px)" />
-  <link rel="preload" as="image" href="/assets/seq/mobile/0001.webp" media="(max-width: 860px)" />
+  <link rel="preload" as="image" href="/assets/img/hero-desktop.webp" media="(min-width: 861px)" />
+  <link rel="preload" as="image" href="/assets/img/hero-mobile.webp" media="(max-width: 860px)" />
   <link rel="stylesheet" href="/assets/css/site.css" />
-  <script>
-    // Pinned scroll tour unless reduced motion is requested (see assets/js/unveil.js).
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");
-  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -75,19 +71,13 @@
 
   <main id="main">
 
-    <!-- Hero and scroll tour share one pinned stage. Each .beat is a caption for
-         one beat of the rendered sequence (see assets/js/unveil.js). -->
-    <section class="unveil" id="unveil" aria-label="Wavie, opened up">
-      <div class="unveil-stage">
-        <picture>
-          <source media="(max-width: 860px)" srcset="/assets/seq/mobile/0001.webp" />
-          <img class="unveil-poster" src="/assets/seq/desktop/0001.webp" alt="Wavie: a black tower about the height of a banana, with a glowing teal ring at its base and a lit crescent logo" width="1920" height="1080" />
-        </picture>
-        <canvas class="unveil-canvas" aria-hidden="true"></canvas>
-        
-        <article class="beat beat-hero is-on" data-beat="sealed">
-          <div class="wrap">
-            <div class="beat-copy">
+    <section class="hero" aria-label="Wavie">
+      <picture>
+        <source media="(max-width: 860px)" srcset="/assets/img/hero-mobile.webp" width="1440" height="2560" />
+        <img class="hero-image" src="/assets/img/hero-desktop.webp" alt="Wavie: a black tower about the height of a banana, with a glowing teal ring at its base and a lit crescent logo" width="2880" height="1620" fetchpriority="high" />
+      </picture>
+      <div class="wrap">
+            <div class="hero-copy">
               <h1>The most compact reef monitor ever made.</h1>
               <p class="lede">Wavie tests your reef's water automatically and reports to your phone.</p>
               <div class="facts">
@@ -105,43 +95,6 @@
               <p class="fine hero-note">$1,999.99. Estimated to ship Q1–Q2 2027.</p>
             </div>
           </div>
-        </article>
-
-        <article class="beat" data-beat="lift">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>Open it up.</h2>
-              <p class="lede">The sleeve comes straight off. Optics and pump at the top, the valve in the middle, electronics at the base.</p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-internals.webp" alt="Wavie with its sleeve off, showing three tiers inside a black frame" width="1920" height="1080" loading="lazy" />
-        </article>
-
-        <article class="beat" data-beat="explode">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>Every part comes out.</h2>
-              <p class="lede">Pump, optics, valve and boards are separate modules, so one can be repaired or replaced without the rest.</p>
-              <p><a class="text-link" href="/features#parts">How each part works</a></p>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-explode.webp" alt="Every part of Wavie separated in an exploded view" width="1920" height="1080" loading="lazy" />
-        </article>
-
-        <article class="beat" data-beat="reassemble">
-          <div class="wrap">
-            <div class="beat-copy">
-              <h2>And it all goes back.</h2>
-              <p class="lede">A small laboratory, sealed in a tower 184 mm tall.</p>
-              <div class="hero-price">
-                <a class="btn btn-primary" href="#beta-kit">Pre-order the Beta Kit</a>
-              </div>
-            </div>
-          </div>
-          <img class="beat-still" src="/assets/img/tour-reassemble.webp" alt="Wavie reassembled: a sealed black tower with a glowing teal ring" width="1920" height="1080" loading="lazy" />
-        </article>
-
-        <p class="scroll-cue" aria-hidden="true">Scroll to open it</p>
       </div>
     </section>
 
@@ -226,6 +179,5 @@
   </footer>
 
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/unveil.js" defer></script>
 </body>
 </html>
