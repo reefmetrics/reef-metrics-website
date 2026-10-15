@@ -339,33 +339,6 @@ figure[data-labels] { position: relative; }
   .nav-cta .btn { width: 100%; min-height: 48px; font-size: 1rem; }
 }
 
-/* ── Hero facts: what it tests ── */
-.facts { margin-top: 26px; font-size: 0.9375rem; line-height: 1.45; }
-.facts-title strong { color: var(--ink); font-weight: 500; }
-.facts dl { margin: 10px 0 0; display: grid; gap: 8px; }
-.facts dl > div { display: grid; grid-template-columns: 6.2em 1fr; gap: 12px; }
-.facts dt { color: var(--ink-3); }
-.facts dd { margin: 0; color: var(--ink-2); }
-.facts-note { margin-top: 10px; color: var(--teal-bright); font-size: 0.875rem; }
-.hero-note { margin-top: 14px; color: var(--ink-2); }
-.text-link { color: var(--teal-bright); text-decoration-color: rgba(111, 219, 225, 0.4); }
-@media (max-width: 860px) {
-  .beat-hero h1 { font-size: 1.85rem; }
-  .beat-hero .lede { display: none; }
-  .facts { margin-top: 12px; font-size: 0.8125rem; line-height: 1.4; }
-  .facts dl { margin-top: 6px; gap: 4px; }
-  .facts dl > div { grid-template-columns: 5.6em 1fr; gap: 8px; }
-  .facts-note { margin-top: 6px; font-size: 0.75rem; }
-  .hero-price { margin-top: 14px; }
-  .hero-price .btn-quiet { display: none; }
-}
-@media (min-width: 861px) and (max-height: 760px) {
-  .beat-hero h1 { font-size: 2.5rem; }
-  .facts { margin-top: 14px; }
-  .facts dl { gap: 4px; }
-  .hero-price { margin-top: 18px; }
-}
-
 /* ── Sub-pages ── */
 .subpage .page-head { padding-top: calc(var(--nav-h) + clamp(48px, 8vw, 112px)); padding-bottom: 0; }
 .subpage .page-head + .section { border-top: 0; padding-top: clamp(48px, 6vw, 88px); }
@@ -401,22 +374,59 @@ figure[data-labels] { position: relative; }
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
 .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; }
 .hero .wrap { position: relative; }
-.hero-copy { width: min(40%, 33rem); padding-block: calc(var(--nav-h) + 24px) 40px; }
+.hero-copy { width: min(42%, 36rem); padding-block: calc(var(--nav-h) + 24px) 40px; }
 .hero-copy > * + * { margin-top: 22px; }
-.hero-copy h1 { font-size: clamp(2.5rem, 1.2rem + 3.6vw, 4.25rem); }
+.hero-copy h1 { font-size: clamp(2.3rem, 1rem + 2.9vw, 3.6rem); }
+.facts-title { color: var(--ink); font-weight: 500; }
+.facts-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+.facts-head { font-size: 0.8125rem; color: var(--ink-3); margin-bottom: 6px; }
+.facts-cols ul { list-style: none; margin: 0; padding: 0; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.7; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-note { color: var(--ink-2); font-size: 0.875rem; }
+.text-link { color: var(--teal-bright); text-decoration-color: rgba(111, 219, 225, 0.4); }
+@media (min-width: 861px) and (max-height: 820px) {
+  .hero-copy h1 { font-size: 2.6rem; }
+  .hero-copy > * + * { margin-top: 16px; }
+  .facts-cols ul { line-height: 1.55; font-size: 0.875rem; }
+  .hero-actions { margin-top: 22px; }
+}
+.tests-cue { display: none; }
 @media (max-width: 860px) {
+  /* Phones: the first screen is exactly the render, the headline and the two
+     buttons, with "Scroll to see what it tests" at the bottom edge. Sizes use
+     the screen height measured once at load (--screen-h, set by site.js), not
+     vh/svh, so nothing in the hero resizes as the address bar shows and hides. */
   .hero { min-height: 0; display: block; }
-  .hero-image { position: relative; inset: auto; height: auto; aspect-ratio: 9 / 13; object-fit: cover; object-position: 50% 0; }
-  .hero .wrap { margin-top: -28%; }
-  .hero-copy { width: 100%; padding-block: 0 40px; }
-  .hero-copy > * + * { margin-top: 14px; }
-  .hero-copy h1 { font-size: 1.85rem; }
-  .hero-copy .lede { font-size: 1rem; }
+  .hero > picture {
+    display: block; position: relative; margin-top: var(--nav-h);
+    height: max(calc(var(--screen-h, 100svh) * 0.42), calc(var(--screen-h, 100svh) - var(--nav-h) - var(--hero-copy, 270px) + 20px));
+  }
+  /* The phone image is already cropped tight to the tower; contain keeps all of
+     it in view on short screens, and its black edges meet the black page. */
+  .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; }
+  .hero .wrap { margin-top: -20px; }
+  .hero-copy { width: 100%; padding-block: 0 40px; display: flex; flex-direction: column; }
+  .hero-copy > * + * { margin-top: 0; }
+  .hero-copy h1 { order: 1; font-size: clamp(1.75rem, 8.4vw, 2.4rem); line-height: 1.08; }
+  .hero-copy .lede { display: none; }
+  .hero-actions { order: 2; flex-direction: row; gap: 10px; margin-top: 20px; }
+  .hero-actions .btn { flex: 1; min-height: 52px; padding: 0 12px; font-size: 1rem; }
+  .hero-note { order: 3; margin-top: 12px !important; font-size: 0.875rem; }
+  .tests-cue {
+    order: 4; display: inline-flex; align-items: center; gap: 8px; align-self: center;
+    margin-top: 0 !important; padding: 16px 0 14px; color: var(--ink-2); font-size: 0.875rem; text-decoration: none;
+  }
+  .tests-cue::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; rotate: 45deg; translate: 0 -2px; }
+  .facts { order: 5; margin-top: 32px !important; padding: 18px 0 0; border-top: 1px solid var(--line); scroll-margin-top: calc(var(--nav-h) + 16px); }
+  .facts-title { display: block; font-size: 1rem; }
+  .facts-cols { gap: 14px; margin-top: 12px; }
+  .facts-head { font-size: 0.75rem; margin-bottom: 4px; }
+  .facts-cols ul { font-size: 0.9375rem; line-height: 1.6; }
 }
-@media (min-width: 861px) and (max-height: 760px) {
-  .hero-copy h1 { font-size: 2.5rem; }
-}
-.hero-copy .facts { margin-top: 26px; }
+
+
+
+
 
 /* ── Tabs (What it measures, Size and connections) ── */
 .tabs, .picker { margin-top: clamp(32px, 5vw, 56px); }
@@ -447,16 +457,14 @@ figure[data-labels] { position: relative; }
   .picker-panel img { aspect-ratio: 0.9; object-position: 50% 0; }
 }
 
-/* ── Lighting: ring render with colour swatches ── */
+/* ── Lighting: the device in six ring colours, crossfaded by the swatches ── */
 .lighting { margin-top: clamp(24px, 4vw, 40px); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); grid-template-rows: auto auto 1fr; column-gap: clamp(20px, 4vw, 56px); align-items: start; }
-.lighting picture { grid-column: 2; grid-row: 1 / span 3; }
+.ring-stage { grid-column: 2; grid-row: 1 / span 3; position: relative; aspect-ratio: 3 / 2; }
+.ring-shot { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; }
+.ring-shot.is-on { opacity: 1; }
+.ring-shot img { width: 100%; height: 100%; object-fit: cover; }
 .lighting .swatches { grid-column: 1; grid-row: 1; margin-top: 0; }
 .lighting .swatch-note { grid-column: 1; grid-row: 2; }
-@media (max-width: 860px) {
-  .lighting { display: block; }
-  .lighting .swatches { margin-top: 16px; }
-}
-.lighting img { width: 100%; height: auto; aspect-ratio: 1.9; object-fit: cover; object-position: 80% 40%; transition: filter 0.35s ease; }
 .swatches { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; }
 .swatches button {
   width: 44px; height: 44px; border-radius: 50%; border: 2px solid transparent; padding: 0; cursor: pointer;
@@ -465,13 +473,132 @@ figure[data-labels] { position: relative; }
 .swatches button[aria-checked="true"] { border-color: var(--ink); }
 .swatch-note { margin-top: 12px; }
 @media (max-width: 860px) {
-  .lighting img { aspect-ratio: 1; object-position: 50% 30%; }
+  .lighting { display: block; }
+  .ring-stage { aspect-ratio: 4 / 5; }
+  .lighting .swatches { margin-top: 16px; }
 }
 
 /* Feather the edges of cropped renders so the near-black set meets the page without a visible box */
-.picker-panel img, .lighting img {
+.picker-panel img {
   -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
   -webkit-mask-composite: source-in;
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
   mask-composite: intersect;
+}
+
+/* While the tour's frames are still arriving, say so in place of the scroll cue */
+.unveil.is-loading .scroll-cue { opacity: 1 !important; }
+.unveil.is-loading .scroll-cue::after { content: " (loading)"; }
+
+/* Swipeable panels: vertical scrolling stays native; a short slide shows which way you moved */
+[data-tabs] [role="tabpanel"], .ring-stage { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+[data-tabs] [role="tabpanel"] img, .ring-stage img { -webkit-user-drag: none; }
+.is-from-right { animation: slide-from-right 0.32s ease both; }
+.is-from-left { animation: slide-from-left 0.32s ease both; }
+@keyframes slide-from-right { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@keyframes slide-from-left { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+/* Swipe indicator: only on touch screens */
+.swipe-indicator { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .swipe-indicator { display: flex; align-items: center; gap: 12px; margin-top: 14px; color: var(--ink-2); font-size: 0.875rem; }
+  .swipe-arrow { font-size: 1.5rem; line-height: 1; color: var(--ink); transition: opacity 0.2s; }
+  .swipe-indicator.at-start .swipe-arrow:first-child, .swipe-indicator.at-end .swipe-arrow:nth-child(3) { opacity: 0.25; }
+  .swipe-dots { display: flex; gap: 7px; }
+  .swipe-dots i { width: 8px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.3); transition: width 0.25s, background-color 0.25s; }
+  .swipe-dots i.is-on { width: 24px; background: var(--teal-bright); }
+  .swipe-label { margin-left: 2px; }
+  [data-tabs] [role="tabpanel"] { margin-top: 18px; }
+  .lighting .swipe-indicator { justify-content: center; margin-top: 12px; }
+}
+.is-nudging { animation: swipe-nudge 0.9s ease 0.2s both; }
+@keyframes swipe-nudge { 0%, 100% { transform: none; } 35% { transform: translateX(-18px); } 65% { transform: translateX(6px); } }
+
+.label-short { display: none; }
+@media (max-width: 860px) { .label-long { display: none; } .label-short { display: inline; } }
+
+/* Narrow phones: "What's inside" fits on one line in the half-width button */
+.label-narrow { display: none; }
+@media (max-width: 400px) { .label-wide { display: none; } .label-narrow { display: inline; } }
+
+/* While the tour's frames load, the page holds still and shows progress.
+   The progress only shows during the hold, so it can never linger after. */
+html.tour-gate, html.tour-gate body { overflow: hidden; overscroll-behavior: none; touch-action: none; }
+/* Fixed to the middle of the screen, so it's in view wherever the tour starts on the page */
+.tour-progress {
+  position: fixed; left: 50%; top: 50%; translate: -50% -50%; z-index: 90;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 14px 22px 16px; border-radius: 16px; border: 1px solid var(--line);
+  background: rgba(10, 12, 13, 0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  color: var(--ink); font-size: 0.875rem;
+  opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+html.tour-gate .tour-progress { opacity: 1; visibility: visible; transition: none; }
+.tour-progress-bar { width: 180px; height: 3px; background: rgba(255, 255, 255, 0.14); border-radius: 2px; overflow: hidden; }
+.tour-progress-bar i { display: block; height: 100%; background: var(--teal-bright); transform: scaleX(0); transform-origin: left; transition: transform 0.2s linear; }
+.unveil.is-loading .scroll-cue::after { content: none; }
+
+/* Blend the tour into the page: the stage's top and bottom dissolve into the
+   black page, so the animation slides in and out without a visible edge, and
+   captions rise slightly as they fade in. */
+html.js .unveil:not(.is-static) .unveil-stage::before,
+html.js .unveil:not(.is-static) .unveil-stage::after {
+  content: ""; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none;
+}
+html.js .unveil:not(.is-static) .unveil-stage::before { top: 0; height: calc(var(--nav-h) + 8vh); background: linear-gradient(#000 0%, #000 calc(var(--nav-h) * 0.6), rgba(0, 0, 0, 0)); }
+html.js .unveil:not(.is-static) .unveil-stage::after { bottom: 0; height: 14vh; background: linear-gradient(rgba(0, 0, 0, 0), #000); }
+html.js .unveil:not(.is-static) .beat { z-index: 2; }
+html.js .unveil:not(.is-static) .beat .beat-copy { transform: translateY(10px); transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+html.js .unveil:not(.is-static) .beat.is-on .beat-copy { transform: none; }
+.unveil-canvas { will-change: transform; }
+@media (max-width: 860px) {
+  html.js .unveil:not(.is-static) .unveil-stage::after { height: 10vh; }
+}
+
+.tour-skip {
+  margin-top: 2px; padding: 8px 14px; min-height: 36px; border-radius: 999px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink-2); font: inherit; font-size: 0.8125rem; cursor: pointer;
+}
+.tour-skip:hover { color: var(--ink); border-color: rgba(255, 255, 255, 0.35); }
+
+/* Sticky pre-order bar on phones */
+.sticky-cta { display: none; }
+@media (max-width: 860px) {
+  .sticky-cta {
+    position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 80;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 10px 10px 18px; border-radius: 999px; border: 1px solid var(--line);
+    background: rgba(12, 14, 15, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    font-size: 0.875rem; color: var(--ink-2);
+    transform: translateY(160%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .sticky-cta.is-visible { transform: none; }
+  .sticky-cta strong { color: var(--ink); font-weight: 500; margin-right: 6px; }
+  .sticky-cta .btn { min-height: 40px; }
+}
+
+/* Pre-order form states */
+.ack.has-error span { color: var(--ink); }
+.ack.has-error input { outline: 2px solid #ff8a7a; outline-offset: 2px; }
+.form-error { margin-top: 10px !important; color: #ff9d90; font-size: 0.875rem; }
+.btn.is-loading { pointer-events: none; opacity: 0.8; }
+.btn.is-loading::before { content: ""; width: 14px; height: 14px; margin-right: 10px; border-radius: 50%; border: 2px solid rgba(0, 0, 0, 0.25); border-top-color: #000; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 404 */
+.not-found h1 { margin-top: 8px; }
+.not-found .hero-actions { margin-top: 28px; }
+
+/* Privacy notice for analytics */
+.consent {
+  position: fixed; right: 16px; bottom: 16px; z-index: 95; max-width: 420px;
+  padding: 16px 18px; border-radius: 16px; border: 1px solid var(--line);
+  background: rgba(12, 14, 15, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  color: var(--ink-2); font-size: 0.875rem; line-height: 1.5;
+}
+.consent a { color: var(--teal-bright); }
+.consent-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+@media (max-width: 860px) {
+  /* Phones: under the nav bar, so it never covers the first screen's buttons */
+  .consent { left: 12px; right: 12px; top: calc(var(--nav-h) + 8px); bottom: auto; max-width: none; padding: 12px 14px; font-size: 0.8125rem; }
+  .consent-actions { margin-top: 8px; }
 }

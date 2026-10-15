@@ -3,36 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Features | Wavie by ReefMetrics</title>
+  <title>What's inside | Wavie by ReefMetrics</title>
   <meta name="description" content="What Wavie measures, how its optics, pump, valve, mainboard and lighting work, its size and connections, and its open hardware." />
   <meta name="theme-color" content="#000000" />
-
+  <link rel="canonical" href="https://www.reef-metrics.com/features" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ReefMetrics" />
-  <meta property="og:title" content="Wavie by ReefMetrics" />
-  <meta property="og:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
+  <meta property="og:title" content="What&#x27;s inside | Wavie by ReefMetrics" />
+  <meta property="og:description" content="What Wavie measures, how its optics, pump, valve, mainboard and lighting work, its size and connections, and its open hardware." />
   <meta property="og:url" content="https://www.reef-metrics.com/features" />
   <meta property="og:image" content="https://www.reef-metrics.com/assets/social-card.png" />
   <meta property="og:image:width" content="2400" />
   <meta property="og:image:height" content="1260" />
-  <meta property="og:image:alt" content="The Wavie reef tester, a black tower with a glowing teal base" />
+  <meta property="og:image:alt" content="Wavie by ReefMetrics: a black tower with a glowing teal ring at its base" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wavie by ReefMetrics" />
-  <meta name="twitter:description" content="Ten reef parameters, tested automatically, in one sealed tower. Beta Kit pre-orders are open." />
+  <meta name="twitter:title" content="What&#x27;s inside | Wavie by ReefMetrics" />
+  <meta name="twitter:description" content="What Wavie measures, how its optics, pump, valve, mainboard and lighting work, its size and connections, and its open hardware." />
   <meta name="twitter:image" content="https://www.reef-metrics.com/assets/social-card.png" />
-
-  <link rel="canonical" href="https://www.reef-metrics.com/features" />
   <link rel="icon" href="/assets/brand/favicon.svg?v=6" type="image/svg+xml" />
   <link rel="icon" href="/assets/favicon-32.png?v=6" sizes="32x32" type="image/png" />
   <link rel="icon" href="/assets/favicon-192.png?v=6" sizes="192x192" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=6" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/seq/tour.json" as="fetch" crossorigin />
   <link rel="stylesheet" href="/assets/css/site.css" />
   <script>
     // Pinned scroll tour unless reduced motion is requested (see assets/js/unveil.js).
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");
+    // Scrolling is held from the first moment ("tour-gate") until unveil.js has
+    // every frame of the animation, so it can't be scrolled past before it can
+    // play. Never held when arriving at a section link, and never for more than 15 s.
+    (function () {
+      var root = document.documentElement;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      root.classList.add("js");
+      if (window.location.hash) return;
+      root.classList.add("tour-gate");
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      var held = function () { return root.classList.contains("tour-gate"); };
+      var stop = function (event) { if (held()) event.preventDefault(); };
+      window.addEventListener("touchmove", stop, { passive: false });
+      window.addEventListener("wheel", stop, { passive: false });
+      window.addEventListener("keydown", function (event) {
+        if (held() && [" ", "PageDown", "PageUp", "ArrowDown", "ArrowUp", "End", "Home"].indexOf(event.key) > -1) event.preventDefault();
+      });
+      setTimeout(function () { root.classList.remove("tour-gate"); }, 15000);
+    })();
   </script>
 </head>
 <body>
@@ -45,8 +64,8 @@
       <nav id="site-menu" class="site-menu" aria-label="Main">
         <ul class="nav-links">
           <li class="has-menu">
-            <a href="/features">Features</a>
-            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Features sections"></button>
+            <a href="/features">What's inside</a>
+            <button class="sub-toggle" type="button" aria-expanded="false" aria-label="What's inside sections"></button>
             <ul class="submenu">
               <li><a href="/features#capabilities">What it measures</a></li>
               <li><a href="/features#parts">The parts</a></li>
@@ -74,7 +93,7 @@
   <main id="main" class="subpage">
     <section class="section page-head">
       <div class="wrap"><div class="section-head">
-        <h1>Features</h1>
+        <h1>What's inside</h1>
         <p class="lede">What Wavie measures, the parts that do it, and everything you can see and plug in.</p>
       </div></div>
     </section>
@@ -225,19 +244,41 @@
           <p class="lede">Thirty-three LEDs under a diffuser at the base and a separately lit logo. Set any colour, or let them show what Wavie is doing.</p>
         </div>
         <div class="lighting" data-lighting>
-          <picture>
-            <source media="(max-width: 860px)" srcset="/assets/img/feature-ring-m.webp" width="900" height="1600" />
-            <img src="/assets/img/feature-ring.webp" alt="The RGB ring glowing beneath its white diffuser" width="1920" height="1080" loading="lazy" />
-          </picture>
-          <div class="swatches" role="radiogroup" aria-label="Try a colour">
-            <button type="button" role="radio" aria-checked="true" data-hue="0" style="--swatch:#3fc6cf" aria-label="Teal"></button>
-            <button type="button" role="radio" aria-checked="false" data-hue="80" style="--swatch:#6a7cf0" aria-label="Blue violet"></button>
-            <button type="button" role="radio" aria-checked="false" data-hue="125" style="--swatch:#c45ce8" aria-label="Purple"></button>
-            <button type="button" role="radio" aria-checked="false" data-hue="175" style="--swatch:#ef5a8f" aria-label="Pink"></button>
-            <button type="button" role="radio" aria-checked="false" data-hue="215" style="--swatch:#f0a24a" aria-label="Amber"></button>
-            <button type="button" role="radio" aria-checked="false" data-hue="-55" style="--swatch:#5fdc7a" aria-label="Green"></button>
+          <div class="ring-stage" aria-live="polite">
+            <picture class="ring-shot is-on" data-colour="teal">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-teal-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-teal.webp" alt="Wavie with its base ring and logo glowing teal" width="2400" height="1600" loading="lazy" />
+            </picture>
+            <picture class="ring-shot" data-colour="blueviolet">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-blueviolet-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-blueviolet.webp" alt="" width="2400" height="1600" loading="lazy" />
+            </picture>
+            <picture class="ring-shot" data-colour="purple">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-purple-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-purple.webp" alt="" width="2400" height="1600" loading="lazy" />
+            </picture>
+            <picture class="ring-shot" data-colour="pink">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-pink-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-pink.webp" alt="" width="2400" height="1600" loading="lazy" />
+            </picture>
+            <picture class="ring-shot" data-colour="amber">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-amber-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-amber.webp" alt="" width="2400" height="1600" loading="lazy" />
+            </picture>
+            <picture class="ring-shot" data-colour="green">
+              <source media="(max-width: 860px)" srcset="/assets/img/ring-green-m.webp" width="1080" height="1350" />
+              <img src="/assets/img/ring-green.webp" alt="" width="2400" height="1600" loading="lazy" />
+            </picture>
           </div>
-          <p class="fine swatch-note">Try a colour. Colours on the real device are set in the app.</p>
+          <div class="swatches" role="radiogroup" aria-label="Try a colour">
+            <button type="button" role="radio" aria-checked="true" data-colour="teal" style="--swatch:#3fc6cf" aria-label="Teal"></button>
+            <button type="button" role="radio" aria-checked="false" data-colour="blueviolet" style="--swatch:#6a7cf0" aria-label="Blue violet"></button>
+            <button type="button" role="radio" aria-checked="false" data-colour="purple" style="--swatch:#c45ce8" aria-label="Purple"></button>
+            <button type="button" role="radio" aria-checked="false" data-colour="pink" style="--swatch:#ef5a8f" aria-label="Pink"></button>
+            <button type="button" role="radio" aria-checked="false" data-colour="amber" style="--swatch:#f0a24a" aria-label="Amber"></button>
+            <button type="button" role="radio" aria-checked="false" data-colour="green" style="--swatch:#5fdc7a" aria-label="Green"></button>
+          </div>
+          <p class="fine swatch-note">Tap a colour or swipe the picture. On the real device, colours are set in the app.</p>
         </div>
       </div>
     </section>
@@ -287,6 +328,7 @@
       <div>
         <img src="/assets/brand/logo-stacked.svg" alt="ReefMetrics" width="300" height="250" loading="lazy" />
         <p class="fine footer-note">Wavie is open hardware. The documentation and design files live on GitHub.</p>
+        <p class="fine footer-note">ReefMetrics<br />Eagle Mountain, Utah, USA<br /><a href="mailto:support@reef-metrics.com">support@reef-metrics.com</a></p>
       </div>
       <ul>
         <li><a href="https://github.com/reefmetrics/wavie-hardware/wiki" rel="noopener">Wavie wiki</a></li>
@@ -295,7 +337,7 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
       <ul>
-        <li><a href="/features">Features</a></li>
+        <li><a href="/features">What's inside</a></li>
         <li><a href="/updates">Updates</a></li>
         <li><a href="/questions">Questions</a></li>
         <li><a href="/terms">Pre-order Terms</a></li>
@@ -304,9 +346,13 @@
       </ul>
       <p class="fine">© 2026 ReefMetrics. All rights reserved.</p>
     </div>
+    <div class="sticky-cta" aria-hidden="true">
+      <span class="sticky-cta-text"><strong>Wavie Beta Kit</strong> $1,999.99</span>
+      <a class="btn btn-primary btn-small" href="/#beta-kit" tabindex="-1">Pre-order</a>
+    </div>
   </footer>
-
   <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/consent.js" defer></script>
   <script src="/assets/js/unveil.js" defer></script>
   <script src="/assets/js/features.js" defer></script>
 </body>

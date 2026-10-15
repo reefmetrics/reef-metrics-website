@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you
+Disallow: /partials/
+
+Sitemap: https://www.reef-metrics.com/sitemap.xml

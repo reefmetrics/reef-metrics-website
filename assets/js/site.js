@@ -23,6 +23,7 @@ const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
   const setMenu = (open) => {
     if (!nav || !menuToggle) return;
     nav.classList.toggle("is-menu-open", open);
+    window.dispatchEvent(new Event("site:ui-change"));
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.textContent = open ? "Close" : "Menu";
     document.body.style.overflow = open ? "hidden" : "";
@@ -160,6 +161,62 @@ const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
     }
   }
 
+  // Phone homepage: size the hero render so the headline, buttons and the
+  // "Scroll to see what it tests" cue end exactly at the bottom of the screen.
+  const heroCopy = document.querySelector(".hero-copy");
+  const cue = document.querySelector(".tests-cue");
+  if (heroCopy && cue) {
+    const fit = () => {
+      if (!window.matchMedia("(max-width: 860px)").matches) return;
+      // The visible height with the browser's address bar showing, measured
+      // once; scrolling hides the bar but must not resize the hero.
+      document.documentElement.style.setProperty("--screen-h", `${window.innerHeight}px`);
+      const h1 = heroCopy.querySelector("h1").getBoundingClientRect();
+      const height = cue.getBoundingClientRect().bottom - h1.top;
+      document.documentElement.style.setProperty("--hero-copy", `${Math.round(height)}px`);
+    };
+    fit();
+    document.fonts && document.fonts.ready.then(fit);
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth !== lastWidth) { lastWidth = window.innerWidth; fit(); }
+    });
+  }
+
+  // Phones: a slim pre-order bar slides up once the first screen has been
+  // scrolled past, and steps aside while the Beta Kit section or the footer
+  // is on screen, while a menu is open, or while the tour is loading.
+  const sticky = document.querySelector(".sticky-cta");
+  if (sticky) {
+    const phone = window.matchMedia("(max-width: 860px)");
+    const avoid = Array.from(document.querySelectorAll("#beta-kit, .footer > .wrap"));
+    const inView = new Set();
+    const update = () => {
+      const show = phone.matches
+        && window.scrollY > window.innerHeight * 0.8
+        && inView.size === 0
+        && !document.documentElement.classList.contains("tour-gate")
+        && !(nav && nav.classList.contains("is-menu-open"))
+        && !document.body.classList.contains("has-consent-banner");
+      sticky.classList.toggle("is-visible", show);
+      sticky.setAttribute("aria-hidden", String(!show));
+      sticky.querySelector("a").tabIndex = show ? 0 : -1;
+    };
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) inView.add(entry.target); else inView.delete(entry.target);
+        }
+        update();
+      });
+      avoid.forEach((el) => observer.observe(el));
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    phone.addEventListener("change", update);
+    window.addEventListener("site:ui-change", update);
+    update();
+  }
+
   const button = document.getElementById("preorder");
   const ack = document.getElementById("ack");
   if (!button || !ack) return;
@@ -170,14 +227,43 @@ const PREORDER_URL = "https://buy.stripe.com/dRmaEY72u8UP8TOdoN7Re01";
     return;
   }
 
+  // Error state: pressing pre-order without ticking the box explains why.
+  // Loading state: once ticked, the button shows that checkout is opening.
+  const error = document.createElement("p");
+  error.className = "form-error";
+  error.id = "ack-error";
+  error.setAttribute("role", "alert");
+  error.hidden = true;
+  error.textContent = "Please tick the box to confirm you've read what the Beta Kit is before you pre-order.";
+  ack.closest("label").after(error);
   const sync = () => {
     button.setAttribute("aria-disabled", String(!ack.checked));
     button.setAttribute("href", ack.checked ? PREORDER_URL : "#beta-kit");
+    if (ack.checked) {
+      error.hidden = true;
+      ack.closest("label").classList.remove("has-error");
+      ack.removeAttribute("aria-invalid");
+    }
   };
   ack.addEventListener("change", sync);
   button.addEventListener("click", (event) => {
-    if (ack.checked) return;
+    if (ack.checked) {
+      button.classList.add("is-loading");
+      button.setAttribute("aria-busy", "true");
+      button.textContent = "Opening secure checkout…";
+      // If the visitor comes back (e.g. with the Back button), reset the button.
+      window.addEventListener("pageshow", () => {
+        button.classList.remove("is-loading");
+        button.removeAttribute("aria-busy");
+        button.textContent = button.dataset.label;
+      }, { once: true });
+      return;
+    }
     event.preventDefault();
+    error.hidden = false;
+    ack.closest("label").classList.add("has-error");
+    ack.setAttribute("aria-invalid", "true");
+    ack.setAttribute("aria-describedby", "ack-error");
     ack.focus();
   });
   sync();

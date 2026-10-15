@@ -29,10 +29,17 @@
 
   // Touch scrolling moves in long flicks with momentum, so phones get more
   // scroll distance per frame, longer holds and a softer follow than mice.
+  // `follow` is the time constant (seconds) of the picture easing toward the
+  // scroll position: about 63% of the way in that time, whatever the screen's
+  // refresh rate.
   const TUNING = {
-    desktop: { pxPerFrame: 7, holdVh: 0.3, ease: 0.12 },
-    mobile: { pxPerFrame: 14, holdVh: 0.4, ease: 0.08 },
+    desktop: { pxPerFrame: 7, holdVh: 0.3, follow: 0.14 },
+    mobile: { pxPerFrame: 14, holdVh: 0.4, follow: 0.16 },
   };
+  // Frames decoded ahead of and behind the current position, so drawing never
+  // waits on a decode.
+  const DECODE_AHEAD = 10;
+  const DECODE_BEHIND = 4;
   const FIRST_HOLD_VH = 0.25;
   // A beat that starts moving straight away (no glide to a new subject first)
   // gets a short lead-in: its caption arrives while the picture is still, and
@@ -40,8 +47,9 @@
   const LEAD_IN_VH = 0.25;
   // Some moves read better slower than the rest of the tour.
   const BEAT_SPEED = { lift: 1.4 };
-  const HOLD_DRIFT = 0.025; // the picture scales by this much across a hold
+  const HOLD_DRIFT = 0.015; // the picture scales by this much across a hold
   const LOAD_LANES = 6;
+
   // Beats whose labels the page draws. Empty: the mainboard's labels are part
   // of the render, in the same style as the product films.
   const LABELLED = [];
@@ -64,7 +72,9 @@
   let variant = "";
   let current = 0; // smoothed position: frame index plus hold progress
   let currentDrift = 0;
-  let drawn = -1;
+  let drawn = ""; // what is on the canvas: "<index>:<next>:<blend>"
+  let lastTime = 0;
+  const decoded = new Set(); // frame indexes known to be decoded and ready to draw
   let imageRect = { x: 0, y: 0, width: 0, height: 0 }; // where the frame sits, in CSS px
   let running = false;
 
@@ -102,7 +112,8 @@
         cursor += moveLength;
       }
       if (el) {
-        const holdLength = viewport * (index === 0 ? FIRST_HOLD_VH : HOLD_VH);
+        const last = index === tour.beats.length - 1;
+        const holdLength = viewport * (index === 0 ? FIRST_HOLD_VH : last ? HOLD_VH * 2 : HOLD_VH);
         segments.push({ start: cursor, end: cursor + holdLength, fromFrame: toFrame, toFrame, hold: true });
         cursor += holdLength;
       }
@@ -136,43 +147,80 @@
     `/assets/seq/${variant}/${String(index + 1).padStart(4, "0")}.webp`;
 
   const isLoaded = (image) => image && image.complete && image.naturalWidth > 0;
+  const isReady = (index) => decoded.has(index) && isLoaded(frames[index]);
 
-  // The nearest already-loaded frame, so fast scrolling never shows a blank.
-  function nearestLoaded(index) {
+  // The nearest frame that is ready to draw, so fast scrolling never shows a blank.
+  function nearestReady(index) {
     for (let offset = 0; offset < frameCount; offset++) {
-      if (isLoaded(frames[index - offset])) return frames[index - offset];
-      if (isLoaded(frames[index + offset])) return frames[index + offset];
+      if (isReady(index - offset)) return index - offset;
+      if (isReady(index + offset)) return index + offset;
     }
-    return null;
+    return -1;
+  }
+
+  // Decode the frames around the viewer before they are needed.
+  function decodeAround(index) {
+    for (let i = index - DECODE_BEHIND; i <= index + DECODE_AHEAD; i++) {
+      const image = frames[i];
+      if (!image || decoded.has(i) || image.decodePending || !isLoaded(image)) continue;
+      image.decodePending = true;
+      const done = () => { image.decodePending = false; decoded.add(i); drawn = ""; wake(); };
+      (image.decode ? image.decode() : Promise.resolve()).then(done, done);
+    }
   }
 
   function sizeCanvas() {
+    // No sharper than the source frames: a larger canvas only costs time.
+    const source = frames.find(isLoaded);
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(canvas.clientWidth * ratio);
-    canvas.height = Math.round(canvas.clientHeight * ratio);
-    drawn = -1;
+    let width = Math.round(canvas.clientWidth * ratio);
+    let height = Math.round(canvas.clientHeight * ratio);
+    if (source) {
+      const fit = Math.min(width / source.naturalWidth, height / source.naturalHeight);
+      if (fit > 1) { width = Math.round(width / fit); height = Math.round(height / fit); }
+    }
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+    drawn = "";
   }
 
   // Equivalent of object-fit: contain. The renders fade to pure black at their
   // edges and so does the page, so letterboxing is invisible and no part of
   // the product is ever cropped on screens that are not exactly 16:9 or 9:16.
-  function draw(index) {
-    const image = nearestLoaded(index);
-    if (!image) return;
+  // Between two frames the picture is a blend of both, so slow scrolling moves
+  // continuously instead of stepping frame to frame.
+  function draw(position) {
+    const base = Math.floor(position);
+    const blend = position - base;
+    const first = isReady(base) ? base : nearestReady(Math.round(position));
+    if (first < 0) return;
+    const second = first === base && blend > 0.02 && isReady(base + 1) ? base + 1 : -1;
+    const key = `${first}:${second}:${second < 0 ? 0 : Math.round(blend * 32)}`;
+    if (key === drawn) return;
+    const image = frames[first];
     const scale = Math.min(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
     const width = image.naturalWidth * scale;
     const height = image.naturalHeight * scale;
     const x = (canvas.width - width) / 2;
     const y = (canvas.height - height) / 2;
+    context.globalAlpha = 1;
     context.fillStyle = "#000";
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
     context.drawImage(image, x, y, width, height);
+    if (second >= 0) {
+      context.globalAlpha = Math.round(blend * 32) / 32;
+      context.drawImage(frames[second], x, y, width, height);
+      context.globalAlpha = 1;
+    }
     const ratio = canvas.width / canvas.clientWidth;
     imageRect = { x: x / ratio, y: y / ratio, width: width / ratio, height: height / ratio };
-    drawn = isLoaded(frames[index]) ? index : -1;
-    root.dataset.frame = String(index + 1); // read by the end-to-end site check
+    drawn = key;
+    root.dataset.frame = String(Math.round(position) + 1); // read by the end-to-end site check
+    root.dataset.position = position.toFixed(2);
     root.classList.add("is-ready");
   }
 
@@ -262,16 +310,25 @@
 
   // Ease toward the position the scroll asks for, so wheel steps and touch
   // flicks turn into continuous motion instead of jumps.
-  function tick() {
+  function tick(time) {
+    const dt = Math.min(0.1, lastTime ? (time - lastTime) / 1000 : 1 / 60);
+    lastTime = time;
     const offset = scrollOffset();
     const target = positionAt(offset);
     const delta = target.frame - current;
-    current = Math.abs(delta) < 0.05 ? target.frame : current + delta * tuning.ease;
+    // Follow gently, but catch up quickly when far behind (a fast scroll or a
+    // jump), so the animation never trails the page and is not skipped.
+    // (Catch-up only starts when the picture is a long way behind.)
+    const follow = tuning.follow / (1 + Math.max(0, Math.abs(delta) - 30) / 40);
+    const step = 1 - Math.exp(-dt / follow);
+    current = Math.abs(delta) < 0.01 ? target.frame : current + delta * step;
     const driftDelta = target.drift - currentDrift;
-    currentDrift = Math.abs(driftDelta) < 0.002 ? target.drift : currentDrift + driftDelta * tuning.ease;
+    currentDrift = Math.abs(driftDelta) < 0.001 ? target.drift : currentDrift + driftDelta * step;
 
-    const index = Math.min(frameCount - 1, Math.max(0, Math.round(current)));
-    if (index !== drawn) draw(index);
+    const position = Math.min(frameCount - 1, Math.max(0, current));
+    decodeAround(Math.round(position));
+    if (Math.round(target.frame) !== Math.round(position)) decodeAround(Math.round(target.frame));
+    draw(position);
     const drift = currentDrift ? `scale(${1 + HOLD_DRIFT * currentDrift})` : "";
     canvas.style.transform = drift;
     if (labelLayer) labelLayer.style.transform = drift;
@@ -286,6 +343,7 @@
       requestAnimationFrame(tick);
     } else {
       running = false;
+      lastTime = 0;
     }
   }
 
@@ -295,15 +353,39 @@
     requestAnimationFrame(tick);
   }
 
+  const progress = document.createElement("div");
+  progress.className = "tour-progress";
+  progress.setAttribute("role", "status");
+  progress.innerHTML = '<span class="tour-progress-label">Loading the animation</span><span class="tour-progress-bar"><i></i></span><button type="button" class="tour-skip">Skip the animation</button>';
+  root.querySelector(".unveil-stage").append(progress);
+  const progressFill = progress.querySelector("i");
+  // Skip: end the wait and go straight to the content after the tour.
+  progress.querySelector(".tour-skip").addEventListener("click", () => {
+    releaseScroll();
+    const after = root.nextElementSibling;
+    if (after) window.scrollTo({ top: after.getBoundingClientRect().top + window.scrollY - (document.getElementById("nav")?.offsetHeight || 0), behavior: "auto" });
+  });
+
+  // The hold itself is started by the inline script in <head> (class
+  // "tour-gate" on <html>); this only ends it.
+  function releaseScroll() {
+    document.documentElement.classList.remove("tour-gate");
+  }
+
   // Load a coarse pass over the whole sequence first so any position is
   // scrubbable early, then fill in outward from where the viewer is.
   function load() {
     variant = mobileQuery.matches ? "mobile" : "desktop";
     frames = new Array(frameCount);
+    decoded.clear();
     labelledRect = "";
     const pending = new Set(Array.from({ length: frameCount }, (_, i) => i));
     const coarse = [];
     for (let i = 0; i < frameCount; i += 12) coarse.push(i);
+    let coarseLeft = coarse.length;
+    let loaded = 0;
+    root.classList.add("is-loading");
+    progressFill.style.transform = "scaleX(0)";
 
     const pick = () => {
       while (coarse.length) {
@@ -325,7 +407,15 @@
       const image = new Image();
       image.decoding = "async";
       image.onload = image.onerror = () => {
-        if (Math.abs(index - current) < 12) drawn = -1;
+        if (index % 12 === 0 && --coarseLeft === 0) root.classList.remove("is-loading");
+        loaded += 1;
+        progressFill.style.transform = `scaleX(${loaded / frameCount})`;
+        if (loaded === frameCount) {
+          root.classList.add("is-loaded");
+          releaseScroll();
+        }
+        if (index === 0) sizeCanvas();
+        if (Math.abs(index - current) <= DECODE_AHEAD) decodeAround(Math.round(current));
         wake();
         next();
       };
@@ -336,6 +426,7 @@
   }
 
   function fallBack() {
+    releaseScroll();
     root.classList.add("is-static");
     root.style.height = "";
     window.dispatchEvent(new Event("tour:ready"));
