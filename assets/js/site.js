@@ -66,7 +66,34 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
     const spare = room - box.height;
     const top = window.scrollY + box.top - navHeight - (spare > 0 ? spare / 2 : 24);
     window.scrollTo({ top: Math.max(0, top), behavior: smooth && !reduceMotion.matches ? "smooth" : "auto" });
+    settle(hash, content);
     return true;
+  }
+  // The section can still change size just after landing (tabs setting
+  // themselves up, images arriving over a slow connection), so re-centre on
+  // each change for a few seconds, unless the visitor starts scrolling.
+  let settling = null;
+  function settle(hash, content) {
+    if (settling) settling();
+    if (!("ResizeObserver" in window)) return;
+    let last = content.getBoundingClientRect().height;
+    const observer = new ResizeObserver(() => {
+      const height = content.getBoundingClientRect().height;
+      if (Math.abs(height - last) < 2) return;
+      last = height;
+      centreOn(hash, false);
+    });
+    const userScroll = ["wheel", "touchstart", "keydown", "mousedown"];
+    const stop = () => {
+      observer.disconnect();
+      clearTimeout(timer);
+      userScroll.forEach((type) => window.removeEventListener(type, stop));
+      settling = null;
+    };
+    const timer = setTimeout(stop, 4000);
+    userScroll.forEach((type) => window.addEventListener(type, stop, { passive: true }));
+    observer.observe(content);
+    settling = stop;
   }
   document.addEventListener("click", (event) => {
     const link = event.target.closest('a[href*="#"]');
@@ -84,6 +111,7 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
   // scroll tour has sized itself, since it changes where everything below sits.
   const arrive = () => centreOn(window.location.hash, false);
   window.addEventListener("tour:ready", arrive);
+  window.addEventListener("hashchange", arrive);
   if (!document.getElementById("unveil")) window.addEventListener("load", arrive);
 
   // Connector labels on still renders: <figure data-labels="rear-ports">.
