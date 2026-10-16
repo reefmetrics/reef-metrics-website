@@ -46,7 +46,7 @@
   // only then does the motion begin, so the words come before the action.
   const LEAD_IN_VH = 0.25;
   // Some moves read better slower than the rest of the tour.
-  const BEAT_SPEED = { lift: 1.4 };
+  const BEAT_SPEED = { lift: 1.4, reassemble: 1.3 };
   const HOLD_DRIFT = 0.015; // the picture scales by this much across a hold
   // Even pace: within a move, scroll is shared out in proportion to how much
   // the picture changes from frame to frame (tour.json "pace"), so fast
@@ -55,6 +55,11 @@
   // PACE_SMOOTH evens out sudden changes of speed.
   const PACE_FLOOR = 0.35; // fraction of the median change
   const PACE_SMOOTH = 3; // frames either side
+  // A cut in the render (one step that changes far more than both its
+  // neighbours, e.g. every module closing at once) cannot be smoothed by
+  // pacing, so it becomes a slow dissolve worth CUT_STEPS median steps.
+  const CUT_RATIO = 2.5;
+  const CUT_STEPS = 30;
   const LOAD_LANES = 6;
 
   // Beats whose labels the page draws. Empty: the mainboard's labels are part
@@ -139,15 +144,18 @@
     const change = tour.pace;
     if (!Array.isArray(change) || change.length < frameCount - 1) return null;
     const sorted = change.slice().sort((a, b) => a - b);
-    const floor = sorted[Math.floor(sorted.length / 2)] * PACE_FLOOR;
+    const median = sorted[Math.floor(sorted.length / 2)];
+    const floor = median * PACE_FLOOR;
+    const isCut = (k) => change[k] > CUT_RATIO * Math.max(change[k - 1] ?? 0, change[k + 1] ?? 0, floor);
     const steps = [];
     for (let f = fromFrame; f < toFrame; f++) {
+      if (isCut(f)) { steps.push(median * CUT_STEPS); continue; }
       let sum = 0;
       let count = 0;
       for (let k = f - PACE_SMOOTH; k <= f + PACE_SMOOTH; k++) {
-        if (k >= fromFrame && k < toFrame) { sum += change[k]; count += 1; }
+        if (k >= fromFrame && k < toFrame && !isCut(k)) { sum += change[k]; count += 1; }
       }
-      steps.push(Math.max(floor, sum / count));
+      steps.push(Math.max(floor, count ? sum / count : floor));
     }
     const total = steps.reduce((a, b) => a + b, 0);
     if (!(total > 0)) return null;
