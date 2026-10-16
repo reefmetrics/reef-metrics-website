@@ -48,6 +48,13 @@
   // Some moves read better slower than the rest of the tour.
   const BEAT_SPEED = { lift: 1.4 };
   const HOLD_DRIFT = 0.015; // the picture scales by this much across a hold
+  // Even pace: within a move, scroll is shared out in proportion to how much
+  // the picture changes from frame to frame (tour.json "pace"), so fast
+  // moments in the render (parts flying out, the tower closing) get more
+  // scroll and still frames less. PACE_FLOOR keeps still frames moving;
+  // PACE_SMOOTH evens out sudden changes of speed.
+  const PACE_FLOOR = 0.35; // fraction of the median change
+  const PACE_SMOOTH = 3; // frames either side
   const LOAD_LANES = 6;
 
   // Beats whose labels the page draws. Empty: the mainboard's labels are part
@@ -108,7 +115,7 @@
       }
       const moveLength = Math.max(0, toFrame - fromFrame) * pxPerFrame;
       if (moveLength > 0) {
-        segments.push({ start: cursor, end: cursor + moveLength, fromFrame, toFrame, hold: false });
+        segments.push({ start: cursor, end: cursor + moveLength, fromFrame, toFrame, hold: false, pace: paceFor(fromFrame, toFrame) });
         cursor += moveLength;
       }
       if (el) {
@@ -126,6 +133,29 @@
     );
   }
 
+  // Cumulative share of a move's scroll reached at each frame (0 at fromFrame,
+  // 1 at toFrame), from the per-frame change in tour.json. Null if absent.
+  function paceFor(fromFrame, toFrame) {
+    const change = tour.pace;
+    if (!Array.isArray(change) || change.length < frameCount - 1) return null;
+    const sorted = change.slice().sort((a, b) => a - b);
+    const floor = sorted[Math.floor(sorted.length / 2)] * PACE_FLOOR;
+    const steps = [];
+    for (let f = fromFrame; f < toFrame; f++) {
+      let sum = 0;
+      let count = 0;
+      for (let k = f - PACE_SMOOTH; k <= f + PACE_SMOOTH; k++) {
+        if (k >= fromFrame && k < toFrame) { sum += change[k]; count += 1; }
+      }
+      steps.push(Math.max(floor, sum / count));
+    }
+    const total = steps.reduce((a, b) => a + b, 0);
+    if (!(total > 0)) return null;
+    const cumulative = [0];
+    steps.forEach((step) => cumulative.push(cumulative[cumulative.length - 1] + step / total));
+    return cumulative;
+  }
+
   function scrollOffset() {
     return Math.min(travel, Math.max(0, -root.getBoundingClientRect().top));
   }
@@ -137,6 +167,19 @@
         const span = segment.end - segment.start;
         const t = span > 0 ? Math.max(0, (offset - segment.start) / span) : 1;
         if (segment.hold) return { frame: segment.toFrame, drift: t };
+        if (segment.pace) {
+          // Find the frame whose share of the scroll covers t.
+          const pace = segment.pace;
+          let low = 0;
+          let high = pace.length - 1;
+          while (high - low > 1) {
+            const mid = (low + high) >> 1;
+            if (pace[mid] <= t) low = mid; else high = mid;
+          }
+          const span2 = pace[high] - pace[low];
+          const within = span2 > 0 ? (t - pace[low]) / span2 : 0;
+          return { frame: segment.fromFrame + low + Math.min(1, Math.max(0, within)), drift: 0 };
+        }
         return { frame: segment.fromFrame + (segment.toFrame - segment.fromFrame) * t, drift: 0 };
       }
     }
