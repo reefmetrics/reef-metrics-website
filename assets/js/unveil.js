@@ -143,8 +143,13 @@
     return { frame: frameCount - 1, drift: 1 };
   }
 
+  // Frames and tour.json carry the render's version (data-tour-version on the
+  // section, filled in by sync-head.py), so a new render never mixes with
+  // frames still held in a browser or CDN cache.
+  const tourVersion = root.dataset.tourVersion || "";
+  const versioned = (url) => (tourVersion ? `${url}?v=${tourVersion}` : url);
   const frameUrl = (index) =>
-    `/assets/seq/${variant}/${String(index + 1).padStart(4, "0")}.webp`;
+    versioned(`/assets/seq/${variant}/${String(index + 1).padStart(4, "0")}.webp`);
 
   const isLoaded = (image) => image && image.complete && image.naturalWidth > 0;
   const isReady = (index) => decoded.has(index) && isLoaded(frames[index]);
@@ -433,7 +438,7 @@
     window.dispatchEvent(new Event("tour:ready"));
   }
 
-  fetch("/assets/seq/tour.json")
+  fetch(versioned("/assets/seq/tour.json"))
     .then((response) => {
       if (!response.ok) throw new Error(`tour.json ${response.status}`);
       return response.json();
