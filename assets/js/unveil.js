@@ -46,7 +46,7 @@
   // only then does the motion begin, so the words come before the action.
   const LEAD_IN_VH = 0.25;
   // Some moves read better slower than the rest of the tour.
-  const BEAT_SPEED = { lift: 1.4, reassemble: 1.3 };
+  const BEAT_SPEED = { lift: 1.4, reassemble: 0.75 };
   const HOLD_DRIFT = 0.015; // the picture scales by this much across a hold
   // Even pace: within a move, scroll is shared out in proportion to how much
   // the picture changes from frame to frame (tour.json "pace"), so fast
