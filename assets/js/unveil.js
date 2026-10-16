@@ -376,6 +376,7 @@
   // scrubbable early, then fill in outward from where the viewer is.
   function load() {
     variant = mobileQuery.matches ? "mobile" : "desktop";
+    root.dataset.frames = variant;
     frames = new Array(frameCount);
     decoded.clear();
     labelledRect = "";
