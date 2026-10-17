@@ -370,7 +370,13 @@ figure[data-labels] { position: relative; }
 
 /* ── Homepage hero: one still render, copy over its black left side ── */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
-.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; }
+/* The render fills the hero edge to edge (cover, held on the tower at about
+   two thirds across), and its bottom fades into the page so there is no seam. */
+.hero-image {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% 50%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent);
+}
 .hero .wrap { position: relative; }
 .hero-copy { width: min(42%, 36rem); padding-block: calc(var(--nav-h) + 24px) 40px; }
 .hero-copy > * + * { margin-top: 22px; }
@@ -388,6 +394,16 @@ figure[data-labels] { position: relative; }
   .facts-cols ul { line-height: 1.55; font-size: 0.875rem; }
   .hero-actions { margin-top: 22px; }
 }
+/* Portrait screens wide enough for the side-by-side layout (large tablets):
+   cover would blow the tower up behind the text, so the full 16:9 render sits
+   along the bottom, faded at its top and bottom edges into the page. */
+@media (min-width: 861px) and (max-aspect-ratio: 1/1) {
+  .hero-image {
+    inset: auto 0 0 0; height: auto; aspect-ratio: 16 / 9;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  }
+}
 .tests-cue { display: none; }
 @media (max-width: 860px) {
   /* Phones: the first screen is exactly the render, the headline and the two
@@ -399,9 +415,10 @@ figure[data-labels] { position: relative; }
     display: block; position: relative; margin-top: var(--nav-h);
     height: max(calc(var(--screen-h, 100svh) * 0.42), calc(var(--screen-h, 100svh) - var(--nav-h) - var(--hero-copy, 270px) + 20px));
   }
-  /* The phone image is already cropped tight to the tower; contain keeps all of
-     it in view on short screens, and its black edges meet the black page. */
-  .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; }
+  /* The phone image is cropped tight to the tower and fills its box (cover,
+     anchored a little above centre so the tower's top is never cut); the bottom
+     fades into the page under the headline. */
+  .hero-image { object-position: 50% 40%; -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent); mask-image: linear-gradient(to bottom, #000 72%, transparent); }
   .hero .wrap { margin-top: -20px; }
   .hero-copy { width: 100%; padding-block: 0 40px; display: flex; flex-direction: column; }
   .hero-copy > * + * { margin-top: 0; }
@@ -580,8 +597,41 @@ html.js .unveil:not(.is-static) .beat.is-on .beat-copy { transform: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* 404 */
-.not-found h1 { margin-top: 8px; }
-.not-found .hero-actions { margin-top: 28px; }
+/* 404: the exploded tour frame fills the screen, the parts drift slowly,
+   and the copy sits in the dark zone on the left (on phones, below the parts). */
+.lost { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+.lost-art { position: absolute; inset: 0; }
+.lost-art img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 100% 50%;
+  animation: lost-drift 18s ease-in-out infinite alternate;
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent);
+  mask-image: linear-gradient(to bottom, #000 80%, transparent);
+}
+@keyframes lost-drift {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.06) translate3d(-1.2%, -1%, 0); }
+}
+.lost-copy { position: relative; isolation: isolate; padding-block: calc(var(--nav-h) + 40px) 64px; }
+.lost-copy > * { max-width: 30rem; }
+.lost .eyebrow { color: var(--teal-bright); font-size: 0.8125rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.lost h1 { margin-top: 14px; font-size: clamp(2.3rem, 1rem + 2.9vw, 3.6rem); }
+.lost .lede { margin-top: 20px; color: var(--ink-2); }
+.lost .hero-actions { margin-top: 32px; }
+.lost-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 36px; font-size: 0.9375rem; }
+.lost-links a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.18); padding-bottom: 2px; }
+.lost-links a:hover { color: var(--ink); border-color: var(--teal-bright); }
+@media (max-width: 860px) {
+  .lost { align-items: flex-end; }
+  /* The phone frame shows whole at full width; its parts fill the top ~60%. */
+  .lost-art { bottom: auto; }
+  .lost-art img { height: auto; -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 66%); mask-image: linear-gradient(to bottom, #000 50%, transparent 66%); }
+  .lost-copy { padding-block: calc(100vw * 1.02) 48px; }
+  .lost .hero-actions { flex-direction: row; gap: 10px; }
+  .lost .hero-actions .btn { flex: 1; padding: 0 12px; }
+  .lost .label-wide { display: none; }
+  .lost .label-narrow { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) { .lost-art img { animation: none; } }
 
 /* Privacy notice for analytics */
 .consent {

@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=d32862a13d" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=a9a95046a7" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -67,24 +67,25 @@
     </div>
   </header>
 
-  <main id="main" class="doc not-found">
-    <div class="wrap">
-      <div class="doc-body">
-        <p class="fine">404</p>
-        <h1>This page isn't here.</h1>
-        <p class="summary">It may have moved when the site was rebuilt, or the link has a typo.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/">Go to the homepage</a>
-          <a class="btn btn-quiet" href="/features">See what's inside</a>
-        </div>
-        <h2>Looking for something?</h2>
-        <ul>
-          <li><a href="/#beta-kit">Pre-order the Wavie Beta Kit</a></li>
-          <li><a href="/questions">Questions and answers</a></li>
-          <li><a href="/updates">Updates and planned features</a></li>
-          <li><a href="/contact">Contact us</a></li>
-        </ul>
+  <main id="main" class="lost">
+    <picture class="lost-art" aria-hidden="true">
+      <source media="(max-width: 860px)" srcset="/assets/img/tour-explode-m.webp" width="1080" height="1920" />
+      <img src="/assets/img/tour-explode.webp" alt="" width="2560" height="1440" />
+    </picture>
+    <div class="wrap lost-copy">
+      <p class="eyebrow">404 · Part not found</p>
+      <h1>This page isn't here.</h1>
+      <p class="lede">Every part of Wavie comes out. This page did too, and we can't find where it went. It may have moved when the site was rebuilt, or the link has a typo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/"><span class="label-wide">Go to the homepage</span><span class="label-narrow">Homepage</span></a>
+        <a class="btn btn-quiet" href="/features">See what's inside</a>
       </div>
+      <nav class="lost-links" aria-label="Popular pages">
+        <a href="/#beta-kit">Pre-order the Beta Kit</a>
+        <a href="/questions">Questions</a>
+        <a href="/updates">Updates</a>
+        <a href="/contact">Contact</a>
+      </nav>
     </div>
   </main>
 

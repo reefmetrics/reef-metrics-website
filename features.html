@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="preload" href="/assets/seq/tour.json?v=8ab26c1b9c" as="fetch" crossorigin />
-  <link rel="stylesheet" href="/assets/css/site.css?v=d32862a13d" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=a9a95046a7" />
   <script>
     // Pinned scroll tour unless reduced motion is requested (see assets/js/unveil.js).
     // Scrolling is held from the first moment ("tour-gate") until unveil.js has
@@ -292,11 +292,21 @@
         <div class="tabs" data-tabs>
           <div class="tab-list" role="tablist" aria-label="Size and connections">
             <button type="button" role="tab" id="tab-size" aria-controls="panel-size" aria-selected="true">Size</button>
+            <button type="button" role="tab" id="tab-tank" aria-controls="panel-tank" aria-selected="false" tabindex="-1">Beside a tank</button>
+            <button type="button" role="tab" id="tab-installed" aria-controls="panel-installed" aria-selected="false" tabindex="-1">How it connects</button>
             <button type="button" role="tab" id="tab-ports" aria-controls="panel-ports" aria-selected="false" tabindex="-1">Connections</button>
           </div>
           <div role="tabpanel" id="panel-size" aria-labelledby="tab-size">
             <img class="photo" src="/assets/img/banana-dims.webp" alt="Wavie beside a banana for scale, with dimension lines showing 184 mm tall and 88 mm wide" width="1600" height="1200" loading="lazy" />
             <p class="muted panel-note">Small enough for a sump cabinet or a shelf beside the tank. Banana for scale.</p>
+          </div>
+          <div role="tabpanel" id="panel-tank" aria-labelledby="tab-tank" hidden>
+            <img class="photo" src="/assets/img/beside-tank.webp" alt="Wavie standing beside a 40 cm rimless nano reef tank, shown at true scale" width="1600" height="1200" loading="lazy" />
+            <p class="muted panel-note">At true scale beside a 40 cm nano reef. Wavie stands outside the tank; only its sample line and probes reach the water.</p>
+          </div>
+          <div role="tabpanel" id="panel-installed" aria-labelledby="tab-installed" hidden>
+            <img class="photo" src="/assets/img/installed.webp" alt="Wavie beside a nano reef tank, with its sample line and probe cables running into the tank's rear chamber and reagent lines running to six bottles in a tray" width="1600" height="1200" loading="lazy" />
+            <p class="muted panel-note">Wavie stands in its tray beside the tank, with the six reagent bottles either side. The sample line and probes go into the tank; test waste goes to its own bottle.</p>
           </div>
           <div role="tabpanel" id="panel-ports" aria-labelledby="tab-ports" hidden>
             <img class="photo" src="/assets/img/rear-ports.webp" alt="The rear connector panel of Wavie, labelled 24V, CAN, TMP, ORP, SA, PH and DO" width="1600" height="1200" loading="lazy" />
