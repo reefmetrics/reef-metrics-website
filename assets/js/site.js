@@ -65,6 +65,7 @@ const UTM_VALUE = /^[A-Za-z0-9_-]{1,150}$/;
   function centreOn(hash, smooth) {
     const target = hash && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
     if (!target) return false;
+    if (target.tagName === "DETAILS") target.open = true; // a linked question opens
     const content = target.querySelector(":scope > .wrap") || target;
     const navHeight = nav ? nav.offsetHeight : 0;
     const room = window.innerHeight - navHeight;
