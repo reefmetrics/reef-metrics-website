@@ -175,10 +175,17 @@ a:hover { text-decoration-color: currentColor; }
 
 /* ── Beta Kit offer ── */
 .offer { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 7vw, 112px); align-items: start; }
-.offer-buy { position: sticky; top: calc(var(--nav-h) + 32px); }
+/* Pinned only where the whole column fits; on shorter screens it scrolls, so nothing is cut off. */
+@media (min-height: 980px) { .offer-buy { position: sticky; top: calc(var(--nav-h) + 32px); } }
 .offer-buy > * + * { margin-top: 22px; }
 .price { font-size: var(--step-4); font-weight: 500; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 .price sup { font-size: 0.42em; vertical-align: 0.95em; letter-spacing: 0; margin-left: 2px; }
+.launch-offer { padding: 18px 20px; border: 1px solid color-mix(in srgb, var(--teal) 55%, transparent); border-radius: 14px; background: color-mix(in srgb, var(--teal) 9%, transparent); max-width: 34rem; }
+.launch-offer > * + * { margin-top: 4px; }
+.launch-offer-tag { color: var(--teal-bright); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.launch-offer-head { font-size: var(--step-2, 1.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.launch-offer-fine { color: var(--ink-2); font-size: 0.875rem; line-height: 1.55; }
+.launch-offer-fine a { color: inherit; }
 .offer-detail h3 { padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .offer-detail h3:not(:first-child) { margin-top: clamp(40px, 5vw, 64px); }
 .rows { list-style: none; margin: 0; padding: 0; }
