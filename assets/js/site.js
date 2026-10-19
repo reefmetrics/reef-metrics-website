@@ -4,6 +4,12 @@
 // This is the LIVE link: real $1,999.99 charges.
 const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
 
+// Stripe accepts these tags on a payment link: letters, digits, dashes and
+// underscores, up to 150 characters. Anything else is dropped here.
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+const UTM_STORE = "rm-campaign";
+const UTM_VALUE = /^[A-Za-z0-9_-]{1,150}$/;
+
 (function () {
   const nav = document.getElementById("nav");
   if (nav) {
@@ -245,6 +251,12 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
     update();
   }
 
+  // Campaign tags (utm_*) from the link a visitor arrived on are kept for the
+  // browser session, so they still reach checkout after the visitor has looked
+  // around the site. Stripe records them, plus a client_reference_id naming
+  // source, medium and campaign, on each order.
+  const tags = campaignTags();
+
   // The pre-order button goes straight to Stripe checkout. The text next to
   // it says that clicking it means the visitor understands what a Beta Kit
   // pre-order is. While checkout opens, the button shows a loading state.
@@ -257,7 +269,7 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
     return;
   }
 
-  button.setAttribute("href", PREORDER_URL);
+  button.setAttribute("href", checkoutUrl(tags));
   button.addEventListener("click", () => {
     button.classList.add("is-loading");
     button.setAttribute("aria-busy", "true");
@@ -270,3 +282,37 @@ const PREORDER_URL = "https://buy.stripe.com/6oUcN62Meef9c60gAZ7Re02";
     }, { once: true });
   });
 })();
+
+function validTags(source) {
+  const tags = {};
+  UTM_KEYS.forEach((key) => {
+    const value = source[key];
+    if (typeof value === "string" && UTM_VALUE.test(value)) tags[key] = value;
+  });
+  return tags;
+}
+
+// Tags on the current URL win; otherwise use the ones saved earlier this session.
+function campaignTags() {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = validTags(Object.fromEntries(UTM_KEYS.map((key) => [key, params.get(key)])));
+  try {
+    if (Object.keys(fromUrl).length) {
+      sessionStorage.setItem(UTM_STORE, JSON.stringify(fromUrl));
+      return fromUrl;
+    }
+    return validTags(JSON.parse(sessionStorage.getItem(UTM_STORE) || "{}") || {});
+  } catch {
+    return fromUrl;
+  }
+}
+
+function checkoutUrl(tags) {
+  if (!Object.keys(tags).length) return PREORDER_URL;
+  const url = new URL(PREORDER_URL);
+  Object.entries(tags).forEach(([key, value]) => url.searchParams.set(key, value));
+  const reference = ["utm_source", "utm_medium", "utm_campaign"]
+    .map((key) => tags[key] || "none").join("__").slice(0, 200);
+  url.searchParams.set("client_reference_id", reference);
+  return url.toString();
+}
