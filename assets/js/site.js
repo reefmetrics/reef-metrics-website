@@ -116,7 +116,16 @@ const UTM_VALUE = /^[A-Za-z0-9_-]{1,150}$/;
   });
   // Arriving with a hash (e.g. /#beta-kit from another page): wait until the
   // scroll tour has sized itself, since it changes where everything below sits.
-  const arrive = () => centreOn(window.location.hash, false);
+  // The browser makes its own jump to the anchor once the page has loaded,
+  // which can land after ours (on a slow first visit the tour is ready before
+  // the load event). Re-centre a few times in the first moments, unless the
+  // visitor has started scrolling, which ends the settling window.
+  const arrive = () => {
+    if (!centreOn(window.location.hash, false)) return;
+    [80, 250, 600].forEach((ms) => setTimeout(() => {
+      if (settling) centreOn(window.location.hash, false);
+    }, ms));
+  };
   window.addEventListener("tour:ready", arrive);
   window.addEventListener("hashchange", arrive);
   if (!document.getElementById("unveil")) window.addEventListener("load", arrive);
