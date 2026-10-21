@@ -273,7 +273,8 @@ html.js .unveil:not(.is-static) .port-list { position: absolute; width: 1px; hei
 @media (max-width: 700px) { .soon { grid-template-columns: 1fr; } }
 
 /* The open hardware render is square; keep it from dominating the section */
-#open .split { align-items: center; }
+#open .split, #no-controller .split { align-items: center; }
+#no-controller .photo { border-radius: 0; -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 22%, #000 80%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 22%, #000 80%, transparent); mask-composite: intersect; } /* blend the render's grey backdrop into the black page */
 #open .split > img { width: 100%; height: auto; max-width: min(620px, 70vh); aspect-ratio: 1; object-fit: contain; justify-self: center; }
 
 /* Connector labels on a still render */
