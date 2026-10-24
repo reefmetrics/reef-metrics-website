@@ -395,7 +395,9 @@ figure[data-labels] { position: relative; }
 .facts-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
 .facts-head { font-size: 0.8125rem; color: var(--ink-3); margin-bottom: 6px; }
 .facts-cols ul { list-style: none; margin: 0; padding: 0; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.7; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-actions { display: grid; width: fit-content; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; margin-top: 30px; } /* two equal buttons, as on phones */
+.hero-actions .btn { min-height: 52px; padding-inline: 28px; white-space: nowrap; }
+@media (max-width: 1240px) { .hero-actions .label-long, .hero-actions .label-wide { display: none; } .hero-actions .label-short, .hero-actions .label-narrow { display: inline; } } /* narrow hero column: the phone labels */
 .hero-note { color: var(--ink-2); font-size: 0.875rem; }
 .text-link { color: var(--teal-bright); text-decoration-color: rgba(111, 219, 225, 0.4); }
 @media (min-width: 861px) and (max-height: 820px) {
@@ -434,7 +436,7 @@ figure[data-labels] { position: relative; }
   .hero-copy > * + * { margin-top: 0; }
   .hero-copy h1 { order: 1; font-size: clamp(1.75rem, 8.4vw, 2.4rem); line-height: 1.08; }
   .hero-copy .lede { display: none; }
-  .hero-actions { order: 2; flex-direction: row; gap: 10px; margin-top: 20px; }
+  .hero-actions { order: 2; display: flex; width: auto; flex-direction: row; gap: 10px; margin-top: 20px; }
   .hero-actions .btn { flex: 1; min-height: 52px; padding: 0 12px; font-size: 1rem; }
   .hero-note { order: 3; margin-top: 12px !important; font-size: 0.875rem; }
   .tests-cue {
