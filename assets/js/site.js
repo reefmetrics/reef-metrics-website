@@ -120,15 +120,18 @@ const UTM_VALUE = /^[A-Za-z0-9_-]{1,150}$/;
   // which can land after ours (on a slow first visit the tour is ready before
   // the load event). Re-centre a few times in the first moments, unless the
   // visitor has started scrolling, which ends the settling window.
+  const recentreSoon = () => [80, 250, 600].forEach((ms) => setTimeout(() => {
+    if (settling) centreOn(window.location.hash, false);
+  }, ms));
   const arrive = () => {
-    if (!centreOn(window.location.hash, false)) return;
-    [80, 250, 600].forEach((ms) => setTimeout(() => {
-      if (settling) centreOn(window.location.hash, false);
-    }, ms));
+    if (centreOn(window.location.hash, false)) recentreSoon();
   };
   window.addEventListener("tour:ready", arrive);
   window.addEventListener("hashchange", arrive);
   if (!document.getElementById("unveil")) window.addEventListener("load", arrive);
+  // The tour can be ready well before the load event, and the browser's jump
+  // follows the load, so watch the first moments after it too.
+  else window.addEventListener("load", () => { if (settling) recentreSoon(); });
 
   // Connector labels on still renders: <figure data-labels="rear-ports">.
   // Positions come from /assets/img/labels.json (0-1 of the image).
