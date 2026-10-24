@@ -226,8 +226,13 @@ a:hover { text-decoration-color: currentColor; }
 .footer { border-top: 1px solid var(--line); padding-block: 56px 40px; font-size: 0.875rem; color: var(--ink-2); }
 .footer .wrap { display: grid; grid-template-columns: 1fr auto auto; gap: 40px clamp(40px, 8vw, 120px); }
 .footer img { height: 56px; width: auto; }
-.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: start; }
 .footer a { text-decoration: none; }
+/* Brand marks before GitHub and Discord links; the mark takes the link's colour. */
+.ico { display: inline-flex; align-items: center; gap: 0.55em; vertical-align: top; }
+.ico::before { content: ""; flex: none; width: 1.15em; height: 1.15em; background: currentColor; -webkit-mask: var(--ico) center / contain no-repeat; mask: var(--ico) center / contain no-repeat; }
+.ico-github { --ico: url("/assets/icons/github.svg"); }
+.ico-discord { --ico: url("/assets/icons/discord.svg"); }
 .footer a:hover { color: var(--ink); }
 .footer > .wrap > .fine { grid-column: 1 / -1; padding-top: 28px; border-top: 1px solid var(--line); }
 @media (max-width: 700px) { .footer .wrap { grid-template-columns: 1fr 1fr; } .footer .wrap > :first-child { grid-column: 1 / -1; } }
